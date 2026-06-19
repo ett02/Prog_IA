@@ -1,0 +1,150 @@
+# Use Case B — Lavoratori Standard e Specializzati
+# 13 standard + 7 specializzati = 20 totali.
+# Copertura: ≥3 per turno, di cui ≥1 specializzato.
+# Gli specializzati possono coprire ruoli standard se necessario.
+
+USE_CASE: B
+
+WORKERS:
+  total: 20
+  standard_count: 13
+  specialized_count: 7
+
+  # ── Standard Workers ──
+  - id: S01
+    name: "Alice Rossi"
+    type: standard
+    preferences: |
+      Preferisco i turni mattutini. Evito i turni notturni quando possibile.
+      Preferirei avere il sabato libero.
+
+  - id: S02
+    name: "Marco Bianchi"
+    type: standard
+    preferences: |
+      Flessibile. Posso fare turni notturni fino a 2 volte al mese.
+      Giorno di riposo preferito: giovedì.
+
+  - id: S03
+    name: "Giulia Verdi"
+    type: standard
+    preferences: |
+      Preferisco i turni pomeridiani. Alta tolleranza per le festività.
+
+  - id: S04
+    name: "Luca Ferrari"
+    type: standard
+    preferences: |
+      Evito i turni notturni. Giorno di riposo preferito: sabato.
+
+  - id: S05
+    name: "Sara Esposito"
+    type: standard
+    preferences: |
+      Molto flessibile. Alta tolleranza notturni e festivi.
+      Vorrei almeno una domenica libera al mese.
+
+  - id: S06
+    name: "Andrea Colombo"
+    type: standard
+    preferences: |
+      Preferisco i turni mattutini. Giorno di riposo: domenica.
+      Eviterei turni notturni consecutivi.
+
+  - id: S07
+    name: "Francesca Romano"
+    type: standard
+    preferences: |
+      Adattabile. Preferirei libero il 25 dicembre e il 1 gennaio.
+
+  - id: S08
+    name: "Davide Ricci"
+    type: standard
+    preferences: |
+      Pomeridiani preferiti. Massimo 3 notti al mese. Riposo: lunedì.
+
+  - id: S09
+    name: "Elena Marino"
+    type: standard
+    preferences: |
+      Turni mattutini. Disponibile nelle festività. No notti a dicembre.
+
+  - id: S10
+    name: "Roberto Greco"
+    type: standard
+    preferences: |
+      Nessuna preferenza. Alta tolleranza notturni. Riposo: venerdì.
+
+  - id: S11
+    name: "Chiara Bruno"
+    type: standard
+    preferences: |
+      Pomeridiani e notturni. Lavoro volentieri nei weekend.
+
+  - id: S12
+    name: "Matteo Conti"
+    type: standard
+    preferences: |
+      Mattutini. Evito 26 dicembre e 2 gennaio. Bassa tolleranza notturni.
+
+  - id: S13
+    name: "Valentina Serra"
+    type: standard
+    preferences: |
+      Flessibile. Riposo: mercoledì. Fino a 4 notti al mese.
+
+  # ── Specialized Workers ──
+  - id: P01
+    name: "Dr. Antonio Mancini"
+    type: specialized
+    preferences: |
+      Preferisco i turni mattutini e pomeridiani. Disponibile per turni notturni
+      d'urgenza, ma preferirei limitarli a 2 al mese.
+      Giorno di riposo preferito: domenica.
+
+  - id: P02
+    name: "Dr. Sofia Gallo"
+    type: specialized
+    preferences: |
+      Alta flessibilità. Posso coprire qualsiasi turno inclusi i notturni.
+      Preferirei avere libero il 25 dicembre.
+
+  - id: P03
+    name: "Dr. Lorenzo Barbieri"
+    type: specialized
+    preferences: |
+      Preferisco il turno pomeridiano. Tolleranza media per i notturni.
+      Riposo preferito: sabato.
+
+  - id: P04
+    name: "Dr. Martina Fontana"
+    type: specialized
+    preferences: |
+      Molto disponibile. Posso fare turni notturni regolarmente.
+      Nessun giorno di riposo fisso preferito.
+
+  - id: P05
+    name: "Dr. Federico Moretti"
+    type: specialized
+    preferences: |
+      Preferisco il mattino. Eviterei i turni notturni consecutivi.
+      Riposo preferito: lunedì.
+
+  - id: P06
+    name: "Dr. Alessia Rizzo"
+    type: specialized
+    preferences: |
+      Flessibile su tutti i turni. Alta tolleranza per festività e notturni.
+      Disponibile per copertura d'emergenza.
+
+  - id: P07
+    name: "Dr. Simone Costa"
+    type: specialized
+    preferences: |
+      Preferisco turni pomeridiani. Disponibile nei weekend.
+      Tolleranza media per i turni notturni. Riposo: venerdì.
+
+COVERAGE_REQUIREMENTS:
+  min_workers_per_shift_total: 3
+  min_specialized_per_shift: 1
+  note: "Gli specializzati possono coprire ruoli standard se necessario"

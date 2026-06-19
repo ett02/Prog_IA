@@ -1,0 +1,7 @@
+ortools>=9.10.4067
+langgraph>=0.2.0
+langchain-core>=0.3.0
+ollama>=0.3.0
+pydantic>=2.7.0
+python-dateutil>=2.9.0
+pytest>=8.0.0

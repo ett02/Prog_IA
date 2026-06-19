@@ -1,0 +1,103 @@
+# Use Case A — Lavoratori Omogenei
+# 13 lavoratori, tutti intercambiabili, copertura minima 2 per turno.
+
+USE_CASE: A
+
+WORKERS:
+  total: 13
+  type: homogeneous
+
+  - id: W01
+    name: "Alice Rossi"
+    type: standard
+    preferences: |
+      Preferisco i turni mattutini. Vorrei evitare i turni notturni quando possibile.
+      Sono disponibile nei weekend, ma preferirei non lavorare nel giorno di Natale.
+
+  - id: W02
+    name: "Marco Bianchi"
+    type: standard
+    preferences: |
+      Non ho preferenze forti sui turni. Sono disponibile per turni notturni fino a 2 volte al mese.
+      Preferirei avere il giovedì come giorno di riposo.
+
+  - id: W03
+    name: "Giulia Verdi"
+    type: standard
+    preferences: |
+      Preferisco i turni pomeridiani. Non mi dispiace lavorare nelle festività.
+      Tolleranza alta per i turni notturni.
+
+  - id: W04
+    name: "Luca Ferrari"
+    type: standard
+    preferences: |
+      Preferisco non lavorare di notte. Il mio giorno di riposo preferito è il sabato.
+      Sono disponibile per emergenze una volta al mese.
+
+  - id: W05
+    name: "Sara Esposito"
+    type: standard
+    preferences: |
+      Posso lavorare in qualsiasi turno. Preferirei avere almeno una domenica libera al mese.
+      Alta tolleranza per turni notturni e festivi.
+
+  - id: W06
+    name: "Andrea Colombo"
+    type: standard
+    preferences: |
+      Preferisco il turno mattutino. Eviterei i turni notturni consecutivi.
+      Il giorno di riposo preferito è la domenica.
+
+  - id: W07
+    name: "Francesca Romano"
+    type: standard
+    preferences: |
+      Mi adatto a qualsiasi turno. Preferirei avere libero il 25 dicembre e il 1 gennaio.
+      Tolleranza media per i turni notturni.
+
+  - id: W08
+    name: "Davide Ricci"
+    type: standard
+    preferences: |
+      Preferisco il turno pomeridiano. Posso fare turni notturni, ma non più di 3 al mese.
+      Giorno di riposo preferito: lunedì.
+
+  - id: W09
+    name: "Elena Marino"
+    type: standard
+    preferences: |
+      Preferisco il turno mattutino. Sono disponibile nelle festività.
+      Non voglio turni notturni a dicembre se possibile.
+
+  - id: W10
+    name: "Roberto Greco"
+    type: standard
+    preferences: |
+      Nessuna preferenza forte. Posso coprire turni notturni regolarmente.
+      Preferirei il venerdì come giorno libero.
+
+  - id: W11
+    name: "Chiara Bruno"
+    type: standard
+    preferences: |
+      Preferisco i turni pomeridiani e notturni. Mi piace lavorare nei weekend.
+      Alta tolleranza per tutti i tipi di turno.
+
+  - id: W12
+    name: "Matteo Conti"
+    type: standard
+    preferences: |
+      Preferisco il turno mattutino. Eviterei di lavorare il 26 dicembre e il 2 gennaio.
+      Tolleranza bassa per i turni notturni.
+
+  - id: W13
+    name: "Valentina Serra"
+    type: standard
+    preferences: |
+      Flessibile su tutti i turni. Preferirei il mercoledì come giorno di riposo.
+      Posso fare turni notturni fino a 4 volte al mese.
+
+COVERAGE_REQUIREMENTS:
+  min_workers_per_shift: 2
+  applies_to: all_workers

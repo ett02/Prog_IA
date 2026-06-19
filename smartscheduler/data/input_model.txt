@@ -1,0 +1,50 @@
+# SmartScheduler — Modello di Input
+# Questo file descrive i parametri generali di scheduling.
+# Viene letto dal sistema come contesto per tutti gli agenti.
+
+SCHEDULING_HORIZON:
+  start: 2026-12-07
+  end: 2027-01-06
+  total_days: 31
+
+SHIFTS:
+  - id: morning
+    label: "Turno Mattino"
+    start: "08:00"
+    end: "14:00"
+    hours: 6
+    shift_units: 1
+
+  - id: afternoon
+    label: "Turno Pomeriggio"
+    start: "14:00"
+    end: "20:00"
+    hours: 6
+    shift_units: 1
+
+  - id: night
+    label: "Turno Notte"
+    start: "20:00"
+    end: "08:00"   # giorno successivo
+    hours: 12
+    shift_units: 2  # conta come doppio turno
+
+HARD_CONSTRAINTS:
+  - name: exact_shift_units
+    description: "Ogni lavoratore deve coprire esattamente 25 shift-units nel mese"
+    value: 25
+
+  - name: max_hours_per_week
+    description: "Nessun lavoratore può superare 36 ore in qualsiasi finestra di 7 giorni consecutivi"
+    value: 36
+    window_days: 7
+
+  - name: max_one_shift_per_day
+    description: "Ogni lavoratore può coprire al massimo 1 turno al giorno"
+
+  - name: no_consecutive_shifts
+    description: "Un lavoratore non può coprire due turni consecutivi (notte[d] + mattino[d+1] vietato)"
+
+  - name: rest_after_night
+    description: "Dopo ogni turno notturno, il lavoratore deve avere 2 giorni liberi obbligatori"
+    rest_days: 2
