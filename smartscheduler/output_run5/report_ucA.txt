@@ -6,74 +6,78 @@ Orizzonte: 2026-12-07 → 2027-01-06
 ✅ Schedule verificato: True
 📊 Fairness score (min): 0.367
 🔄 Iterazioni drafting: 1
-🔄 Iterazioni raffinamento: 1
+🔄 Iterazioni raffinamento: 2
 📋 Assegnazioni totali: 260
 
 ──────────────────────────────────────────────────────────────────────
 SATISFACTION SCORES DEI LAVORATORI
 ──────────────────────────────────────────────────────────────────────
   W07   [███████░░░░░░░░░░░░░] 0.367
-  W11   [███████░░░░░░░░░░░░░] 0.367
-  W10   [████████░░░░░░░░░░░░] 0.406
+  W05   [████████░░░░░░░░░░░░] 0.417
   W13   [█████████░░░░░░░░░░░] 0.467
-  W05   [██████████░░░░░░░░░░] 0.517
-  W04   [███████████░░░░░░░░░] 0.585
-  W09   [████████████░░░░░░░░] 0.629
-  W06   [█████████████░░░░░░░] 0.690
-  W08   [█████████████░░░░░░░] 0.693
-  W12   [██████████████░░░░░░] 0.729
-  W01   [███████████████░░░░░] 0.800
+  W10   [█████████░░░░░░░░░░░] 0.499
+  W11   [██████████░░░░░░░░░░] 0.517
+  W06   [███████████░░░░░░░░░] 0.579
+  W09   [███████████░░░░░░░░░] 0.579
+  W04   [█████████████░░░░░░░] 0.694
+  W08   [██████████████░░░░░░] 0.747
+  W12   [███████████████░░░░░] 0.779
   W02   [████████████████░░░░] 0.806
-  W03   [████████████████░░░░] 0.829
+  W01   [███████████████████░] 0.950
+  W03   [███████████████████░] 0.984
 
 ──────────────────────────────────────────────────────────────────────
 CALENDARIO TURNI
 ──────────────────────────────────────────────────────────────────────
-  Mon 07/12 | M: W01, W06, W09, W12             | P: W02, W03, W04, W10, W11        | N: W05, W07, W13
-  Tue 08/12 | M: W06, W09, W12                  | P: W03, W04, W08, W10             | N: W02, W11
-  Wed 09/12 | M: W01, W06, W09                  | P: W03, W04, W08                  | N: W10, W12
-  Thu 10/12 | M: W01, W06                       | P: W03, W05, W07, W08             | N: W09, W13
-  Fri 11/12 | M: W01, W02, W06                  | P: W04, W05, W07, W08             | N: W03, W11
-  Sat 12/12 | M: W05, W06, W12                  | P: W07, W08                       | N: W02, W10
-  Sun 13/12 | M: W01, W09, W12                  | P: W05, W07, W08                  | N: W04, W13
-  Mon 14/12 | M: W01, W06, W09                  | P: W03, W11                       | N: W05, W07
-  Tue 15/12 | M: W01, W06, W09, W10             | P: W03, W08, W11                  | N: W02, W12
-  Wed 16/12 | M: W01, W04, W06, W09             | P: W03, W08, W13                  | N: W10, W11
-  Thu 17/12 | M: W05, W06                       | P: W03, W07, W08, W13             | N: W04, W09
-  Fri 18/12 | M: W01, W06, W12                  | P: W02, W05, W07, W08             | N: W03, W13
-  Sat 19/12 | M: W01, W05, W06, W12             | P: W07, W08, W10                  | N: W02, W11
-  Sun 20/12 | M: W01, W05, W09                  | P: W04, W07, W08                  | N: W10, W12
-  Mon 21/12 | M: W01, W06, W09                  | P: W03, W04, W13                  | N: W05, W07
-  Tue 22/12 | M: W04, W06, W09                  | P: W08, W13                       | N: W02, W11
-  Wed 23/12 | M: W01, W06, W09, W12             | P: W04, W08, W13                  | N: W03, W10
-  Thu 24/12 | M: W06, W12                       | P: W05, W08, W13                  | N: W04, W09
-  Fri 25/12 | M: W01, W06, W11, W12             | P: W05, W07                       | N: W02, W13
-  Sat 26/12 | M: W01, W05, W06, W12             | P: W03, W08, W11                  | N: W07, W10
-  Sun 27/12 | M: W01, W04, W09                  | P: W03, W11                       | N: W08, W12
-  Mon 28/12 | M: W01, W06, W09                  | P: W02, W04, W11, W13             | N: W03, W05
-  Tue 29/12 | M: W01, W09                       | P: W02, W04, W10, W13             | N: W07, W11
-  Wed 30/12 | M: W01, W06, W12                  | P: W04, W08, W13                  | N: W02, W10
-  Thu 31/12 | M: W09, W12                       | P: W03, W08, W13                  | N: W04, W05
-  Fri 01/01 | M: W01, W06, W11, W12             | P: W03, W08                       | N: W07, W09
-  Sat 02/01 | M: W01, W02, W11, W12             | P: W03, W08, W10                  | N: W06, W13
-  Sun 03/01 | M: W01, W04, W11                  | P: W02, W03, W05, W10             | N: W08, W12
-  Mon 04/01 | M: W01, W05, W10, W11             | P: W02, W04, W07                  | N: W03, W09
-  Tue 05/01 | M: W01, W06                       | P: W02, W04, W07, W10, W13        | N: W05, W11
-  Wed 06/01 | M: W01, W06, W12                  | P: W04, W08                       | N: W02, W07, W10, W13
+   Mon 07/12 | ☀️ M: W01, W02, W06, W09, W12        | 🌆 P: W03, W04, W07, W10, W13        | 🌙 N: W05, W11
+🔴 Tue 08/12 | ☀️ M: W06, W13                       | 🌆 P: W07, W08                       | 🌙 N: W02, W09
+   Wed 09/12 | ☀️ M: W01, W04, W06, W12             | 🌆 P: W03, W08, W13                  | 🌙 N: W07, W10
+   Thu 10/12 | ☀️ M: W01, W06, W11                  | 🌆 P: W04, W05, W08, W13             | 🌙 N: W03, W12
+   Fri 11/12 | ☀️ M: W01, W09                       | 🌆 P: W02, W04, W05, W08, W11        | 🌙 N: W06, W13
+   Sat 12/12 | ☀️ M: W01, W09                       | 🌆 P: W05, W08, W10, W11             | 🌙 N: W02, W07
+🔴 Sun 13/12 | ☀️ M: W04, W09, W11                  | 🌆 P: W03, W05, W08                  | 🌙 N: W10, W12
+  ----------------------------------------------------------------------------------------
+   Mon 14/12 | ☀️ M: W01, W06, W09                  | 🌆 P: W03, W13                       | 🌙 N: W05, W11
+   Tue 15/12 | ☀️ M: W01, W04, W06                  | 🌆 P: W02, W03, W08, W13             | 🌙 N: W07, W09
+   Wed 16/12 | ☀️ M: W01, W06, W12                  | 🌆 P: W03, W04, W08, W13             | 🌙 N: W02, W10
+   Thu 17/12 | ☀️ M: W01, W06, W12, W13             | 🌆 P: W05, W08, W11                  | 🌙 N: W03, W04
+   Fri 18/12 | ☀️ M: W01, W09, W12                  | 🌆 P: W05, W07, W08, W11             | 🌙 N: W06, W13
+   Sat 19/12 | ☀️ M: W02, W09, W11, W12             | 🌆 P: W05, W08                       | 🌙 N: W07, W10
+🔴 Sun 20/12 | ☀️ M: W01, W04, W09, W11             | 🌆 P: W03, W05, W08                  | 🌙 N: W02, W12
+  ----------------------------------------------------------------------------------------
+   Mon 21/12 | ☀️ M: W01, W06, W09                  | 🌆 P: W03, W04, W13                  | 🌙 N: W05, W11
+   Tue 22/12 | ☀️ M: W01, W06, W10                  | 🌆 P: W03, W04, W08, W13             | 🌙 N: W07, W09
+   Wed 23/12 | ☀️ M: W01, W06, W12                  | 🌆 P: W03, W04, W08, W13             | 🌙 N: W02, W10
+   Thu 24/12 | ☀️ M: W01, W06, W12                  | 🌆 P: W05, W08, W11, W13             | 🌙 N: W03, W04
+🔴 Fri 25/12 | ☀️ M: W09, W12                       | 🌆 P: W08, W11                       | 🌙 N: W06, W07
+🔴 Sat 26/12 | ☀️ M: W10, W12                       | 🌆 P: W02, W08                       | 🌙 N: W05, W13
+🔴 Sun 27/12 | ☀️ M: W01, W09                       | 🌆 P: W03, W04, W08, W10, W11        | 🌙 N: W02, W12
+  ----------------------------------------------------------------------------------------
+   Mon 28/12 | ☀️ M: W01, W04, W06                  | 🌆 P: W03, W07, W10                  | 🌙 N: W09, W11
+   Tue 29/12 | ☀️ M: W01, W10                       | 🌆 P: W03, W04, W07, W08             | 🌙 N: W05, W13
+   Wed 30/12 | ☀️ M: W01, W06, W12                  | 🌆 P: W03, W04, W08                  | 🌙 N: W02, W07, W10
+   Thu 31/12 | ☀️ M: W01, W06, W09, W12             | 🌆 P: W08, W11                       | 🌙 N: W03, W04
+🔴 Fri 01/01 | ☀️ M: W09, W12                       | 🌆 P: W05, W13                       | 🌙 N: W06, W11
+   Sat 02/01 | ☀️ M: W01, W09, W12                  | 🌆 P: W02, W05, W07, W10             | 🌙 N: W08, W13
+🔴 Sun 03/01 | ☀️ M: W01, W04, W09                  | 🌆 P: W02, W03, W07, W10             | 🌙 N: W05, W12
+  ----------------------------------------------------------------------------------------
+   Mon 04/01 | ☀️ M: W01, W02                       | 🌆 P: W03, W04, W07, W10, W11        | 🌙 N: W06, W09
+   Tue 05/01 | ☀️ M: W01, W04, W10                  | 🌆 P: W02, W03, W07, W08             | 🌙 N: W11, W13
+🔴 Wed 06/01 | ☀️ M: W01, W12                       | 🌆 P: W04, W08                       | 🌙 N: W02, W05, W07, W10
 
 ──────────────────────────────────────────────────────────────────────
 STATISTICHE PER LAVORATORE
 ──────────────────────────────────────────────────────────────────────
-  W01   (Alice Rossi         ): units=25, notti= 0, festivi=4, score=0.800
-  W02   (Marco Bianchi       ): units=25, notti= 8, festivi=3, score=0.806
-  W03   (Giulia Verdi        ): units=25, notti= 5, festivi=3, score=0.829
-  W04   (Luca Ferrari        ): units=25, notti= 4, festivi=2, score=0.585
-  W05   (Sara Esposito       ): units=25, notti= 6, festivi=2, score=0.517
-  W06   (Andrea Colombo      ): units=25, notti= 1, festivi=5, score=0.690
-  W07   (Francesca Romano    ): units=25, notti= 7, festivi=4, score=0.367
-  W08   (Davide Ricci        ): units=25, notti= 2, festivi=4, score=0.693
-  W09   (Elena Marino        ): units=25, notti= 5, festivi=2, score=0.629
-  W10   (Roberto Greco       ): units=25, notti= 8, festivi=3, score=0.406
-  W11   (Chiara Bruno        ): units=25, notti= 7, festivi=4, score=0.367
-  W12   (Matteo Conti        ): units=25, notti= 5, festivi=5, score=0.729
-  W13   (Valentina Serra     ): units=25, notti= 7, festivi=2, score=0.467
+  W01   (Alice Rossi         ): units=25, notti= 0, festivi=1, score=0.950 [🟢 Buono  ]
+  W02   (Marco Bianchi       ): units=25, notti= 8, festivi=3, score=0.806 [🟢 Buono  ]
+  W03   (Giulia Verdi        ): units=25, notti= 4, festivi=0, score=0.984 [🟢 Buono  ]
+  W04   (Luca Ferrari        ): units=25, notti= 3, festivi=1, score=0.694 [🟢 Buono  ]
+  W05   (Sara Esposito       ): units=25, notti= 7, festivi=3, score=0.417 [🟡 Medio  ]
+  W06   (Andrea Colombo      ): units=25, notti= 5, festivi=3, score=0.579 [🟡 Medio  ]
+  W07   (Francesca Romano    ): units=25, notti= 8, festivi=3, score=0.367 [🔴 Critico]
+  W08   (Davide Ricci        ): units=25, notti= 1, festivi=4, score=0.747 [🟢 Buono  ]
+  W09   (Elena Marino        ): units=25, notti= 5, festivi=3, score=0.579 [🟡 Medio  ]
+  W10   (Roberto Greco       ): units=25, notti= 7, festivi=2, score=0.499 [🟡 Medio  ]
+  W11   (Chiara Bruno        ): units=25, notti= 6, festivi=2, score=0.517 [🟡 Medio  ]
+  W12   (Matteo Conti        ): units=25, notti= 5, festivi=4, score=0.779 [🟢 Buono  ]
+  W13   (Valentina Serra     ): units=25, notti= 6, festivi=3, score=0.467 [🟡 Medio  ]

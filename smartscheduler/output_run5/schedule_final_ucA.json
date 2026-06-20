@@ -6,21 +6,21 @@
   },
   "verified": true,
   "fairness_score": 0.3666666666666667,
-  "refinement_iterations": 1,
+  "refinement_iterations": 2,
   "draft_iterations": 1,
   "satisfaction_scores": {
-    "W01": 0.7999999999999999,
+    "W01": 0.9500000000000001,
     "W02": 0.8058823529411764,
-    "W03": 0.8291666666666666,
-    "W04": 0.584920634920635,
-    "W05": 0.5166666666666667,
-    "W06": 0.6895833333333333,
+    "W03": 0.9841269841269841,
+    "W04": 0.693939393939394,
+    "W05": 0.41666666666666674,
+    "W06": 0.5791666666666667,
     "W07": 0.3666666666666667,
-    "W08": 0.6927536231884058,
-    "W09": 0.6291666666666667,
-    "W10": 0.40588235294117647,
-    "W11": 0.3666666666666667,
-    "W12": 0.7291666666666666,
+    "W08": 0.7465277777777778,
+    "W09": 0.5791666666666667,
+    "W10": 0.4990740740740741,
+    "W11": 0.5166666666666667,
+    "W12": 0.7791666666666667,
     "W13": 0.4666666666666667
   },
   "assignments": [
@@ -46,7 +46,7 @@
     },
     {
       "worker_id": "W01",
-      "date": "2026-12-13",
+      "date": "2026-12-12",
       "shift": "morning"
     },
     {
@@ -66,12 +66,12 @@
     },
     {
       "worker_id": "W01",
-      "date": "2026-12-18",
+      "date": "2026-12-17",
       "shift": "morning"
     },
     {
       "worker_id": "W01",
-      "date": "2026-12-19",
+      "date": "2026-12-18",
       "shift": "morning"
     },
     {
@@ -86,17 +86,17 @@
     },
     {
       "worker_id": "W01",
+      "date": "2026-12-22",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "W01",
       "date": "2026-12-23",
       "shift": "morning"
     },
     {
       "worker_id": "W01",
-      "date": "2026-12-25",
-      "shift": "morning"
-    },
-    {
-      "worker_id": "W01",
-      "date": "2026-12-26",
+      "date": "2026-12-24",
       "shift": "morning"
     },
     {
@@ -121,7 +121,7 @@
     },
     {
       "worker_id": "W01",
-      "date": "2027-01-01",
+      "date": "2026-12-31",
       "shift": "morning"
     },
     {
@@ -152,7 +152,7 @@
     {
       "worker_id": "W02",
       "date": "2026-12-07",
-      "shift": "afternoon"
+      "shift": "morning"
     },
     {
       "worker_id": "W02",
@@ -162,7 +162,7 @@
     {
       "worker_id": "W02",
       "date": "2026-12-11",
-      "shift": "morning"
+      "shift": "afternoon"
     },
     {
       "worker_id": "W02",
@@ -172,37 +172,37 @@
     {
       "worker_id": "W02",
       "date": "2026-12-15",
-      "shift": "night"
+      "shift": "afternoon"
     },
     {
       "worker_id": "W02",
-      "date": "2026-12-18",
-      "shift": "afternoon"
+      "date": "2026-12-16",
+      "shift": "night"
     },
     {
       "worker_id": "W02",
       "date": "2026-12-19",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "W02",
+      "date": "2026-12-20",
       "shift": "night"
     },
     {
       "worker_id": "W02",
-      "date": "2026-12-22",
+      "date": "2026-12-23",
       "shift": "night"
     },
     {
       "worker_id": "W02",
-      "date": "2026-12-25",
-      "shift": "night"
-    },
-    {
-      "worker_id": "W02",
-      "date": "2026-12-28",
+      "date": "2026-12-26",
       "shift": "afternoon"
     },
     {
       "worker_id": "W02",
-      "date": "2026-12-29",
-      "shift": "afternoon"
+      "date": "2026-12-27",
+      "shift": "night"
     },
     {
       "worker_id": "W02",
@@ -212,7 +212,7 @@
     {
       "worker_id": "W02",
       "date": "2027-01-02",
-      "shift": "morning"
+      "shift": "afternoon"
     },
     {
       "worker_id": "W02",
@@ -222,7 +222,7 @@
     {
       "worker_id": "W02",
       "date": "2027-01-04",
-      "shift": "afternoon"
+      "shift": "morning"
     },
     {
       "worker_id": "W02",
@@ -237,11 +237,6 @@
     {
       "worker_id": "W03",
       "date": "2026-12-07",
-      "shift": "afternoon"
-    },
-    {
-      "worker_id": "W03",
-      "date": "2026-12-08",
       "shift": "afternoon"
     },
     {
@@ -252,12 +247,12 @@
     {
       "worker_id": "W03",
       "date": "2026-12-10",
-      "shift": "afternoon"
+      "shift": "night"
     },
     {
       "worker_id": "W03",
-      "date": "2026-12-11",
-      "shift": "night"
+      "date": "2026-12-13",
+      "shift": "afternoon"
     },
     {
       "worker_id": "W03",
@@ -277,12 +272,12 @@
     {
       "worker_id": "W03",
       "date": "2026-12-17",
-      "shift": "afternoon"
+      "shift": "night"
     },
     {
       "worker_id": "W03",
-      "date": "2026-12-18",
-      "shift": "night"
+      "date": "2026-12-20",
+      "shift": "afternoon"
     },
     {
       "worker_id": "W03",
@@ -291,13 +286,18 @@
     },
     {
       "worker_id": "W03",
-      "date": "2026-12-23",
-      "shift": "night"
+      "date": "2026-12-22",
+      "shift": "afternoon"
     },
     {
       "worker_id": "W03",
-      "date": "2026-12-26",
+      "date": "2026-12-23",
       "shift": "afternoon"
+    },
+    {
+      "worker_id": "W03",
+      "date": "2026-12-24",
+      "shift": "night"
     },
     {
       "worker_id": "W03",
@@ -307,22 +307,22 @@
     {
       "worker_id": "W03",
       "date": "2026-12-28",
-      "shift": "night"
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "W03",
+      "date": "2026-12-29",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "W03",
+      "date": "2026-12-30",
+      "shift": "afternoon"
     },
     {
       "worker_id": "W03",
       "date": "2026-12-31",
-      "shift": "afternoon"
-    },
-    {
-      "worker_id": "W03",
-      "date": "2027-01-01",
-      "shift": "afternoon"
-    },
-    {
-      "worker_id": "W03",
-      "date": "2027-01-02",
-      "shift": "afternoon"
+      "shift": "night"
     },
     {
       "worker_id": "W03",
@@ -332,7 +332,12 @@
     {
       "worker_id": "W03",
       "date": "2027-01-04",
-      "shift": "night"
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "W03",
+      "date": "2027-01-05",
+      "shift": "afternoon"
     },
     {
       "worker_id": "W04",
@@ -341,12 +346,12 @@
     },
     {
       "worker_id": "W04",
-      "date": "2026-12-08",
-      "shift": "afternoon"
+      "date": "2026-12-09",
+      "shift": "morning"
     },
     {
       "worker_id": "W04",
-      "date": "2026-12-09",
+      "date": "2026-12-10",
       "shift": "afternoon"
     },
     {
@@ -357,12 +362,17 @@
     {
       "worker_id": "W04",
       "date": "2026-12-13",
-      "shift": "night"
+      "shift": "morning"
+    },
+    {
+      "worker_id": "W04",
+      "date": "2026-12-15",
+      "shift": "morning"
     },
     {
       "worker_id": "W04",
       "date": "2026-12-16",
-      "shift": "morning"
+      "shift": "afternoon"
     },
     {
       "worker_id": "W04",
@@ -372,7 +382,7 @@
     {
       "worker_id": "W04",
       "date": "2026-12-20",
-      "shift": "afternoon"
+      "shift": "morning"
     },
     {
       "worker_id": "W04",
@@ -382,7 +392,7 @@
     {
       "worker_id": "W04",
       "date": "2026-12-22",
-      "shift": "morning"
+      "shift": "afternoon"
     },
     {
       "worker_id": "W04",
@@ -397,12 +407,12 @@
     {
       "worker_id": "W04",
       "date": "2026-12-27",
-      "shift": "morning"
+      "shift": "afternoon"
     },
     {
       "worker_id": "W04",
       "date": "2026-12-28",
-      "shift": "afternoon"
+      "shift": "morning"
     },
     {
       "worker_id": "W04",
@@ -432,7 +442,7 @@
     {
       "worker_id": "W04",
       "date": "2027-01-05",
-      "shift": "afternoon"
+      "shift": "morning"
     },
     {
       "worker_id": "W04",
@@ -457,7 +467,7 @@
     {
       "worker_id": "W05",
       "date": "2026-12-12",
-      "shift": "morning"
+      "shift": "afternoon"
     },
     {
       "worker_id": "W05",
@@ -472,7 +482,7 @@
     {
       "worker_id": "W05",
       "date": "2026-12-17",
-      "shift": "morning"
+      "shift": "afternoon"
     },
     {
       "worker_id": "W05",
@@ -482,12 +492,12 @@
     {
       "worker_id": "W05",
       "date": "2026-12-19",
-      "shift": "morning"
+      "shift": "afternoon"
     },
     {
       "worker_id": "W05",
       "date": "2026-12-20",
-      "shift": "morning"
+      "shift": "afternoon"
     },
     {
       "worker_id": "W05",
@@ -501,37 +511,32 @@
     },
     {
       "worker_id": "W05",
-      "date": "2026-12-25",
+      "date": "2026-12-26",
+      "shift": "night"
+    },
+    {
+      "worker_id": "W05",
+      "date": "2026-12-29",
+      "shift": "night"
+    },
+    {
+      "worker_id": "W05",
+      "date": "2027-01-01",
       "shift": "afternoon"
     },
     {
       "worker_id": "W05",
-      "date": "2026-12-26",
-      "shift": "morning"
-    },
-    {
-      "worker_id": "W05",
-      "date": "2026-12-28",
-      "shift": "night"
-    },
-    {
-      "worker_id": "W05",
-      "date": "2026-12-31",
-      "shift": "night"
+      "date": "2027-01-02",
+      "shift": "afternoon"
     },
     {
       "worker_id": "W05",
       "date": "2027-01-03",
-      "shift": "afternoon"
+      "shift": "night"
     },
     {
       "worker_id": "W05",
-      "date": "2027-01-04",
-      "shift": "morning"
-    },
-    {
-      "worker_id": "W05",
-      "date": "2027-01-05",
+      "date": "2027-01-06",
       "shift": "night"
     },
     {
@@ -557,12 +562,7 @@
     {
       "worker_id": "W06",
       "date": "2026-12-11",
-      "shift": "morning"
-    },
-    {
-      "worker_id": "W06",
-      "date": "2026-12-12",
-      "shift": "morning"
+      "shift": "night"
     },
     {
       "worker_id": "W06",
@@ -587,12 +587,7 @@
     {
       "worker_id": "W06",
       "date": "2026-12-18",
-      "shift": "morning"
-    },
-    {
-      "worker_id": "W06",
-      "date": "2026-12-19",
-      "shift": "morning"
+      "shift": "night"
     },
     {
       "worker_id": "W06",
@@ -617,12 +612,7 @@
     {
       "worker_id": "W06",
       "date": "2026-12-25",
-      "shift": "morning"
-    },
-    {
-      "worker_id": "W06",
-      "date": "2026-12-26",
-      "shift": "morning"
+      "shift": "night"
     },
     {
       "worker_id": "W06",
@@ -636,58 +626,43 @@
     },
     {
       "worker_id": "W06",
-      "date": "2027-01-01",
+      "date": "2026-12-31",
       "shift": "morning"
     },
     {
       "worker_id": "W06",
-      "date": "2027-01-02",
+      "date": "2027-01-01",
       "shift": "night"
     },
     {
       "worker_id": "W06",
-      "date": "2027-01-05",
-      "shift": "morning"
-    },
-    {
-      "worker_id": "W06",
-      "date": "2027-01-06",
-      "shift": "morning"
+      "date": "2027-01-04",
+      "shift": "night"
     },
     {
       "worker_id": "W07",
       "date": "2026-12-07",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "W07",
+      "date": "2026-12-08",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "W07",
+      "date": "2026-12-09",
       "shift": "night"
-    },
-    {
-      "worker_id": "W07",
-      "date": "2026-12-10",
-      "shift": "afternoon"
-    },
-    {
-      "worker_id": "W07",
-      "date": "2026-12-11",
-      "shift": "afternoon"
     },
     {
       "worker_id": "W07",
       "date": "2026-12-12",
-      "shift": "afternoon"
-    },
-    {
-      "worker_id": "W07",
-      "date": "2026-12-13",
-      "shift": "afternoon"
-    },
-    {
-      "worker_id": "W07",
-      "date": "2026-12-14",
       "shift": "night"
     },
     {
       "worker_id": "W07",
-      "date": "2026-12-17",
-      "shift": "afternoon"
+      "date": "2026-12-15",
+      "shift": "night"
     },
     {
       "worker_id": "W07",
@@ -697,37 +672,42 @@
     {
       "worker_id": "W07",
       "date": "2026-12-19",
-      "shift": "afternoon"
+      "shift": "night"
     },
     {
       "worker_id": "W07",
-      "date": "2026-12-20",
-      "shift": "afternoon"
-    },
-    {
-      "worker_id": "W07",
-      "date": "2026-12-21",
+      "date": "2026-12-22",
       "shift": "night"
     },
     {
       "worker_id": "W07",
       "date": "2026-12-25",
+      "shift": "night"
+    },
+    {
+      "worker_id": "W07",
+      "date": "2026-12-28",
       "shift": "afternoon"
     },
     {
       "worker_id": "W07",
-      "date": "2026-12-26",
-      "shift": "night"
-    },
-    {
-      "worker_id": "W07",
       "date": "2026-12-29",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "W07",
+      "date": "2026-12-30",
       "shift": "night"
     },
     {
       "worker_id": "W07",
-      "date": "2027-01-01",
-      "shift": "night"
+      "date": "2027-01-02",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "W07",
+      "date": "2027-01-03",
+      "shift": "afternoon"
     },
     {
       "worker_id": "W07",
@@ -821,13 +801,23 @@
     },
     {
       "worker_id": "W08",
+      "date": "2026-12-25",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "W08",
       "date": "2026-12-26",
       "shift": "afternoon"
     },
     {
       "worker_id": "W08",
       "date": "2026-12-27",
-      "shift": "night"
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "W08",
+      "date": "2026-12-29",
+      "shift": "afternoon"
     },
     {
       "worker_id": "W08",
@@ -841,18 +831,13 @@
     },
     {
       "worker_id": "W08",
-      "date": "2027-01-01",
-      "shift": "afternoon"
-    },
-    {
-      "worker_id": "W08",
       "date": "2027-01-02",
-      "shift": "afternoon"
+      "shift": "night"
     },
     {
       "worker_id": "W08",
-      "date": "2027-01-03",
-      "shift": "night"
+      "date": "2027-01-05",
+      "shift": "afternoon"
     },
     {
       "worker_id": "W08",
@@ -867,17 +852,17 @@
     {
       "worker_id": "W09",
       "date": "2026-12-08",
-      "shift": "morning"
-    },
-    {
-      "worker_id": "W09",
-      "date": "2026-12-09",
-      "shift": "morning"
-    },
-    {
-      "worker_id": "W09",
-      "date": "2026-12-10",
       "shift": "night"
+    },
+    {
+      "worker_id": "W09",
+      "date": "2026-12-11",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "W09",
+      "date": "2026-12-12",
+      "shift": "morning"
     },
     {
       "worker_id": "W09",
@@ -892,17 +877,17 @@
     {
       "worker_id": "W09",
       "date": "2026-12-15",
-      "shift": "morning"
-    },
-    {
-      "worker_id": "W09",
-      "date": "2026-12-16",
-      "shift": "morning"
-    },
-    {
-      "worker_id": "W09",
-      "date": "2026-12-17",
       "shift": "night"
+    },
+    {
+      "worker_id": "W09",
+      "date": "2026-12-18",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "W09",
+      "date": "2026-12-19",
+      "shift": "morning"
     },
     {
       "worker_id": "W09",
@@ -917,17 +902,12 @@
     {
       "worker_id": "W09",
       "date": "2026-12-22",
-      "shift": "morning"
-    },
-    {
-      "worker_id": "W09",
-      "date": "2026-12-23",
-      "shift": "morning"
-    },
-    {
-      "worker_id": "W09",
-      "date": "2026-12-24",
       "shift": "night"
+    },
+    {
+      "worker_id": "W09",
+      "date": "2026-12-25",
+      "shift": "morning"
     },
     {
       "worker_id": "W09",
@@ -937,12 +917,7 @@
     {
       "worker_id": "W09",
       "date": "2026-12-28",
-      "shift": "morning"
-    },
-    {
-      "worker_id": "W09",
-      "date": "2026-12-29",
-      "shift": "morning"
+      "shift": "night"
     },
     {
       "worker_id": "W09",
@@ -952,7 +927,17 @@
     {
       "worker_id": "W09",
       "date": "2027-01-01",
-      "shift": "night"
+      "shift": "morning"
+    },
+    {
+      "worker_id": "W09",
+      "date": "2027-01-02",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "W09",
+      "date": "2027-01-03",
+      "shift": "morning"
     },
     {
       "worker_id": "W09",
@@ -966,23 +951,18 @@
     },
     {
       "worker_id": "W10",
-      "date": "2026-12-08",
-      "shift": "afternoon"
-    },
-    {
-      "worker_id": "W10",
       "date": "2026-12-09",
       "shift": "night"
     },
     {
       "worker_id": "W10",
       "date": "2026-12-12",
-      "shift": "night"
+      "shift": "afternoon"
     },
     {
       "worker_id": "W10",
-      "date": "2026-12-15",
-      "shift": "morning"
+      "date": "2026-12-13",
+      "shift": "night"
     },
     {
       "worker_id": "W10",
@@ -992,12 +972,12 @@
     {
       "worker_id": "W10",
       "date": "2026-12-19",
-      "shift": "afternoon"
+      "shift": "night"
     },
     {
       "worker_id": "W10",
-      "date": "2026-12-20",
-      "shift": "night"
+      "date": "2026-12-22",
+      "shift": "morning"
     },
     {
       "worker_id": "W10",
@@ -1007,12 +987,22 @@
     {
       "worker_id": "W10",
       "date": "2026-12-26",
-      "shift": "night"
+      "shift": "morning"
+    },
+    {
+      "worker_id": "W10",
+      "date": "2026-12-27",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "W10",
+      "date": "2026-12-28",
+      "shift": "afternoon"
     },
     {
       "worker_id": "W10",
       "date": "2026-12-29",
-      "shift": "afternoon"
+      "shift": "morning"
     },
     {
       "worker_id": "W10",
@@ -1032,12 +1022,12 @@
     {
       "worker_id": "W10",
       "date": "2027-01-04",
-      "shift": "morning"
+      "shift": "afternoon"
     },
     {
       "worker_id": "W10",
       "date": "2027-01-05",
-      "shift": "afternoon"
+      "shift": "morning"
     },
     {
       "worker_id": "W10",
@@ -1047,51 +1037,66 @@
     {
       "worker_id": "W11",
       "date": "2026-12-07",
-      "shift": "afternoon"
+      "shift": "night"
     },
     {
       "worker_id": "W11",
-      "date": "2026-12-08",
-      "shift": "night"
+      "date": "2026-12-10",
+      "shift": "morning"
     },
     {
       "worker_id": "W11",
       "date": "2026-12-11",
-      "shift": "night"
-    },
-    {
-      "worker_id": "W11",
-      "date": "2026-12-14",
       "shift": "afternoon"
     },
     {
       "worker_id": "W11",
-      "date": "2026-12-15",
+      "date": "2026-12-12",
       "shift": "afternoon"
     },
     {
       "worker_id": "W11",
-      "date": "2026-12-16",
-      "shift": "night"
-    },
-    {
-      "worker_id": "W11",
-      "date": "2026-12-19",
-      "shift": "night"
-    },
-    {
-      "worker_id": "W11",
-      "date": "2026-12-22",
-      "shift": "night"
-    },
-    {
-      "worker_id": "W11",
-      "date": "2026-12-25",
+      "date": "2026-12-13",
       "shift": "morning"
     },
     {
       "worker_id": "W11",
-      "date": "2026-12-26",
+      "date": "2026-12-14",
+      "shift": "night"
+    },
+    {
+      "worker_id": "W11",
+      "date": "2026-12-17",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "W11",
+      "date": "2026-12-18",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "W11",
+      "date": "2026-12-19",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "W11",
+      "date": "2026-12-20",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "W11",
+      "date": "2026-12-21",
+      "shift": "night"
+    },
+    {
+      "worker_id": "W11",
+      "date": "2026-12-24",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "W11",
+      "date": "2026-12-25",
       "shift": "afternoon"
     },
     {
@@ -1102,32 +1107,22 @@
     {
       "worker_id": "W11",
       "date": "2026-12-28",
-      "shift": "afternoon"
-    },
-    {
-      "worker_id": "W11",
-      "date": "2026-12-29",
       "shift": "night"
     },
     {
       "worker_id": "W11",
+      "date": "2026-12-31",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "W11",
       "date": "2027-01-01",
-      "shift": "morning"
-    },
-    {
-      "worker_id": "W11",
-      "date": "2027-01-02",
-      "shift": "morning"
-    },
-    {
-      "worker_id": "W11",
-      "date": "2027-01-03",
-      "shift": "morning"
+      "shift": "night"
     },
     {
       "worker_id": "W11",
       "date": "2027-01-04",
-      "shift": "morning"
+      "shift": "afternoon"
     },
     {
       "worker_id": "W11",
@@ -1141,28 +1136,28 @@
     },
     {
       "worker_id": "W12",
-      "date": "2026-12-08",
-      "shift": "morning"
-    },
-    {
-      "worker_id": "W12",
       "date": "2026-12-09",
-      "shift": "night"
+      "shift": "morning"
     },
     {
       "worker_id": "W12",
-      "date": "2026-12-12",
-      "shift": "morning"
+      "date": "2026-12-10",
+      "shift": "night"
     },
     {
       "worker_id": "W12",
       "date": "2026-12-13",
+      "shift": "night"
+    },
+    {
+      "worker_id": "W12",
+      "date": "2026-12-16",
       "shift": "morning"
     },
     {
       "worker_id": "W12",
-      "date": "2026-12-15",
-      "shift": "night"
+      "date": "2026-12-17",
+      "shift": "morning"
     },
     {
       "worker_id": "W12",
@@ -1237,17 +1232,37 @@
     {
       "worker_id": "W13",
       "date": "2026-12-07",
-      "shift": "night"
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "W13",
+      "date": "2026-12-08",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "W13",
+      "date": "2026-12-09",
+      "shift": "afternoon"
     },
     {
       "worker_id": "W13",
       "date": "2026-12-10",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "W13",
+      "date": "2026-12-11",
       "shift": "night"
     },
     {
       "worker_id": "W13",
-      "date": "2026-12-13",
-      "shift": "night"
+      "date": "2026-12-14",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "W13",
+      "date": "2026-12-15",
+      "shift": "afternoon"
     },
     {
       "worker_id": "W13",
@@ -1257,7 +1272,7 @@
     {
       "worker_id": "W13",
       "date": "2026-12-17",
-      "shift": "afternoon"
+      "shift": "morning"
     },
     {
       "worker_id": "W13",
@@ -1286,27 +1301,17 @@
     },
     {
       "worker_id": "W13",
-      "date": "2026-12-25",
+      "date": "2026-12-26",
       "shift": "night"
     },
     {
       "worker_id": "W13",
-      "date": "2026-12-28",
-      "shift": "afternoon"
-    },
-    {
-      "worker_id": "W13",
       "date": "2026-12-29",
-      "shift": "afternoon"
+      "shift": "night"
     },
     {
       "worker_id": "W13",
-      "date": "2026-12-30",
-      "shift": "afternoon"
-    },
-    {
-      "worker_id": "W13",
-      "date": "2026-12-31",
+      "date": "2027-01-01",
       "shift": "afternoon"
     },
     {
@@ -1317,11 +1322,6 @@
     {
       "worker_id": "W13",
       "date": "2027-01-05",
-      "shift": "afternoon"
-    },
-    {
-      "worker_id": "W13",
-      "date": "2027-01-06",
       "shift": "night"
     }
   ]

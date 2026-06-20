@@ -101,6 +101,8 @@ def _fallback_preferences_code(worker_id: str, pref: Preference) -> str:
         f'preference_weights["{worker_id}"] = {shift_penalties!r}',
         # night_tolerance nel template (usata per la sezione log/debug)
         f'night_tolerances["{worker_id}"] = {pref.night_tolerance}',
+        # holiday_tolerance nel template (usata per i turni festivi)
+        f'holiday_tolerances["{worker_id}"] = {pref.holiday_tolerance}',
     ]
 
     if pref.unavailable_dates:

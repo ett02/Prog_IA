@@ -87,19 +87,24 @@ def save_ortools_code(code: str, filename: str = "schedule_draft.py") -> str:
 
 def drafting_node(state: SmartSchedulerState) -> dict:
     """
-    Nodo LangGraph per Stage 2 (e rientro da Stage 3 se violazioni).
-    Genera/rigena il codice OR-Tools e lo esegue.
+    Nodo LangGraph per Stage 2 (Drafting).
+
+    Costruisce il codice OR-Tools usando il template deterministico
+    di ortools_builder.py. Il codice delle preferenze viene passato dal
+    preferences_agent (Stage 1). Non viene più usato l'LLM in questa fase,
+    garantendo esecuzione quasi istantanea e zero errori sintattici.
     """
     workers: list[Worker] = state["workers"]
     use_case: str = state.get("use_case", "A")
-    violations: list[str] = state.get("violations", [])
     draft_iteration: int = state.get("draft_iteration", 0) + 1
+
+    logger.info(f"Stage 2 — Drafting (iterazione {draft_iteration}) - Deterministic Mode")
+
+    # Recupera il codice delle preferenze generato nello Stage 1
     preferences_code: str = state.get("ortools_preferences_code", "")
 
-    logger.info(f"Stage 2 — Drafting (iterazione {draft_iteration})")
-
-    # Genera il template OR-Tools con tutti i vincoli hard
-    template = generate_ortools_template(
+    # Genera il template completo (ora include anche penalità festivi)
+    code = generate_ortools_template(
         workers=workers,
         horizon_start=HORIZON_START,
         horizon_end=HORIZON_END,
@@ -107,30 +112,13 @@ def drafting_node(state: SmartSchedulerState) -> dict:
         preferences_code=preferences_code,
     )
 
-    preferences_summary = build_drafting_summary_prompt(workers)
-
-    # Costruisce il prompt (con violations se siamo in re-draft)
-    prompt = build_drafting_prompt(
-        ortools_template=template,
-        workers=workers,
-        use_case=use_case,
-        preferences_summary=preferences_summary,
-        violations=violations if violations else None,
-        draft_iteration=draft_iteration,
-    )
-
-    # Chiama l'LLM
-    llm_response = call_llm_for_code(prompt)
-    code = extract_code_from_llm_response(llm_response)
-
-    # Salva il codice generato
+    # Salva il codice in file
     save_ortools_code(code, f"schedule_draft_iter{draft_iteration}.py")
 
     # Esegui il solver
     logger.info("Esecuzione OR-Tools solver...")
     result = run_ortools_code(code)
 
-    # Converti in Schedule
     schedule = parse_solver_result(
         result=result,
         workers=workers,
@@ -140,13 +128,11 @@ def drafting_node(state: SmartSchedulerState) -> dict:
     )
 
     if schedule is None:
+        # Se Infeasible o fallito
         logger.warning(f"Solver INFEASIBLE all'iterazione {draft_iteration}")
         return {
             "draft_iteration": draft_iteration,
-            "ortools_schedule_code": code,
-            "schedule": None,
-            "hard_constraints_satisfied": False,
-            "violations": [result.get("error", "INFEASIBLE — nessun dettaglio")],
+            "violations": [result.get("error", "Nessuna soluzione trovata")],
         }
 
     logger.info(
@@ -155,6 +141,7 @@ def drafting_node(state: SmartSchedulerState) -> dict:
     return {
         "draft_iteration": draft_iteration,
         "ortools_schedule_code": code,
+        "ortools_preferences_code": preferences_code,
         "schedule": schedule,
         "violations": [],
     }

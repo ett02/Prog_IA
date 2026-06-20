@@ -1,5 +1,5 @@
 """
-OR-Tools CP-SAT Schedule — Use Case A
+OR-Tools CP-SAT Schedule — Use Case B
 Orizzonte: 2026-12-07 → 2027-01-06 (31 giorni)
 Generato da SmartScheduler ortools_builder.py
 """
@@ -12,9 +12,9 @@ def solve_schedule():
     model = cp_model.CpModel()
 
     # ── Parametri ─────────────────────────────────────────────────────────
-    all_workers = ['W01', 'W02', 'W03', 'W04', 'W05', 'W06', 'W07', 'W08', 'W09', 'W10', 'W11', 'W12', 'W13']
-    standard_workers = ['W01', 'W02', 'W03', 'W04', 'W05', 'W06', 'W07', 'W08', 'W09', 'W10', 'W11', 'W12', 'W13']
-    specialized_workers = []
+    all_workers = ['S01', 'S02', 'S03', 'S04', 'S05', 'S06', 'S07', 'S08', 'S09', 'S10', 'S11', 'S12', 'S13', 'P01', 'P02', 'P03', 'P04', 'P05', 'P06', 'P07']
+    standard_workers = ['S01', 'S02', 'S03', 'S04', 'S05', 'S06', 'S07', 'S08', 'S09', 'S10', 'S11', 'S12', 'S13']
+    specialized_workers = ['P01', 'P02', 'P03', 'P04', 'P05', 'P06', 'P07']
 
     days = ['2026-12-07', '2026-12-08', '2026-12-09', '2026-12-10', '2026-12-11', '2026-12-12', '2026-12-13', '2026-12-14', '2026-12-15', '2026-12-16', '2026-12-17', '2026-12-18', '2026-12-19', '2026-12-20', '2026-12-21', '2026-12-22', '2026-12-23', '2026-12-24', '2026-12-25', '2026-12-26', '2026-12-27', '2026-12-28', '2026-12-29', '2026-12-30', '2026-12-31', '2027-01-01', '2027-01-02', '2027-01-03', '2027-01-04', '2027-01-05', '2027-01-06']
     n_days = 31
@@ -28,54 +28,103 @@ def solve_schedule():
     unavailable_dates = {}  # worker_id -> set di indici giorno (0-based)
     preferred_rest_day = {}  # worker_id -> weekday (0=Mon..6=Sun), o None
     night_tolerances = {}   # worker_id -> int 0-5 (0=intollerante, 5=molto tollerante)
+    holiday_tolerances = {} # worker_id -> int 0-5
 
-    # Worker W01
-    preference_weights["W01"] = {'morning': 0, 'afternoon': 1, 'night': 4}
-    night_tolerances["W01"] = 1
-    unavailable_dates["W01"] = set()
-    # Worker W02
-    preference_weights["W02"] = {'morning': 1, 'afternoon': 1, 'night': 0}
-    night_tolerances["W02"] = 5
-    preferred_rest_day["W02"] = 3
-    # Worker W03
-    preference_weights["W03"] = {'morning': 1, 'afternoon': 0, 'night': 1}
-    night_tolerances["W03"] = 5
-    # Worker W04
-    preference_weights["W04"] = {'morning': 1, 'afternoon': 1, 'night': 4}
-    night_tolerances["W04"] = 1
-    preferred_rest_day["W04"] = 5
-    # Worker W05
-    preference_weights["W05"] = {'morning': 1, 'afternoon': 1, 'night': 2}
-    night_tolerances["W05"] = 3
-    # Worker W06
-    preference_weights["W06"] = {'morning': 0, 'afternoon': 1, 'night': 3}
-    night_tolerances["W06"] = 3
-    preferred_rest_day["W06"] = 6
-    # Worker W07
-    preference_weights["W07"] = {'morning': 1, 'afternoon': 1, 'night': 2}
-    night_tolerances["W07"] = 3
-    # Worker W08
-    preference_weights["W08"] = {'morning': 1, 'afternoon': 0, 'night': 3}
-    night_tolerances["W08"] = 2
-    preferred_rest_day["W08"] = 0
-    # Worker W09
-    preference_weights["W09"] = {'morning': 0, 'afternoon': 1, 'night': 1}
-    night_tolerances["W09"] = 4
-    unavailable_dates["W09"] = set()
-    # Worker W10
-    preference_weights["W10"] = {'morning': 1, 'afternoon': 1, 'night': 2}
-    night_tolerances["W10"] = 3
-    preferred_rest_day["W10"] = 4
-    # Worker W11
-    preference_weights["W11"] = {'morning': 1, 'afternoon': 1, 'night': 2}
-    night_tolerances["W11"] = 3
-    # Worker W12
-    preference_weights["W12"] = {'morning': 0, 'afternoon': 1, 'night': 1}
-    night_tolerances["W12"] = 5
-    unavailable_dates["W12"] = set()
-    # Worker W13
-    preference_weights["W13"] = {'morning': 1, 'afternoon': 1, 'night': 2}
-    night_tolerances["W13"] = 3
+    # Worker S01
+    preference_weights["S01"] = {'morning': 0, 'afternoon': 1, 'night': 4}
+    night_tolerances["S01"] = 1
+    holiday_tolerances["S01"] = 3
+    preferred_rest_day["S01"] = 5
+    # Worker S02
+    preference_weights["S02"] = {'morning': 1, 'afternoon': 1, 'night': 0}
+    night_tolerances["S02"] = 5
+    holiday_tolerances["S02"] = 3
+    preferred_rest_day["S02"] = 3
+    # Worker S03
+    preference_weights["S03"] = {'morning': 1, 'afternoon': 0, 'night': 1}
+    night_tolerances["S03"] = 5
+    holiday_tolerances["S03"] = 5
+    # Worker S04
+    preference_weights["S04"] = {'morning': 1, 'afternoon': 1, 'night': 3}
+    night_tolerances["S04"] = 3
+    holiday_tolerances["S04"] = 3
+    preferred_rest_day["S04"] = 5
+    # Worker S05
+    preference_weights["S05"] = {'morning': 1, 'afternoon': 1, 'night': 1}
+    night_tolerances["S05"] = 5
+    holiday_tolerances["S05"] = 5
+    preferred_rest_day["S05"] = 6
+    # Worker S06
+    preference_weights["S06"] = {'morning': 0, 'afternoon': 1, 'night': 1}
+    night_tolerances["S06"] = 4
+    holiday_tolerances["S06"] = 3
+    preferred_rest_day["S06"] = 6
+    # Worker S07
+    preference_weights["S07"] = {'morning': 1, 'afternoon': 1, 'night': 2}
+    night_tolerances["S07"] = 3
+    holiday_tolerances["S07"] = 3
+    unavailable_dates["S07"] = set()
+    # Worker S08
+    preference_weights["S08"] = {'morning': 1, 'afternoon': 0, 'night': 1}
+    night_tolerances["S08"] = 5
+    holiday_tolerances["S08"] = 3
+    preferred_rest_day["S08"] = 0
+    # Worker S09
+    preference_weights["S09"] = {'morning': 0, 'afternoon': 1, 'night': 1}
+    night_tolerances["S09"] = 4
+    holiday_tolerances["S09"] = 3
+    unavailable_dates["S09"] = {18}
+    # Worker S10
+    preference_weights["S10"] = {'morning': 1, 'afternoon': 1, 'night': 0}
+    night_tolerances["S10"] = 5
+    holiday_tolerances["S10"] = 3
+    preferred_rest_day["S10"] = 4
+    # Worker S11
+    preference_weights["S11"] = {'morning': 1, 'afternoon': 1, 'night': 2}
+    night_tolerances["S11"] = 3
+    holiday_tolerances["S11"] = 3
+    # Worker S12
+    preference_weights["S12"] = {'morning': 0, 'afternoon': 1, 'night': 1}
+    night_tolerances["S12"] = 4
+    holiday_tolerances["S12"] = 3
+    unavailable_dates["S12"] = set()
+    # Worker S13
+    preference_weights["S13"] = {'morning': 1, 'afternoon': 1, 'night': 1}
+    night_tolerances["S13"] = 4
+    holiday_tolerances["S13"] = 3
+    preferred_rest_day["S13"] = 2
+    # Worker P01
+    preference_weights["P01"] = {'morning': 0, 'afternoon': 0, 'night': 3}
+    night_tolerances["P01"] = 2
+    holiday_tolerances["P01"] = 3
+    preferred_rest_day["P01"] = 6
+    # Worker P02
+    preference_weights["P02"] = {'morning': 1, 'afternoon': 1, 'night': 2}
+    night_tolerances["P02"] = 3
+    holiday_tolerances["P02"] = 3
+    # Worker P03
+    preference_weights["P03"] = {'morning': 1, 'afternoon': 0, 'night': 2}
+    night_tolerances["P03"] = 3
+    holiday_tolerances["P03"] = 3
+    preferred_rest_day["P03"] = 5
+    # Worker P04
+    preference_weights["P04"] = {'morning': 1, 'afternoon': 1, 'night': 5}
+    night_tolerances["P04"] = 0
+    holiday_tolerances["P04"] = 3
+    # Worker P05
+    preference_weights["P05"] = {'morning': 0, 'afternoon': 1, 'night': 3}
+    night_tolerances["P05"] = 2
+    holiday_tolerances["P05"] = 3
+    preferred_rest_day["P05"] = 0
+    # Worker P06
+    preference_weights["P06"] = {'morning': 0, 'afternoon': 0, 'night': 0}
+    night_tolerances["P06"] = 5
+    holiday_tolerances["P06"] = 5
+    # Worker P07
+    preference_weights["P07"] = {'morning': 1, 'afternoon': 0, 'night': 3}
+    night_tolerances["P07"] = 2
+    holiday_tolerances["P07"] = 3
+    preferred_rest_day["P07"] = 4
 
     # ── Variabili booleane ────────────────────────────────────────────────
     # shift_vars[(worker, day_idx, shift)] = 1 se worker copre quel turno
@@ -90,7 +139,10 @@ def solve_schedule():
     # 1. Copertura minima per turno
     for d in range(n_days):
         for s in shifts:
-            model.Add(sum(shift_vars[(w, d, s)] for w in all_workers) >= 2)
+            # Almeno 3 lavoratori totali (specializzati possono coprire ruoli standard)
+            model.Add(sum(shift_vars[(w, d, s)] for w in all_workers) >= 3)
+            # Almeno 1 specializzato sempre presente
+            model.Add(sum(shift_vars[(w, d, s)] for w in specialized_workers) >= 1)
 
     # 2. Max 1 turno al giorno per lavoratore
     for w in all_workers:
@@ -161,7 +213,7 @@ def solve_schedule():
                 if pen > 0:
                     penalty_terms.append(shift_vars[(w, d, s)] * pen)
 
-    # Penalità giorno di riposo preferito (IMPLEMENTATA NEL TEMPLATE — non modificare)
+    # Penalità giorno di riposo preferito (IMPLEMENTATA NEL TEMPLATE)
     # Per ogni worker con preferred_rest_day, penalizza i turni nel suo giorno preferito
     for w in all_workers:
         prd = preferred_rest_day.get(w)
@@ -172,18 +224,18 @@ def solve_schedule():
                 for s in shifts:
                     penalty_terms.append(shift_vars[(w, d, s)] * 2)
 
-    # TODO (LLM): aggiungi qui SOLO penalità aggiuntive per turni festivi.
-    # NON reimplementare preferred_rest_day — è già nel template sopra.
-    # Esempio: penalizza turni notturni in date festive per chi ha bassa tolleranza.
-
-    festive_dates = ['2026-12-08', '2026-12-25', '2026-12-26', '2027-01-01', '2027-01-06']
+    # Penalità turni festivi (IMPLEMENTATA NEL TEMPLATE)
+    # Festività: 8 Dicembre, 25-26 Dicembre, 1 Gennaio, 6 Gennaio (per Use Case A e B)
+    # Penalità = max(0, 5 - holiday_tolerance) -> da evitare fortemente se tolleranza 0
+    holiday_dates = {"2026-12-08", "2026-12-25", "2026-12-26", "2027-01-01", "2027-01-06"}
     for w in all_workers:
-        holiday_tolerance = night_tolerances.get(w, 3)
-        if holiday_tolerance < 3:  # Se la tolleranza è bassa (0, 1 o 2), penalizza i turni festivi
+        htol = holiday_tolerances.get(w, 3)
+        hpen = max(0, 5 - htol)
+        if hpen > 0:
             for d in range(n_days):
-                if days[d] in festive_dates:
+                if days[d] in holiday_dates:
                     for s in shifts:
-                        penalty_terms.append(shift_vars[(w, d, s)] * 5)
+                        penalty_terms.append(shift_vars[(w, d, s)] * hpen)
 
     model.Minimize(sum(penalty_terms))
 

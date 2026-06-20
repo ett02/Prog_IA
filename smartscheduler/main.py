@@ -143,7 +143,20 @@ def generate_report(final_state: dict, use_case: str) -> str:
         m = ", ".join(ds.morning) or "—"
         a = ", ".join(ds.afternoon) or "—"
         n = ", ".join(ds.night) or "—"
-        lines.append(f"  {day_name} | M: {m:30s} | P: {a:30s} | N: {n}")
+        
+        # Festivo visivo
+        is_holiday = current in {
+            date(2026, 12, 8), date(2026, 12, 25), date(2026, 12, 26),
+            date(2027, 1, 1), date(2027, 1, 6)
+        } or current.weekday() == 6
+        
+        marker = "🔴" if is_holiday else "  "
+        
+        lines.append(f"{marker} {day_name} | ☀️ M: {m:30s} | 🌆 P: {a:30s} | 🌙 N: {n}")
+        
+        if current.weekday() == 6:  # Domenica
+            lines.append("  " + "-" * 88)
+            
         current += timedelta(days=1)
 
     lines += ["", "─" * 70, "STATISTICHE PER LAVORATORE", "─" * 70]
@@ -159,10 +172,19 @@ def generate_report(final_state: dict, use_case: str) -> str:
                 date(2027, 1, 1), date(2027, 1, 6),
             }
         )
+        # Valutazione testuale
+        score = scores.get(w.id, 0)
+        if score < 0.4:
+            eval_text = "🔴 Critico"
+        elif score < 0.6:
+            eval_text = "🟡 Medio  "
+        else:
+            eval_text = "🟢 Buono  "
+
         lines.append(
             f"  {w.id:5s} ({w.name:20s}): "
             f"units={total_units:2d}, notti={nights:2d}, festivi={holidays}, "
-            f"score={scores.get(w.id, 0):.3f}"
+            f"score={score:.3f} [{eval_text}]"
         )
 
     if violations:
