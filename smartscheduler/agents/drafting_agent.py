@@ -169,9 +169,10 @@ def refinement_node(state: SmartSchedulerState) -> dict:
     least_satisfied: str = state.get("least_satisfied_worker", "")
     refinement_iteration: int = state.get("refinement_iteration", 0) + 1
     current_prefs_code: str = state.get("ortools_preferences_code", "")
+    previous_schedule = state.get("schedule")
 
     logger.info(
-        f"Stage 4 — Refinement SIMBOLICO (iterazione {refinement_iteration}) "
+        f"Stage 4 — Refinement LNS (iterazione {refinement_iteration}) "
         f"— target: {least_satisfied} (score: {fairness_metrics.get(least_satisfied, 0):.3f})"
     )
 
@@ -218,18 +219,52 @@ def refinement_node(state: SmartSchedulerState) -> dict:
 
     refined_prefs_code = "\n".join(new_code_lines)
 
-    # Rigenera il template con i nuovi pesi
+    # LNS: Seleziona Donatori (top 50% più felici) e fissa gli altri
+    sorted_workers = sorted(
+        [w for w in workers if w.id != least_satisfied],
+        key=lambda w: fairness_metrics.get(w.id, 0),
+        reverse=True
+    )
+    n_donors = len(sorted_workers) // 2
+    donors = set(w.id for w in sorted_workers[:n_donors])
+    
+    fixed_workers_ids = [w.id for w in sorted_workers[n_donors:]]
+    logger.info(f"LNS Donors (free): {donors}")
+    logger.info(f"LNS Fixed workers: {fixed_workers_ids}")
+
+    fixed_assignments_lines = ["    # Vincoli hard: LNS Freeze"]
+    from datetime import timedelta
+    n_days = (HORIZON_END - HORIZON_START).days + 1
+    if previous_schedule:
+        for worker_id in fixed_workers_ids:
+            worker_assignments = {
+                a.date: a.shift_type.value 
+                for a in previous_schedule.get_worker_assignments(worker_id)
+            }
+            for d in range(n_days):
+                day_date = HORIZON_START + timedelta(days=d)
+                assigned_shift = worker_assignments.get(day_date)
+                for s in ["morning", "afternoon", "night"]:
+                    val = 1 if s == assigned_shift else 0
+                    fixed_assignments_lines.append(
+                        f"    model.Add(shift_vars[('{worker_id}', {d}, '{s}')] == {val})"
+                    )
+
+    fixed_assignments_code = "\n".join(fixed_assignments_lines)
+
+    # Rigenera il template con i nuovi pesi e assegnazioni fisse
     template = generate_ortools_template(
         workers=workers,
         horizon_start=HORIZON_START,
         horizon_end=HORIZON_END,
         use_case=use_case,
         preferences_code=refined_prefs_code,
+        fixed_assignments_code=fixed_assignments_code,
     )
 
     # Salva e ri-esegui il solver
     save_ortools_code(template, f"schedule_refined_iter{refinement_iteration}.py")
-    logger.info("Esecuzione OR-Tools solver (refinement simbolico)...")
+    logger.info("Esecuzione OR-Tools solver (refinement LNS)...")
     result = run_ortools_code(template)
 
     schedule = parse_solver_result(
@@ -242,13 +277,15 @@ def refinement_node(state: SmartSchedulerState) -> dict:
 
     if schedule is None:
         logger.warning(
-            f"Refinement simbolico INFEASIBLE all'iterazione {refinement_iteration} "
-            f"(turno '{avoid_shift}' penalizzato troppo — solver non trova soluzione)"
+            f"Refinement LNS INFEASIBLE all'iterazione {refinement_iteration} "
+            f"— Impossibile migliorare mantenendo i vincoli. Terminazione."
         )
+        # Ritorna il vecchio schedule per fermare la pipeline in modo pulito
         return {
             "refinement_iteration": refinement_iteration,
-            "hard_constraints_satisfied": False,
-            "violations": [result.get("error", "INFEASIBLE durante refinement simbolico")],
+            "hard_constraints_satisfied": True,
+            "schedule": previous_schedule,
+            "violations": ["LNS Fallito - Ottimo locale raggiunto"],
         }
 
     logger.info(f"Schedule raffinato: {len(schedule.assignments)} assegnazioni")
