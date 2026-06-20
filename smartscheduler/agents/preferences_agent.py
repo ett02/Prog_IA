@@ -65,25 +65,16 @@ def generate_preferences_code(
     pref: Preference,
 ) -> str:
     """
-    Usa l'LLM per generare il codice Python OR-Tools corrispondente alle preferenze.
-    """
-    pref_dict = pref.model_dump(mode="json")
-    prompt = build_preferences_code_prompt(
-        worker=worker,
-        pref_json=pref_dict,
-        horizon_start=HORIZON_START.isoformat(),
-        horizon_end=HORIZON_END.isoformat(),
-    )
+    Genera deterministicamente il codice Python OR-Tools per le preferenze del worker.
 
-    try:
-        code = call_llm_for_code(prompt)
-        # Rimuovi eventuali blocchi ```python ... ```
-        code = _clean_code_block(code)
-        logger.debug(f"Codice preferenze per {worker.id}:\n{code}")
-        return code
-    except Exception as e:
-        logger.warning(f"Generazione codice preferenze fallita per {worker.id}: {e}")
-        return _fallback_preferences_code(worker.id, pref)
+    NOTA: L'LLM NON viene usato per questa fase. I tentativi precedenti hanno
+    dimostrato che llama3.2 genera sistematicamente `set([2026-12-26, ...])` che è
+    sintassi Python invalida (leading zeros in integer literals).
+    Il codice viene generato tramite il fallback deterministico che produce
+    sempre indici interi corretti (0-based day index).
+    """
+    logger.debug(f"Generazione codice preferenze (deterministica) per {worker.id}")
+    return _fallback_preferences_code(worker.id, pref)
 
 
 def _fallback_preferences_code(worker_id: str, pref: Preference) -> str:

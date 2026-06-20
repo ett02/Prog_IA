@@ -54,9 +54,29 @@ def call_llm(
         logger.info(f"Risposta LLM ricevuta — length: {len(content)} chars")
         return content
 
+    except (ConnectionError, OSError) as e:
+        msg = (
+            "\n❌ OLLAMA NON RAGGIUNGIBILE\n"
+            "   Assicurati che Ollama sia in esecuzione:\n"
+            "   1. Installa Ollama da https://ollama.com\n"
+            "   2. Avvia il server: ollama serve\n"
+            "   3. Scarica il modello: ollama pull llama3.2\n"
+            f"   Errore tecnico: {e}"
+        )
+        logger.error(msg)
+        raise RuntimeError(msg) from e
     except Exception as e:
+        err_str = str(e)
+        if "connect" in err_str.lower() or "connection" in err_str.lower() or "refused" in err_str.lower():
+            msg = (
+                "\n❌ OLLAMA NON RAGGIUNGIBILE (connessione rifiutata)\n"
+                "   Avvia Ollama con: ollama serve\n"
+                f"   Errore: {e}"
+            )
+            logger.error(msg)
+            raise RuntimeError(msg) from e
         logger.error(f"Errore chiamata Ollama: {e}")
-        raise RuntimeError(f"Ollama non raggiungibile o errore API: {e}") from e
+        raise RuntimeError(f"Errore API Ollama: {e}") from e
 
 
 def call_llm_for_json(

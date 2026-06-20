@@ -91,7 +91,7 @@ def solve_schedule():
     unavailable_dates = {{}}  # worker_id -> set di indici giorno (0-based)
     preferred_rest_day = {{}}  # worker_id -> weekday (0=Mon..6=Sun), o None
 
-{_indent(preferences_code, 4)}
+{preferences_code}
 
     # ── Variabili booleane ────────────────────────────────────────────────
     # shift_vars[(worker, day_idx, shift)] = 1 se worker copre quel turno
@@ -234,6 +234,10 @@ def _build_coverage_section(
 
 
 def _indent(text: str, spaces: int) -> str:
-    """Indenta ogni riga di `text` di `spaces` spazi."""
+    """
+    Indenta ogni riga di `text` di `spaces` spazi.
+    NOTA: Non usare per preferences_code — il codice è già fornito con
+    l'indentazione corretta dal chiamante (4 spazi base).
+    """
     prefix = " " * spaces
     return "\n".join(prefix + line if line.strip() else line for line in text.splitlines())

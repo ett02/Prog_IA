@@ -28,29 +28,41 @@ def solve_schedule():
     unavailable_dates = {}  # worker_id -> set di indici giorno (0-based)
     preferred_rest_day = {}  # worker_id -> weekday (0=Mon..6=Sun), o None
 
+    # Worker W01
     preference_weights["W01"] = {'morning': 0, 'afternoon': 1, 'night': 3}
-    unavailable_dates["W01"] = {18}
-    preference_weights["W02"] = {'morning': 1, 'afternoon': 1, 'night': 1}
-    preferred_rest_day["W02"] = 3
+    # Worker W02
+    preference_weights["W02"] = {'morning': 1, 'afternoon': 0, 'night': 0}
+    preferred_rest_day["W02"] = 5
+    # Worker W03
     preference_weights["W03"] = {'morning': 1, 'afternoon': 0, 'night': 1}
-    preference_weights["W04"] = {'morning': 1, 'afternoon': 1, 'night': 1}
+    # Worker W04
+    preference_weights["W04"] = {'morning': 1, 'afternoon': 1, 'night': 3}
     preferred_rest_day["W04"] = 5
-    preference_weights["W05"] = {'morning': 1, 'afternoon': 1, 'night': 1}
+    # Worker W05
+    preference_weights["W05"] = {'morning': 0, 'afternoon': 1, 'night': 0}
     preferred_rest_day["W05"] = 6
-    preference_weights["W06"] = {'morning': 0, 'afternoon': 1, 'night': 3}
+    # Worker W06
+    preference_weights["W06"] = {'morning': 0, 'afternoon': 1, 'night': 1}
     preferred_rest_day["W06"] = 6
+    # Worker W07
     preference_weights["W07"] = {'morning': 1, 'afternoon': 1, 'night': 1}
     unavailable_dates["W07"] = {25, 18}
+    # Worker W08
     preference_weights["W08"] = {'morning': 1, 'afternoon': 0, 'night': 1}
     preferred_rest_day["W08"] = 0
+    # Worker W09
     preference_weights["W09"] = {'morning': 0, 'afternoon': 1, 'night': 1}
-    preference_weights["W10"] = {'morning': 1, 'afternoon': 1, 'night': 1}
-    preferred_rest_day["W10"] = 4
-    preference_weights["W11"] = {'morning': 1, 'afternoon': 0, 'night': 1}
-    preference_weights["W12"] = {'morning': 0, 'afternoon': 1, 'night': 3}
+    # Worker W10
+    preference_weights["W10"] = {'morning': 0, 'afternoon': 0, 'night': 1}
+    preferred_rest_day["W10"] = 5
+    # Worker W11
+    preference_weights["W11"] = {'morning': 1, 'afternoon': 0, 'night': 0}
+    # Worker W12
+    preference_weights["W12"] = {'morning': 0, 'afternoon': 1, 'night': 1}
     unavailable_dates["W12"] = {26, 19}
-    preference_weights["W13"] = {'morning': 1, 'afternoon': 1, 'night': 1}
-    preferred_rest_day["W13"] = 2
+    # Worker W13
+    preference_weights["W13"] = {'morning': 1, 'afternoon': 0, 'night': 0}
+    preferred_rest_day["W13"] = 3
 
     # ── Variabili booleane ────────────────────────────────────────────────
     # shift_vars[(worker, day_idx, shift)] = 1 se worker copre quel turno
@@ -131,10 +143,36 @@ def solve_schedule():
                 if pen > 0:
                     penalty_terms.append(shift_vars[(w, d, s)] * pen)
 
-    # TODO (LLM): aggiungi qui penalità aggiuntive per:
-    # - Turni festivi per worker con bassa tolleranza
-    # - Violazioni del giorno di riposo preferito
-    # - Qualsiasi altro criterio soft rilevante
+    # Penalità per turni festivi con bassa tolleranza
+    for w in all_workers:
+        w_prefs = preference_weights.get(w, {})
+        for d in range(n_days):
+            for s in shifts:
+                if w_prefs[s] == 3:  # bassa tolleranza
+                    pen = 2  # penalità per turno festivo con bassa tolleranza
+                    penalty_terms.append(shift_vars[(w, d, s)] * pen)
+
+    # Penalità per violazioni del giorno di riposo preferito
+    for w in all_workers:
+        if preferred_rest_day.get(w) is not None:
+            w_prefs = preference_weights.get(w, {})
+            for d in range(n_days):
+                if days[d] == preferred_rest_day[w]:
+                    pen = 1  # penalità per violazione del giorno di riposo preferito
+                    penalty_terms.append(shift_vars[(w, d, "morning")] * pen)
+
+    # Penalità aggiuntive (es. turni festivi con tolleranza alta)
+    for w in all_workers:
+        w_prefs = preference_weights.get(w, {})
+        for s in shifts:
+            if w_prefs[s] == 0:  # turno preferito
+                continue
+            elif w_prefs[s] == 2:  # turno neutro
+                pen = 1  # penalità per turno neutro
+                penalty_terms.append(shift_vars[(w, d, s)] * pen)
+            else:
+                pen = 3  # penalità per turno da evitare
+                penalty_terms.append(shift_vars[(w, d, s)] * pen)
 
     model.Minimize(sum(penalty_terms))
 
