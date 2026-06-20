@@ -47,13 +47,16 @@ PREFERENZE DEI LAVORATORI (già integrate nel template come preference_weights):
 
 ISTRUZIONI:
 1. Il template seguente ha già tutti i vincoli hard implementati. NON modificarli.
-2. Completa la sezione "VINCOLI SOFT" aggiungendo penalità per:
-   - Turni festivi per worker con bassa tolleranza (holiday_tolerance bassa)
-   - Violazioni del giorno di riposo preferito (preferred_rest_day)
-   - Qualsiasi altra penalità rilevante basata sulle preferenze
-3. L'obiettivo è minimizzare la somma delle penalità.
-4. Il codice deve stampare il risultato in JSON su stdout come già previsto dal template.
-5. NON aggiungere import aggiuntivi non necessari.
+2. Il template ha già implementato: preference_weights, unavailable_dates,
+   night_tolerances (vincolo 8) e la penalità preferred_rest_day. NON reimplementarli.
+3. Completa la sezione "TODO (LLM)" aggiungendo SOLO penalità per turni festivi:
+   - Usa le date festive: 2026-12-08, 2026-12-25, 2026-12-26, 2027-01-01, 2027-01-06
+   - Penalizza i turni in quelle date per worker con bassa tolleranza (holiday_tolerance)
+4. REGOLE CRITICHE per il codice OR-Tools:
+   - NON usare shift_vars[(w,d,s)] in un if Python — è un BoolVar, non un bool!
+   - Per aggiungere penalità usa: penalty_terms.append(shift_vars[(w,d,s)] * peso)
+   - NON usare operatori % su oggetti date (usa .weekday() invece)
+   - NON aggiungere import aggiuntivi
 
 TEMPLATE OR-TOOLS DA COMPLETARE:
 ```python

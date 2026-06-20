@@ -78,15 +78,29 @@ def generate_preferences_code(
 
 
 def _fallback_preferences_code(worker_id: str, pref: Preference) -> str:
-    """Genera il codice di preferenze manualmente senza LLM come fallback."""
+    """Genera il codice di preferenze deterministicamente senza LLM.
+
+    Il peso della penalità notturna è derivato dalla night_tolerance:
+    tol 0 → penalty 5 (da evitare fortemente), tol 5 → penalty 0 (neutro/preferito).
+    Questo sostituisce il vincolo hard di bilanciamento notturni (che causava INFEASIBLE).
+    """
     priority_to_penalty = {1: 0, 2: 0, 3: 1, 4: 3}
 
     shift_penalties = {"morning": 1, "afternoon": 1, "night": 1}
     for sp in pref.preferred_shifts:
         shift_penalties[sp.shift_type] = priority_to_penalty.get(sp.priority, 1)
 
+    # Sovrascrive la penalità notturna con quella derivata dalla night_tolerance.
+    # Formula: penalty = max(0, 5 - night_tolerance)
+    # tol=0 → 5 (molto pesante), tol=3 → 2 (moderato), tol=5 → 0 (nessuna penalità)
+    night_penalty_from_tol = max(0, 5 - pref.night_tolerance)
+    # Usa il massimo tra la penalità dichiarata e quella dalla tolleranza
+    shift_penalties["night"] = max(shift_penalties["night"], night_penalty_from_tol)
+
     lines = [
         f'preference_weights["{worker_id}"] = {shift_penalties!r}',
+        # night_tolerance nel template (usata per la sezione log/debug)
+        f'night_tolerances["{worker_id}"] = {pref.night_tolerance}',
     ]
 
     if pref.unavailable_dates:

@@ -7,9 +7,9 @@ di raffinamento o le costanti di scheduling.
 from datetime import date
 
 # ─── LLM ────────────────────────────────────────────────────────────────────
-OLLAMA_MODEL: str = "llama3.2"          # Cambia con il modello scelto
+OLLAMA_MODEL: str = "qwen2.5-coder:7b"     # Modello 7B specializzato per codice
 OLLAMA_BASE_URL: str = "http://localhost:11434"
-LLM_TIMEOUT_SECONDS: int = 120
+LLM_TIMEOUT_SECONDS: int = 180
 
 # ─── Orizzonte di scheduling ─────────────────────────────────────────────────
 HORIZON_START: date = date(2026, 12, 7)
@@ -52,7 +52,7 @@ ORTOOLS_SOLVER_TIME_LIMIT: int = 30  # secondi per il CpSolver interno
 import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
-OUTPUT_DIR = os.path.join(BASE_DIR, "output_run2")
+OUTPUT_DIR = os.path.join(BASE_DIR, "output_run5")
 SCENARIOS_DIR = os.path.join(DATA_DIR, "scenarios")
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
