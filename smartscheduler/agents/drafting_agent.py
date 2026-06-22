@@ -6,7 +6,6 @@ e converte il risultato in un oggetto Schedule Pydantic.
 """
 
 from __future__ import annotations
-import json
 import logging
 import os
 from datetime import date
@@ -14,11 +13,8 @@ from datetime import date
 from models.worker import Worker
 from models.schedule import Schedule, ShiftAssignment, ShiftType
 from models.state import SmartSchedulerState
-from agents.base_llm import call_llm_for_code
-from prompts.drafting_prompt import build_drafting_prompt, build_drafting_summary_prompt
-from prompts.refinement_prompt import build_refinement_prompt
 from solver.ortools_builder import generate_ortools_template, build_days_list
-from solver.ortools_runner import run_ortools_code, extract_code_from_llm_response
+from solver.ortools_runner import run_ortools_code
 from config import (
     HORIZON_START, HORIZON_END, OUTPUT_DIR, MAX_DRAFT_ITERATIONS
 )
@@ -88,7 +84,6 @@ def save_ortools_code(code: str, filename: str = "schedule_draft.py") -> str:
 def drafting_node(state: SmartSchedulerState) -> dict:
     """
     Nodo LangGraph per Stage 2 (Drafting).
-
     Costruisce il codice OR-Tools usando il template deterministico
     di ortools_builder.py. Il codice delle preferenze viene passato dal
     preferences_agent (Stage 1). Non viene più usato l'LLM in questa fase,
@@ -145,8 +140,7 @@ def drafting_node(state: SmartSchedulerState) -> dict:
         "schedule": schedule,
         "violations": [],
     }
-
-
+    
 # ── Nodo LangGraph — Refinement (Stage 4) — SIMBOLICO ──────────────────────
 
 def refinement_node(state: SmartSchedulerState) -> dict:

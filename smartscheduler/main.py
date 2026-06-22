@@ -15,6 +15,10 @@ import os
 import sys
 from datetime import date, timedelta
 
+# Forza l'encoding utf-8 su Windows per stampare correttamente le emoji e i simboli
+if sys.stdout.encoding.lower() != 'utf-8':
+    sys.stdout.reconfigure(encoding='utf-8')
+
 # Setup logging prima di qualsiasi import locale
 logging.basicConfig(
     level=logging.INFO,
@@ -290,26 +294,15 @@ def main() -> None:
 
     # Stato iniziale
     initial_state: dict = {
-        "input_model": open(
-            os.path.join(config.DATA_DIR, "input_model.txt"), encoding="utf-8"
-        ).read(),
         "workers": workers,
         "use_case": args.use_case,
-        "preferences_collected": False,
-        "ortools_preferences_code": "",
         "schedule": None,
-        "ortools_schedule_code": "",
         "draft_iteration": 0,
         "max_draft_iterations": args.max_drafts,
-        "hard_constraints_satisfied": False,
         "violations": [],
         "fairness_metrics": {},
-        "previous_fairness_score": 0.0,
-        "least_satisfied_worker": None,
         "refinement_iteration": 0,
         "max_refinements": args.max_refinements,
-        "pipeline_done": False,
-        "error_message": None,
     }
 
     logger.info("Esecuzione pipeline SmartScheduler...")

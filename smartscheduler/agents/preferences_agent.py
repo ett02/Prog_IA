@@ -12,10 +12,9 @@ import logging
 from datetime import date
 
 from models.worker import Worker, Preference, ShiftPreference
-from agents.base_llm import call_llm_for_json, call_llm_for_code
+from agents.base_llm import call_llm_for_json
 from prompts.preferences_prompt import (
     build_preferences_prompt,
-    build_preferences_code_prompt,
     PREFERENCES_SYSTEM,
 )
 from models.state import SmartSchedulerState
@@ -118,18 +117,6 @@ def _fallback_preferences_code(worker_id: str, pref: Preference) -> str:
         lines.append(f'preferred_rest_day["{worker_id}"] = {pref.preferred_rest_day}')
 
     return "\n".join(lines)
-
-
-def _clean_code_block(text: str) -> str:
-    """Rimuove i marker ```python e ``` dalla risposta LLM."""
-    import re
-    match = re.search(r"```python\s*(.*?)```", text, re.DOTALL)
-    if match:
-        return match.group(1).strip()
-    match = re.search(r"```\s*(.*?)```", text, re.DOTALL)
-    if match:
-        return match.group(1).strip()
-    return text.strip()
 
 
 # ── Nodo LangGraph ─────────────────────────────────────────────────────────

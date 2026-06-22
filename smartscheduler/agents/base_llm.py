@@ -6,9 +6,11 @@ from __future__ import annotations
 import logging
 from typing import Optional
 
+
+# pyrefly: ignore [missing-import]
 import ollama
 
-from config import OLLAMA_MODEL, LLM_TIMEOUT_SECONDS
+from config import OLLAMA_MODEL
 
 logger = logging.getLogger(__name__)
 
@@ -98,22 +100,3 @@ def call_llm_for_json(
 
     return call_llm(prompt, model=model, system_prompt=json_system, temperature=0.1)
 
-
-def call_llm_for_code(
-    prompt: str,
-    model: Optional[str] = None,
-    system_prompt: Optional[str] = None,
-) -> str:
-    """
-    Chiama l'LLM per generare codice Python.
-    Usa temperatura bassa per output deterministico.
-    """
-    code_system = (
-        "Sei un esperto programmatore Python specializzato in OR-Tools CP-SAT. "
-        "Genera SOLO codice Python valido all'interno di un blocco ```python ... ```. "
-        "Il codice deve essere eseguibile direttamente con: python script.py"
-    )
-    if system_prompt:
-        code_system = system_prompt + "\n\n" + code_system
-
-    return call_llm(prompt, model=model, system_prompt=code_system, temperature=0.15)

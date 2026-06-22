@@ -17,7 +17,6 @@ class SmartSchedulerState(TypedDict, total=False):
     """
 
     # ── Input ──────────────────────────────────────────────────────────────
-    input_model: str                    # testo grezzo da input_model.txt
     workers: list[Worker]               # lista completa dei lavoratori
     use_case: Literal["A", "B"]         # scenario attivo
 
@@ -25,7 +24,7 @@ class SmartSchedulerState(TypedDict, total=False):
     preferences_collected: bool         # True dopo Stage 1 completato
     ortools_preferences_code: str       # codice Python con soft constraints OR-Tools
 
-    # ── Stage 2/4: Drafting ────────────────────────────────────────────────
+    # ── Stage 2: Drafting ────────────────────────────────────────────────
     schedule: Optional[Schedule]        # schedule corrente (Pydantic)
     ortools_schedule_code: str          # codice Python completo generato dall'LLM
     draft_iteration: int                # quante volte il drafting ha rigenerato
@@ -42,8 +41,4 @@ class SmartSchedulerState(TypedDict, total=False):
 
     # ── Stage 4: Refinement ────────────────────────────────────────────────
     refinement_iteration: int
-    max_refinements: int                # limite iterazioni fairness (default 10)
-
-    # ── Controllo pipeline ─────────────────────────────────────────────────
-    pipeline_done: bool
-    error_message: Optional[str]        # messaggio di errore se pipeline abortisce
+    max_refinements: int                # limite iterazioni LNS (default 10)
