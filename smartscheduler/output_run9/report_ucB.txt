@@ -1,0 +1,98 @@
+======================================================================
+SMARTSCHEDULER — REPORT FINALE (Use Case B)
+Orizzonte: 2026-12-07 → 2027-01-06
+======================================================================
+
+✅ Schedule verificato: True
+📊 Fairness score (min): 0.417
+📊 Fairness score (avg): 0.650
+🔄 Iterazioni drafting: 1
+🔄 Iterazioni raffinamento: 1
+📋 Assegnazioni totali: 402
+
+──────────────────────────────────────────────────────────────────────
+SATISFACTION SCORES DEI LAVORATORI
+──────────────────────────────────────────────────────────────────────
+  P06   [████████░░░░░░░░░░░░] 0.417
+  S13   [█████████░░░░░░░░░░░] 0.467
+  P01   [█████████░░░░░░░░░░░] 0.479
+  S11   [██████████░░░░░░░░░░] 0.517
+  P02   [██████████░░░░░░░░░░] 0.517
+  S12   [██████████░░░░░░░░░░] 0.518
+  P03   [██████████░░░░░░░░░░] 0.519
+  P04   [██████████░░░░░░░░░░] 0.537
+  S07   [███████████░░░░░░░░░] 0.567
+  S06   [███████████░░░░░░░░░] 0.579
+  S04   [████████████░░░░░░░░] 0.635
+  S05   [█████████████░░░░░░░] 0.667
+  P05   [█████████████░░░░░░░] 0.678
+  S03   [███████████████░░░░░] 0.779
+  S02   [████████████████░░░░] 0.818
+  S08   [████████████████░░░░] 0.829
+  S09   [████████████████░░░░] 0.843
+  S10   [█████████████████░░░] 0.856
+  P07   [█████████████████░░░] 0.883
+  S01   [██████████████████░░] 0.900
+
+──────────────────────────────────────────────────────────────────────
+CALENDARIO TURNI
+──────────────────────────────────────────────────────────────────────
+   Mon 07/12 | ☀️ M: S01, S06, S09, S13, P01        | 🌆 P: S03, S04, S05, S07, S10, P03, P04, P06, P07 | 🌙 N: S02, S11, S12, P02
+🔴 Tue 08/12 | ☀️ M: S04, S06, P01                  | 🌆 P: S10, P03, P04                  | 🌙 N: S03, S13, P06
+   Wed 09/12 | ☀️ M: S01, S06, S09, P05             | 🌆 P: S04, S07, S08, P01, P03, P04   | 🌙 N: S05, S10, P07
+   Thu 10/12 | ☀️ M: S01, S06, S09, S11, S12, P01, P05 | 🌆 P: S07, S08, P02, P03             | 🌙 N: S02, S04, P04
+   Fri 11/12 | ☀️ M: S01, S12, S13, P05             | 🌆 P: S03, S07, S08, S11, P02, P06   | 🌙 N: S06, S09, P03
+   Sat 12/12 | ☀️ M: S05, S12, P05                  | 🌆 P: S03, S08, S11, S13, P02, P06, P07 | 🌙 N: S07, S10, P01
+🔴 Sun 13/12 | ☀️ M: S01, S05, S11, S12, S13, P07   | 🌆 P: S03, S04, P02, P04, P06        | 🌙 N: S02, S08, P05
+  ----------------------------------------------------------------------------------------
+   Mon 14/12 | ☀️ M: S01, S06, S09, S13, P04        | 🌆 P: S03, S04, S05, P03, P06, P07   | 🌙 N: S11, S12, P02
+   Tue 15/12 | ☀️ M: S01, S05, S06, S07, S09, P07   | 🌆 P: S04, S10, P01, P03, P04        | 🌙 N: S03, S13, P06
+   Wed 16/12 | ☀️ M: S01, S06, S09, S10, P05        | 🌆 P: S04, S07, S08, P03, P04, P07   | 🌙 N: S02, S05, P01
+   Thu 17/12 | ☀️ M: S01, S06, S09, S12, P02, P05   | 🌆 P: S07, S08, S11, P03, P07        | 🌙 N: S04, S10, P04
+   Fri 18/12 | ☀️ M: S01, S11, S12, S13, P05        | 🌆 P: S03, S07, S08, P06             | 🌙 N: S06, S09, P03
+   Sat 19/12 | ☀️ M: S12, P02, P05                  | 🌆 P: S03, S05, S08, S13, P06, P07   | 🌙 N: S02, S07, P01
+🔴 Sun 20/12 | ☀️ M: S01, S05, S12, S13, P02        | 🌆 P: S03, S04, S11, P04, P06, P07   | 🌙 N: S08, S10, P05
+  ----------------------------------------------------------------------------------------
+   Mon 21/12 | ☀️ M: S01, S06, S09, S13, P07        | 🌆 P: S03, S04, S05, P03, P04, P06   | 🌙 N: S11, S12, P02
+   Tue 22/12 | ☀️ M: S01, S02, S06, S09, P07        | 🌆 P: S04, S05, S07, P01, P03        | 🌙 N: S03, S13, P06
+   Wed 23/12 | ☀️ M: S01, S06, S07, S09, P05        | 🌆 P: S04, S08, S10, P01, P07        | 🌙 N: S02, S05, P04
+   Thu 24/12 | ☀️ M: S01, S06, S09, S11, S12, P01, P05 | 🌆 P: S07, S08, P03, P07             | 🌙 N: S04, S10, P02
+🔴 Fri 25/12 | ☀️ M: S07, P01, P05                  | 🌆 P: S08, S13, P06                  | 🌙 N: S06, S11, P03
+🔴 Sat 26/12 | ☀️ M: S12, P04, P05                  | 🌆 P: S02, S08, P07                  | 🌙 N: S03, S07, P01
+🔴 Sun 27/12 | ☀️ M: S01, S02, S05, S09, S12, P05   | 🌆 P: S04, S13, P04, P06, P07        | 🌙 N: S08, S10, P02
+  ----------------------------------------------------------------------------------------
+   Mon 28/12 | ☀️ M: S01, S06, S09, S11, P03        | 🌆 P: S02, S04, S05, S13, P07        | 🌙 N: S12, P04, P06
+   Tue 29/12 | ☀️ M: S01, S05, S07, S09, P05        | 🌆 P: S02, S03, S04, P01, P07        | 🌙 N: S11, S13, P03
+   Wed 30/12 | ☀️ M: S01, S06, S09, P01, P05        | 🌆 P: S03, S04, S05, S07, S08, P07   | 🌙 N: S02, S10, P02
+   Thu 31/12 | ☀️ M: S01, S06, S09, P01, P05        | 🌆 P: S03, S04, S07, S08, P04, P07   | 🌙 N: S05, S12, P06
+🔴 Fri 01/01 | ☀️ M: S01, P01, P05                  | 🌆 P: S03, S11, P04                  | 🌙 N: S06, S13, P03
+   Sat 02/01 | ☀️ M: S09, S10, P02, P05             | 🌆 P: S02, S08, S11, P04, P07        | 🌙 N: S03, S07, P01
+🔴 Sun 03/01 | ☀️ M: S01, S05, S09, S11, P05        | 🌆 P: S02, S04, S10, P02, P04, P07   | 🌙 N: S08, S12, P06
+  ----------------------------------------------------------------------------------------
+   Mon 04/01 | ☀️ M: S01, S02, S09, S10, S11, P02   | 🌆 P: S05, S13, P03, P07             | 🌙 N: S04, S06, P04
+   Tue 05/01 | ☀️ M: S01, S05, S09, P02, P05        | 🌆 P: S02, S03, S10, P01, P07        | 🌙 N: S07, S11, S13, P03
+🔴 Wed 06/01 | ☀️ M: S01, S09, P05                  | 🌆 P: S03, S05, P01                  | 🌙 N: S02, S08, S10, S12, P02, P06
+
+──────────────────────────────────────────────────────────────────────
+STATISTICHE PER LAVORATORE
+──────────────────────────────────────────────────────────────────────
+  S01   (Alice Rossi         ): units=25, notti= 0, festivi=2, score=0.900 [🟢 Buono  ]
+  S02   (Marco Bianchi       ): units=25, notti= 8, festivi=2, score=0.818 [🟢 Buono  ]
+  S03   (Giulia Verdi        ): units=25, notti= 5, festivi=4, score=0.779 [🟢 Buono  ]
+  S04   (Luca Ferrari        ): units=25, notti= 4, festivi=1, score=0.635 [🟢 Buono  ]
+  S05   (Sara Esposito       ): units=25, notti= 4, festivi=1, score=0.667 [🟢 Buono  ]
+  S06   (Andrea Colombo      ): units=25, notti= 5, festivi=3, score=0.579 [🟡 Medio  ]
+  S07   (Francesca Romano    ): units=25, notti= 5, festivi=2, score=0.567 [🟡 Medio  ]
+  S08   (Davide Ricci        ): units=25, notti= 5, festivi=3, score=0.829 [🟢 Buono  ]
+  S09   (Elena Marino        ): units=25, notti= 2, festivi=1, score=0.843 [🟢 Buono  ]
+  S10   (Roberto Greco       ): units=25, notti= 8, festivi=2, score=0.856 [🟢 Buono  ]
+  S11   (Chiara Bruno        ): units=25, notti= 6, festivi=2, score=0.517 [🟡 Medio  ]
+  S12   (Matteo Conti        ): units=25, notti= 7, festivi=2, score=0.518 [🟡 Medio  ]
+  S13   (Valentina Serra     ): units=25, notti= 6, festivi=3, score=0.467 [🟡 Medio  ]
+  P01   (Dr. Antonio Mancini ): units=25, notti= 5, festivi=5, score=0.479 [🟡 Medio  ]
+  P02   (Dr. Sofia Gallo     ): units=25, notti= 7, festivi=1, score=0.517 [🟡 Medio  ]
+  P03   (Dr. Lorenzo Barbieri): units=25, notti= 6, festivi=3, score=0.519 [🟡 Medio  ]
+  P04   (Dr. Martina Fontana ): units=25, notti= 5, festivi=3, score=0.537 [🟡 Medio  ]
+  P05   (Dr. Federico Moretti): units=25, notti= 2, festivi=4, score=0.678 [🟢 Buono  ]
+  P06   (Dr. Alessia Rizzo   ): units=25, notti= 7, festivi=3, score=0.417 [🟡 Medio  ]
+  P07   (Dr. Simone Costa    ): units=25, notti= 1, festivi=1, score=0.883 [🟢 Buono  ]

@@ -124,6 +124,7 @@ def generate_report(final_state: dict, use_case: str) -> str:
     lines += [
         f"✅ Schedule verificato: {schedule.is_verified}",
         f"📊 Fairness score (min): {schedule.fairness_score:.3f}" if schedule.fairness_score else "",
+        f"📊 Fairness score (avg): {schedule.average_fairness_score:.3f}" if schedule.average_fairness_score else "",
         f"🔄 Iterazioni drafting: {draft_iter}",
         f"🔄 Iterazioni raffinamento: {refinement_iter}",
         f"📋 Assegnazioni totali: {len(schedule.assignments)}",
@@ -214,6 +215,7 @@ def save_outputs(final_state: dict, use_case: str) -> None:
         },
         "verified": schedule.is_verified if schedule else False,
         "fairness_score": schedule.fairness_score if schedule else None,
+        "average_fairness_score": schedule.average_fairness_score if schedule else None,
         "refinement_iterations": final_state.get("refinement_iteration", 0),
         "draft_iterations": final_state.get("draft_iteration", 0),
         "satisfaction_scores": scores,

@@ -78,7 +78,6 @@ def build_graph() -> StateGraph:
             "end": END,
         },
     )
-
     return workflow.compile()
 
 

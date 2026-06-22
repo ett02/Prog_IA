@@ -4,9 +4,10 @@ models/worker.py — Definizioni Pydantic per Worker e Preferenze.
 
 from __future__ import annotations
 from enum import Enum
-from typing import Literal, Optional
+from typing import Literal, Optional, Any
 from datetime import date
-from pydantic import BaseModel, Field
+# pyrefly: ignore [missing-import]
+from pydantic import BaseModel, Field, model_validator
 
 
 class WorkerType(str, Enum):
@@ -50,6 +51,32 @@ class Preference(BaseModel):
         default=None,
         description="Testo originale in linguaggio naturale fornito dal lavoratore"
     )
+
+    @model_validator(mode="before")
+    @classmethod
+    def clean_preferred_shifts(cls, data: Any) -> Any:
+        """
+        Pulisce eventuali allucinazioni dell'LLM, come ad esempio
+        {"shift_type": "morning|afternoon", "priority": 1}
+        splittandole in elementi separati per farle validare correttamente.
+        """
+        if isinstance(data, dict) and "preferred_shifts" in data:
+            shifts = data["preferred_shifts"]
+            if isinstance(shifts, list):
+                new_shifts = []
+                for s in shifts:
+                    if isinstance(s, dict) and "shift_type" in s:
+                        stype = s["shift_type"]
+                        if isinstance(stype, str) and ("|" in stype or "," in stype or " " in stype):
+                            stype_clean = stype.replace("|", " ").replace(",", " ")
+                            parts = [p.strip() for p in stype_clean.split() if p.strip() in {"morning", "afternoon", "night"}]
+                            if parts:
+                                for p in parts:
+                                    new_shifts.append({"shift_type": p, "priority": s.get("priority", 3)})
+                                continue
+                    new_shifts.append(s)
+                data["preferred_shifts"] = new_shifts
+        return data
 
 
 class Worker(BaseModel):
