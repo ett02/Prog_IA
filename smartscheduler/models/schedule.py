@@ -45,12 +45,7 @@ class DaySchedule(BaseModel):
     afternoon: list[str] = Field(default_factory=list, description="worker_ids")
     night: list[str] = Field(default_factory=list, description="worker_ids")
 
-    def workers_for_shift(self, shift_type: ShiftType) -> list[str]:
-        if shift_type == ShiftType.MORNING:
-            return self.morning
-        if shift_type == ShiftType.AFTERNOON:
-            return self.afternoon
-        return self.night
+
 
 
 class Schedule(BaseModel):
@@ -93,12 +88,4 @@ class Schedule(BaseModel):
             if start_date <= a.date <= end_date
         )
 
-    def to_day_dict(self) -> dict[date, DaySchedule]:
-        """Mappa data → DaySchedule per accesso rapido."""
-        from datetime import timedelta
-        result = {}
-        current = self.horizon_start
-        while current <= self.horizon_end:
-            result[current] = self.get_day_schedule(current)
-            current += timedelta(days=1)
-        return result
+

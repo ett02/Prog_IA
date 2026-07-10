@@ -58,13 +58,6 @@ class Worker(BaseModel):
     name: str
     worker_type: WorkerType = WorkerType.STANDARD
     preference: Optional[Preference] = None
-    satisfaction_score: float = Field(
-        default=0.0, ge=0.0, le=1.0,
-        description="Score di soddisfazione [0,1] calcolato dall'agente di fairness"
-    )
-
-    def is_specialized(self) -> bool:
-        return self.worker_type == WorkerType.SPECIALIZED
 
     def get_shift_priority(self, shift_type: str) -> int:
         """Ritorna la priorità per un dato tipo di turno (default 3 = tollerato)."""

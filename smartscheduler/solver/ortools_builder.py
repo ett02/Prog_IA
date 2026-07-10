@@ -12,11 +12,7 @@ from datetime import date, timedelta
 
 from models.worker import Worker, WorkerType
 from models.schedule import ShiftType
-from config import (
-    SHIFT_HOURS, SHIFT_UNITS, TARGET_SHIFT_UNITS_PER_MONTH,
-    MAX_HOURS_PER_WEEK_WINDOW, REST_DAYS_AFTER_NIGHT,
-    ORTOOLS_SOLVER_TIME_LIMIT,
-)
+from config import ORTOOLS_SOLVER_TIME_LIMIT
 
 logger = logging.getLogger(__name__)
 

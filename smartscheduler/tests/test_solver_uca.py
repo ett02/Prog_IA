@@ -19,6 +19,7 @@ import json
 from datetime import date, timedelta
 from typing import Optional
 
+
 # Assicura che il root del progetto sia nel path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 

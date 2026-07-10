@@ -9,26 +9,10 @@ from datetime import date
 # ─── LLM ────────────────────────────────────────────────────────────────────
 OLLAMA_MODEL: str = "llama3.2"          # Cambia con il modello scelto
 OLLAMA_BASE_URL: str = "http://localhost:11434"
-LLM_TIMEOUT_SECONDS: int = 120
 
 # ─── Orizzonte di scheduling ─────────────────────────────────────────────────
 HORIZON_START: date = date(2026, 12, 7)
 HORIZON_END: date = date(2027, 1, 6)
-
-# ─── Costanti turni ──────────────────────────────────────────────────────────
-SHIFT_TYPES: list[str] = ["morning", "afternoon", "night"]
-
-SHIFT_HOURS: dict[str, int] = {
-    "morning": 6,       # 08:00–14:00
-    "afternoon": 6,     # 14:00–20:00
-    "night": 12,        # 20:00–08:00 (+1g)
-}
-
-SHIFT_UNITS: dict[str, int] = {
-    "morning": 1,
-    "afternoon": 1,
-    "night": 2,         # conta come doppio turno
-}
 
 # ─── Vincoli hard ────────────────────────────────────────────────────────────
 TARGET_SHIFT_UNITS_PER_MONTH: int = 25   # esatto, vincolo hard

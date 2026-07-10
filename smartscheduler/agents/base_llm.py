@@ -8,7 +8,7 @@ from typing import Optional
 
 import ollama
 
-from config import OLLAMA_MODEL, LLM_TIMEOUT_SECONDS
+from config import OLLAMA_MODEL
 
 logger = logging.getLogger(__name__)
 
