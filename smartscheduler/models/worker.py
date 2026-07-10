@@ -56,9 +56,11 @@ class Preference(BaseModel):
     @classmethod
     def clean_preferred_shifts(cls, data: Any) -> Any:
         """
-        Pulisce eventuali allucinazioni dell'LLM, come ad esempio
+        Pulisce eventuali formattazioni non valide generate dall'LLM 
+        (che viene ancora usato nello Stage 1 per interpretare il testo naturale).
+        Ad esempio, converte:
         {"shift_type": "morning|afternoon", "priority": 1}
-        splittandole in elementi separati per farle validare correttamente.
+        splittandole in elementi separati per farle validare correttamente da Pydantic.
         """
         if isinstance(data, dict) and "preferred_shifts" in data:
             shifts = data["preferred_shifts"]
@@ -87,10 +89,13 @@ class Worker(BaseModel):
     preference: Optional[Preference] = None
 
     def get_shift_priority(self, shift_type: str) -> int:
-        """Ritorna la priorità per un dato tipo di turno (default 3 = tollerato)."""
+        """
+        Ritorna la priorità per un dato tipo di turno.
+        Valori: 1=obbligatorio, 2=preferito, 3=tollerato (default), 4=da evitare.
+        """
         if self.preference is None:
             return 3
         for sp in self.preference.preferred_shifts:
             if sp.shift_type == shift_type:
                 return sp.priority
-        return 3  # nessuna preferenza esplicita → tollerato
+        return 3

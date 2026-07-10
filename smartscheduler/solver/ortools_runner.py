@@ -1,8 +1,9 @@
 """
-solver/ortools_runner.py — Esecuzione sicura di codice OR-Tools generato dall'LLM.
+solver/ortools_runner.py — Esecuzione del modello matematico OR-Tools in sub-processo.
 
-Il codice generato viene scritto in un file temporaneo ed eseguito in un
-subprocess con timeout. L'output atteso è un JSON su stdout.
+Il codice generato dinamicamente dal builder (Stage 2/4) viene scritto in un file 
+temporaneo ed eseguito in un subprocess isolato con timeout per prevenire blocchi. 
+L'output atteso è il risultato dell'ottimizzazione in formato JSON su stdout.
 """
 
 import json

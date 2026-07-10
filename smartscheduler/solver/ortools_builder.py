@@ -1,9 +1,11 @@
 """
-solver/ortools_builder.py — Costruisce il template base del modello OR-Tools CP-SAT.
+solver/ortools_builder.py — Costruzione deterministica del modello OR-Tools CP-SAT.
 
-Questo modulo genera il codice Python del modello OR-Tools da fornire all'LLM
-come base strutturale. L'LLM riceve questo template e lo completa/adatta
-con i vincoli soft e le preferenze dei lavoratori.
+Questo modulo genera dinamicamente il codice Python per il risolutore OR-Tools.
+A differenza delle architetture precedenti, l'integrazione dei vincoli soft e delle 
+preferenze è ora completamente deterministica. Utilizza i parametri estratti 
+nello Stage 1 (preferences_code) e l'euristica LNS (Large Neighborhood Search)
+nello Stage 4, garantendo zero errori di sintassi e calcoli matematicamente esatti.
 """
 
 from __future__ import annotations
@@ -18,7 +20,10 @@ logger = logging.getLogger(__name__)
 
 
 def build_days_list(start: date, end: date) -> list[str]:
-    """Genera la lista di date come stringhe ISO nell'orizzonte."""
+    """
+    Genera la lista di date come stringhe in formato ISO (YYYY-MM-DD) 
+    per l'intero orizzonte temporale specificato.
+    """
     days = []
     current = start
     while current <= end:
@@ -36,18 +41,28 @@ def generate_ortools_template(
     fixed_assignments_code: str = "",
 ) -> str:
     """
-    Genera il codice Python OR-Tools base con tutti i vincoli hard già inclusi.
-    L'LLM riceve questo template e aggiunge i vincoli soft nell'objective.
+    Genera il codice Python eseguibile per il modello OR-Tools CP-SAT.
+    
+    Il codice generato (iniettato come f-string) contiene la definizione del problema:
+    1. Variabili booleane per le assegnazioni (worker, day, shift).
+    2. Vincoli Hard: regole inviolabili (riposi, max ore, coperture minime).
+    3. Vincoli Soft (Funzione Obiettivo): traduzione matematica delle preferenze 
+       e tolleranze in penalità da minimizzare (tramite `preferences_code`).
+    4. Fix-and-Optimize: blocco opzionale di variabili per il refinement locale LNS 
+       (tramite `fixed_assignments_code`).
 
     Args:
-        workers: Lista dei lavoratori.
-        horizon_start: Data di inizio orizzonte.
-        horizon_end: Data di fine orizzonte.
-        use_case: "A" o "B".
-        preferences_code: Dizionario preferenze generato dallo Stage 1.
+        workers: Lista completa dei lavoratori disponibili.
+        horizon_start: Data di inizio della pianificazione.
+        horizon_end: Data di fine della pianificazione.
+        use_case: "A" (team omogeneo) o "B" (con specializzati).
+        preferences_code: Stringa di codice Python contenente i dizionari delle penalità 
+                          (generati dal preferences_agent).
+        fixed_assignments_code: Stringa di codice Python che fissa lo schedule per 
+                                alcuni lavoratori (usato dal refinement LNS).
 
     Returns:
-        Stringa con codice Python completo.
+        Stringa contenente l'intero script Python pronto da eseguire in un sub-processo.
     """
     days = build_days_list(horizon_start, horizon_end)
     n_days = len(days)
@@ -244,6 +259,11 @@ def _build_coverage_section(
     standard_ids: list[str],
     specialized_ids: list[str],
 ) -> str:
+    """
+    Genera le stringhe di codice Python necessarie a imporre i vincoli
+    di copertura minima (numero di persone presenti in ogni turno),
+    che variano drasticamente in base al caso d'uso operativo.
+    """
     if use_case == "A":
         return '''\
     for d in range(n_days):

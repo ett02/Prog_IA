@@ -1,7 +1,10 @@
 """
 graph/smartscheduler_graph.py — Grafo LangGraph per SmartScheduler.
 
-Definisce lo StateGraph con i 4 stage e i loop di raffinamento.
+Definisce lo StateGraph dell'intera applicazione. L'orchestrazione gestisce un flusso ibrido:
+- Stage 1 (Preferences): Estrazione dati strutturati tramite LLM.
+- Stage 2, 3, 4 (Drafting, Verification, Refinement): Fasi puramente deterministiche 
+  e matematiche (generazione template, CP-SAT Solver e metaeuristica LNS).
 """
 
 from __future__ import annotations

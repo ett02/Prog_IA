@@ -24,10 +24,10 @@ class SmartSchedulerState(TypedDict, total=False):
     preferences_collected: bool         # True dopo Stage 1 completato
     ortools_preferences_code: str       # codice Python con soft constraints OR-Tools
 
-    # ── Stage 2: Drafting ────────────────────────────────────────────────
-    schedule: Optional[Schedule]        # schedule corrente (Pydantic)
-    ortools_schedule_code: str          # codice Python completo generato dall'LLM
-    draft_iteration: int                # quante volte il drafting ha rigenerato
+    # ── Stage 2: Drafting (Deterministico) ─────────────────────────────────
+    schedule: Optional[Schedule]        # schedule corrente (oggetto Pydantic)
+    ortools_schedule_code: str          # codice Python completo generato dal builder
+    draft_iteration: int                # iteratore per tracking fallimenti del solver
     max_draft_iterations: int           # limite loop hard-constraint (default 5)
 
     # ── Stage 3a: Hard Verification ────────────────────────────────────────
@@ -39,6 +39,6 @@ class SmartSchedulerState(TypedDict, total=False):
     previous_fairness_score: float      # min(scores) dell'iterazione precedente
     least_satisfied_worker: Optional[str]
 
-    # ── Stage 4: Refinement ────────────────────────────────────────────────
-    refinement_iteration: int
+    # ── Stage 4: Refinement LNS (Deterministico) ───────────────────────────
+    refinement_iteration: int           # iteratore del refinement loop
     max_refinements: int                # limite iterazioni LNS (default 10)

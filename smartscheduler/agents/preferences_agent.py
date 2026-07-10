@@ -1,9 +1,12 @@
 """
 agents/preferences_agent.py — Stage 1: Preferences Definition.
 
-Raccoglie le preferenze in NL di ogni lavoratore e le trasforma in:
-1. Oggetti Pydantic Preference (validati)
-2. Codice Python OR-Tools per i soft constraints (preference_weights, ecc.)
+Questo è l'unico agente del progetto che utilizza ancora l'LLM.
+Raccoglie le preferenze espresse in linguaggio naturale (NL) da ogni lavoratore
+e le trasforma in:
+1. Oggetti Pydantic strutturati e validati (Preference).
+2. Codice Python OR-Tools (generato in modo puramente deterministico e NON via LLM)
+   per modellare i soft constraints come penalità matematiche.
 """
 
 from __future__ import annotations

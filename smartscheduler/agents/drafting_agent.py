@@ -16,7 +16,7 @@ from models.state import SmartSchedulerState
 from solver.ortools_builder import generate_ortools_template, build_days_list
 from solver.ortools_runner import run_ortools_code
 from config import (
-    HORIZON_START, HORIZON_END, OUTPUT_DIR, MAX_DRAFT_ITERATIONS
+    HORIZON_START, HORIZON_END, OUTPUT_DIR,
 )
 
 logger = logging.getLogger(__name__)
