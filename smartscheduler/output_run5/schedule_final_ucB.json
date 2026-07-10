@@ -1,0 +1,2040 @@
+{
+  "use_case": "B",
+  "horizon": {
+    "start": "2026-12-07",
+    "end": "2027-01-06"
+  },
+  "verified": true,
+  "fairness_score": 0.3666666666666667,
+  "refinement_iterations": 1,
+  "draft_iterations": 1,
+  "satisfaction_scores": {
+    "S01": 0.9,
+    "S02": 0.8058823529411764,
+    "S03": 0.9791666666666666,
+    "S04": 0.575,
+    "S05": 0.9166666666666666,
+    "S06": 0.6791666666666667,
+    "S07": 0.5166666666666667,
+    "S08": 0.7841269841269841,
+    "S09": 0.7386363636363636,
+    "S10": 0.8558823529411764,
+    "S11": 0.4666666666666667,
+    "S12": 0.8427536231884059,
+    "S13": 0.5666666666666667,
+    "P01": 0.5841269841269842,
+    "P02": 0.3666666666666667,
+    "P03": 0.6236842105263158,
+    "P04": 0.7280303030303031,
+    "P05": 0.5523809523809524,
+    "P06": 1.0,
+    "P07": 0.8052536231884058
+  },
+  "assignments": [
+    {
+      "worker_id": "S01",
+      "date": "2026-12-07",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S01",
+      "date": "2026-12-09",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S01",
+      "date": "2026-12-10",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S01",
+      "date": "2026-12-11",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S01",
+      "date": "2026-12-13",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S01",
+      "date": "2026-12-14",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S01",
+      "date": "2026-12-15",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S01",
+      "date": "2026-12-16",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S01",
+      "date": "2026-12-17",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S01",
+      "date": "2026-12-18",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S01",
+      "date": "2026-12-20",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S01",
+      "date": "2026-12-21",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S01",
+      "date": "2026-12-22",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S01",
+      "date": "2026-12-23",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S01",
+      "date": "2026-12-24",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S01",
+      "date": "2026-12-25",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S01",
+      "date": "2026-12-27",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S01",
+      "date": "2026-12-28",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S01",
+      "date": "2026-12-29",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S01",
+      "date": "2026-12-30",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S01",
+      "date": "2026-12-31",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S01",
+      "date": "2027-01-03",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S01",
+      "date": "2027-01-04",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S01",
+      "date": "2027-01-05",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S01",
+      "date": "2027-01-06",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S02",
+      "date": "2026-12-07",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S02",
+      "date": "2026-12-08",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S02",
+      "date": "2026-12-09",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S02",
+      "date": "2026-12-12",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S02",
+      "date": "2026-12-15",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S02",
+      "date": "2026-12-18",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S02",
+      "date": "2026-12-19",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S02",
+      "date": "2026-12-20",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S02",
+      "date": "2026-12-23",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S02",
+      "date": "2026-12-26",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S02",
+      "date": "2026-12-27",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S02",
+      "date": "2026-12-30",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S02",
+      "date": "2027-01-02",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S02",
+      "date": "2027-01-03",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S02",
+      "date": "2027-01-04",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S02",
+      "date": "2027-01-05",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S02",
+      "date": "2027-01-06",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S03",
+      "date": "2026-12-07",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S03",
+      "date": "2026-12-08",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S03",
+      "date": "2026-12-11",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S03",
+      "date": "2026-12-13",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S03",
+      "date": "2026-12-16",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S03",
+      "date": "2026-12-17",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S03",
+      "date": "2026-12-18",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S03",
+      "date": "2026-12-19",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S03",
+      "date": "2026-12-20",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S03",
+      "date": "2026-12-23",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S03",
+      "date": "2026-12-24",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S03",
+      "date": "2026-12-25",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S03",
+      "date": "2026-12-26",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S03",
+      "date": "2026-12-27",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S03",
+      "date": "2026-12-30",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S03",
+      "date": "2026-12-31",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S03",
+      "date": "2027-01-01",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S03",
+      "date": "2027-01-02",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S03",
+      "date": "2027-01-03",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S03",
+      "date": "2027-01-06",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S04",
+      "date": "2026-12-07",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S04",
+      "date": "2026-12-08",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S04",
+      "date": "2026-12-09",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S04",
+      "date": "2026-12-10",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S04",
+      "date": "2026-12-13",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S04",
+      "date": "2026-12-14",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S04",
+      "date": "2026-12-15",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S04",
+      "date": "2026-12-16",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S04",
+      "date": "2026-12-17",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S04",
+      "date": "2026-12-20",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S04",
+      "date": "2026-12-21",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S04",
+      "date": "2026-12-22",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S04",
+      "date": "2026-12-23",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S04",
+      "date": "2026-12-24",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S04",
+      "date": "2026-12-27",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S04",
+      "date": "2026-12-28",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S04",
+      "date": "2026-12-29",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S04",
+      "date": "2026-12-30",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S04",
+      "date": "2026-12-31",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S04",
+      "date": "2027-01-04",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S05",
+      "date": "2026-12-07",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S05",
+      "date": "2026-12-08",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S05",
+      "date": "2026-12-09",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S05",
+      "date": "2026-12-10",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S05",
+      "date": "2026-12-11",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S05",
+      "date": "2026-12-14",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S05",
+      "date": "2026-12-15",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S05",
+      "date": "2026-12-16",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S05",
+      "date": "2026-12-17",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S05",
+      "date": "2026-12-18",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S05",
+      "date": "2026-12-22",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S05",
+      "date": "2026-12-25",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S05",
+      "date": "2026-12-28",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S05",
+      "date": "2026-12-29",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S05",
+      "date": "2027-01-01",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S05",
+      "date": "2027-01-04",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S05",
+      "date": "2027-01-05",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S05",
+      "date": "2027-01-06",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S06",
+      "date": "2026-12-07",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S06",
+      "date": "2026-12-09",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S06",
+      "date": "2026-12-10",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S06",
+      "date": "2026-12-11",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S06",
+      "date": "2026-12-14",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S06",
+      "date": "2026-12-15",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S06",
+      "date": "2026-12-16",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S06",
+      "date": "2026-12-17",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S06",
+      "date": "2026-12-18",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S06",
+      "date": "2026-12-21",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S06",
+      "date": "2026-12-22",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S06",
+      "date": "2026-12-23",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S06",
+      "date": "2026-12-24",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S06",
+      "date": "2026-12-25",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S06",
+      "date": "2026-12-28",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S06",
+      "date": "2026-12-29",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S06",
+      "date": "2026-12-30",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S06",
+      "date": "2026-12-31",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S06",
+      "date": "2027-01-02",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S06",
+      "date": "2027-01-05",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S07",
+      "date": "2026-12-07",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S07",
+      "date": "2026-12-08",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S07",
+      "date": "2026-12-11",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S07",
+      "date": "2026-12-12",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S07",
+      "date": "2026-12-13",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S07",
+      "date": "2026-12-14",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S07",
+      "date": "2026-12-15",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S07",
+      "date": "2026-12-18",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S07",
+      "date": "2026-12-19",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S07",
+      "date": "2026-12-20",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S07",
+      "date": "2026-12-21",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S07",
+      "date": "2026-12-22",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S07",
+      "date": "2026-12-25",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S07",
+      "date": "2026-12-27",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S07",
+      "date": "2026-12-28",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S07",
+      "date": "2026-12-31",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S07",
+      "date": "2027-01-01",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S07",
+      "date": "2027-01-02",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S07",
+      "date": "2027-01-03",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S07",
+      "date": "2027-01-04",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S08",
+      "date": "2026-12-09",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S08",
+      "date": "2026-12-10",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S08",
+      "date": "2026-12-11",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S08",
+      "date": "2026-12-12",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S08",
+      "date": "2026-12-15",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S08",
+      "date": "2026-12-16",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S08",
+      "date": "2026-12-17",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S08",
+      "date": "2026-12-18",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S08",
+      "date": "2026-12-19",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S08",
+      "date": "2026-12-22",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S08",
+      "date": "2026-12-23",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S08",
+      "date": "2026-12-24",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S08",
+      "date": "2026-12-25",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S08",
+      "date": "2026-12-26",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S08",
+      "date": "2026-12-29",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S08",
+      "date": "2026-12-30",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S08",
+      "date": "2026-12-31",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S08",
+      "date": "2027-01-01",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S08",
+      "date": "2027-01-02",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S08",
+      "date": "2027-01-05",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S08",
+      "date": "2027-01-06",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S09",
+      "date": "2026-12-07",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S09",
+      "date": "2026-12-08",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S09",
+      "date": "2026-12-09",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S09",
+      "date": "2026-12-10",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S09",
+      "date": "2026-12-12",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S09",
+      "date": "2026-12-13",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S09",
+      "date": "2026-12-14",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S09",
+      "date": "2026-12-15",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S09",
+      "date": "2026-12-16",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S09",
+      "date": "2026-12-17",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S09",
+      "date": "2026-12-19",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S09",
+      "date": "2026-12-20",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S09",
+      "date": "2026-12-21",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S09",
+      "date": "2026-12-22",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S09",
+      "date": "2026-12-23",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S09",
+      "date": "2026-12-24",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S09",
+      "date": "2026-12-27",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S09",
+      "date": "2026-12-28",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S09",
+      "date": "2026-12-31",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S09",
+      "date": "2027-01-01",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S09",
+      "date": "2027-01-04",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S09",
+      "date": "2027-01-05",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S10",
+      "date": "2026-12-07",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S10",
+      "date": "2026-12-10",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S10",
+      "date": "2026-12-13",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S10",
+      "date": "2026-12-16",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S10",
+      "date": "2026-12-19",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S10",
+      "date": "2026-12-22",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S10",
+      "date": "2026-12-23",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S10",
+      "date": "2026-12-26",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S10",
+      "date": "2026-12-27",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S10",
+      "date": "2026-12-28",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S10",
+      "date": "2026-12-29",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S10",
+      "date": "2026-12-30",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S10",
+      "date": "2027-01-02",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S10",
+      "date": "2027-01-03",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S10",
+      "date": "2027-01-04",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S10",
+      "date": "2027-01-05",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S10",
+      "date": "2027-01-06",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S11",
+      "date": "2026-12-07",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S11",
+      "date": "2026-12-10",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S11",
+      "date": "2026-12-11",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S11",
+      "date": "2026-12-12",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S11",
+      "date": "2026-12-13",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S11",
+      "date": "2026-12-14",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S11",
+      "date": "2026-12-17",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S11",
+      "date": "2026-12-18",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S11",
+      "date": "2026-12-19",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S11",
+      "date": "2026-12-20",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S11",
+      "date": "2026-12-21",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S11",
+      "date": "2026-12-24",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S11",
+      "date": "2026-12-26",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S11",
+      "date": "2026-12-29",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S11",
+      "date": "2026-12-30",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S11",
+      "date": "2026-12-31",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S11",
+      "date": "2027-01-03",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S11",
+      "date": "2027-01-06",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S12",
+      "date": "2026-12-07",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S12",
+      "date": "2026-12-09",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S12",
+      "date": "2026-12-12",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S12",
+      "date": "2026-12-13",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S12",
+      "date": "2026-12-14",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S12",
+      "date": "2026-12-15",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S12",
+      "date": "2026-12-16",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S12",
+      "date": "2026-12-19",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S12",
+      "date": "2026-12-20",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S12",
+      "date": "2026-12-21",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S12",
+      "date": "2026-12-22",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S12",
+      "date": "2026-12-23",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S12",
+      "date": "2026-12-24",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S12",
+      "date": "2026-12-27",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S12",
+      "date": "2026-12-28",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S12",
+      "date": "2026-12-29",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S12",
+      "date": "2026-12-30",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S12",
+      "date": "2026-12-31",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S12",
+      "date": "2027-01-02",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S12",
+      "date": "2027-01-03",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S12",
+      "date": "2027-01-04",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S12",
+      "date": "2027-01-05",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S12",
+      "date": "2027-01-06",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S13",
+      "date": "2026-12-07",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S13",
+      "date": "2026-12-10",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S13",
+      "date": "2026-12-11",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S13",
+      "date": "2026-12-12",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S13",
+      "date": "2026-12-13",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S13",
+      "date": "2026-12-14",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S13",
+      "date": "2026-12-17",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S13",
+      "date": "2026-12-18",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S13",
+      "date": "2026-12-20",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S13",
+      "date": "2026-12-21",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S13",
+      "date": "2026-12-24",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S13",
+      "date": "2026-12-27",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S13",
+      "date": "2026-12-28",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S13",
+      "date": "2026-12-29",
+      "shift": "night"
+    },
+    {
+      "worker_id": "S13",
+      "date": "2027-01-01",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "S13",
+      "date": "2027-01-02",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S13",
+      "date": "2027-01-03",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S13",
+      "date": "2027-01-04",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "S13",
+      "date": "2027-01-05",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P01",
+      "date": "2026-12-07",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P01",
+      "date": "2026-12-08",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P01",
+      "date": "2026-12-09",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P01",
+      "date": "2026-12-10",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P01",
+      "date": "2026-12-11",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P01",
+      "date": "2026-12-14",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P01",
+      "date": "2026-12-15",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P01",
+      "date": "2026-12-16",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P01",
+      "date": "2026-12-17",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P01",
+      "date": "2026-12-18",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P01",
+      "date": "2026-12-21",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P01",
+      "date": "2026-12-22",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P01",
+      "date": "2026-12-23",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P01",
+      "date": "2026-12-24",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P01",
+      "date": "2026-12-25",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P01",
+      "date": "2026-12-26",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P01",
+      "date": "2026-12-28",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P01",
+      "date": "2026-12-29",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P01",
+      "date": "2026-12-30",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P01",
+      "date": "2027-01-01",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P01",
+      "date": "2027-01-04",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P02",
+      "date": "2026-12-07",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P02",
+      "date": "2026-12-08",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P02",
+      "date": "2026-12-11",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P02",
+      "date": "2026-12-12",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P02",
+      "date": "2026-12-15",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P02",
+      "date": "2026-12-18",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P02",
+      "date": "2026-12-19",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P02",
+      "date": "2026-12-22",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P02",
+      "date": "2026-12-25",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P02",
+      "date": "2026-12-28",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P02",
+      "date": "2026-12-29",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P02",
+      "date": "2026-12-30",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P02",
+      "date": "2027-01-02",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P02",
+      "date": "2027-01-03",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P02",
+      "date": "2027-01-04",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P02",
+      "date": "2027-01-05",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P02",
+      "date": "2027-01-06",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P03",
+      "date": "2026-12-07",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P03",
+      "date": "2026-12-08",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P03",
+      "date": "2026-12-09",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P03",
+      "date": "2026-12-10",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P03",
+      "date": "2026-12-13",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P03",
+      "date": "2026-12-14",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P03",
+      "date": "2026-12-15",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P03",
+      "date": "2026-12-16",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P03",
+      "date": "2026-12-17",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P03",
+      "date": "2026-12-20",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P03",
+      "date": "2026-12-21",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P03",
+      "date": "2026-12-23",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P03",
+      "date": "2026-12-24",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P03",
+      "date": "2026-12-27",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P03",
+      "date": "2026-12-28",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P03",
+      "date": "2026-12-31",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P03",
+      "date": "2027-01-03",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P03",
+      "date": "2027-01-04",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P03",
+      "date": "2027-01-05",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P04",
+      "date": "2026-12-07",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P04",
+      "date": "2026-12-09",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P04",
+      "date": "2026-12-12",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P04",
+      "date": "2026-12-13",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P04",
+      "date": "2026-12-14",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P04",
+      "date": "2026-12-15",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P04",
+      "date": "2026-12-16",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P04",
+      "date": "2026-12-19",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P04",
+      "date": "2026-12-20",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P04",
+      "date": "2026-12-21",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P04",
+      "date": "2026-12-22",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P04",
+      "date": "2026-12-23",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P04",
+      "date": "2026-12-26",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P04",
+      "date": "2026-12-27",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P04",
+      "date": "2026-12-28",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P04",
+      "date": "2026-12-29",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P04",
+      "date": "2026-12-30",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P04",
+      "date": "2026-12-31",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P04",
+      "date": "2027-01-02",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P04",
+      "date": "2027-01-03",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P04",
+      "date": "2027-01-04",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P04",
+      "date": "2027-01-05",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P05",
+      "date": "2026-12-09",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P05",
+      "date": "2026-12-10",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P05",
+      "date": "2026-12-11",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P05",
+      "date": "2026-12-12",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P05",
+      "date": "2026-12-13",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P05",
+      "date": "2026-12-16",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P05",
+      "date": "2026-12-17",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P05",
+      "date": "2026-12-18",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P05",
+      "date": "2026-12-19",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P05",
+      "date": "2026-12-20",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P05",
+      "date": "2026-12-23",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P05",
+      "date": "2026-12-24",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P05",
+      "date": "2026-12-25",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P05",
+      "date": "2026-12-26",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P05",
+      "date": "2026-12-27",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P05",
+      "date": "2026-12-30",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P05",
+      "date": "2026-12-31",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P05",
+      "date": "2027-01-01",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P05",
+      "date": "2027-01-02",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P05",
+      "date": "2027-01-03",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P05",
+      "date": "2027-01-06",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P06",
+      "date": "2026-12-07",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P06",
+      "date": "2026-12-08",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P06",
+      "date": "2026-12-09",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P06",
+      "date": "2026-12-10",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P06",
+      "date": "2026-12-13",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P06",
+      "date": "2026-12-14",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P06",
+      "date": "2026-12-15",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P06",
+      "date": "2026-12-16",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P06",
+      "date": "2026-12-17",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P06",
+      "date": "2026-12-21",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P06",
+      "date": "2026-12-24",
+      "shift": "morning"
+    },
+    {
+      "worker_id": "P06",
+      "date": "2026-12-25",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P06",
+      "date": "2026-12-26",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P06",
+      "date": "2026-12-29",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P06",
+      "date": "2027-01-01",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P06",
+      "date": "2027-01-02",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P06",
+      "date": "2027-01-05",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P06",
+      "date": "2027-01-06",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P07",
+      "date": "2026-12-07",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P07",
+      "date": "2026-12-10",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P07",
+      "date": "2026-12-11",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P07",
+      "date": "2026-12-12",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P07",
+      "date": "2026-12-13",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P07",
+      "date": "2026-12-14",
+      "shift": "night"
+    },
+    {
+      "worker_id": "P07",
+      "date": "2026-12-17",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P07",
+      "date": "2026-12-19",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P07",
+      "date": "2026-12-20",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P07",
+      "date": "2026-12-21",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P07",
+      "date": "2026-12-22",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P07",
+      "date": "2026-12-23",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P07",
+      "date": "2026-12-24",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P07",
+      "date": "2026-12-27",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P07",
+      "date": "2026-12-28",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P07",
+      "date": "2026-12-29",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P07",
+      "date": "2026-12-30",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P07",
+      "date": "2026-12-31",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P07",
+      "date": "2027-01-02",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P07",
+      "date": "2027-01-03",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P07",
+      "date": "2027-01-04",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P07",
+      "date": "2027-01-05",
+      "shift": "afternoon"
+    },
+    {
+      "worker_id": "P07",
+      "date": "2027-01-06",
+      "shift": "afternoon"
+    }
+  ]
+}

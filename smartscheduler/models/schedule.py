@@ -6,6 +6,7 @@ from __future__ import annotations
 from enum import Enum
 from typing import Optional
 from datetime import date
+# pyrefly: ignore [missing-import]
 from pydantic import BaseModel, Field, model_validator
 
 
@@ -56,6 +57,7 @@ class Schedule(BaseModel):
     use_case: str = "A"
     is_verified: bool = False
     fairness_score: Optional[float] = None
+    average_fairness_score: Optional[float] = None
     refinement_iterations: int = 0
 
     def get_worker_assignments(self, worker_id: str) -> list[ShiftAssignment]:

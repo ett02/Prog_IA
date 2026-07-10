@@ -28,29 +28,29 @@ def solve_schedule():
     unavailable_dates = {}  # worker_id -> set di indici giorno (0-based)
     preferred_rest_day = {}  # worker_id -> weekday (0=Mon..6=Sun), o None
 
-        preference_weights["W01"] = {'morning': 0, 'afternoon': 1, 'night': 3}
-        unavailable_dates["W01"] = {18}
-        preference_weights["W02"] = {'morning': 1, 'afternoon': 1, 'night': 1}
-        preferred_rest_day["W02"] = 3
-        preference_weights["W03"] = {'morning': 1, 'afternoon': 0, 'night': 1}
-        preference_weights["W04"] = {'morning': 1, 'afternoon': 1, 'night': 1}
-        preferred_rest_day["W04"] = 5
-        preference_weights["W05"] = {'morning': 1, 'afternoon': 1, 'night': 1}
-        preferred_rest_day["W05"] = 6
-        preference_weights["W06"] = {'morning': 0, 'afternoon': 1, 'night': 3}
-        preferred_rest_day["W06"] = 6
-        preference_weights["W07"] = {'morning': 1, 'afternoon': 1, 'night': 1}
-        unavailable_dates["W07"] = {25, 18}
-        preference_weights["W08"] = {'morning': 1, 'afternoon': 0, 'night': 1}
-        preferred_rest_day["W08"] = 0
-        preference_weights["W09"] = {'morning': 0, 'afternoon': 1, 'night': 1}
-        preference_weights["W10"] = {'morning': 1, 'afternoon': 1, 'night': 1}
-        preferred_rest_day["W10"] = 4
-        preference_weights["W11"] = {'morning': 1, 'afternoon': 0, 'night': 1}
-        preference_weights["W12"] = {'morning': 0, 'afternoon': 1, 'night': 3}
-        unavailable_dates["W12"] = {26, 19}
-        preference_weights["W13"] = {'morning': 1, 'afternoon': 1, 'night': 1}
-        preferred_rest_day["W13"] = 2
+    preference_weights["W01"] = {'morning': 0, 'afternoon': 1, 'night': 3}
+    unavailable_dates["W01"] = {18}
+    preference_weights["W02"] = {'morning': 1, 'afternoon': 1, 'night': 1}
+    preferred_rest_day["W02"] = 3
+    preference_weights["W03"] = {'morning': 1, 'afternoon': 0, 'night': 1}
+    preference_weights["W04"] = {'morning': 1, 'afternoon': 1, 'night': 1}
+    preferred_rest_day["W04"] = 5
+    preference_weights["W05"] = {'morning': 1, 'afternoon': 1, 'night': 1}
+    preferred_rest_day["W05"] = 6
+    preference_weights["W06"] = {'morning': 0, 'afternoon': 1, 'night': 3}
+    preferred_rest_day["W06"] = 6
+    preference_weights["W07"] = {'morning': 1, 'afternoon': 1, 'night': 1}
+    unavailable_dates["W07"] = {25, 18}
+    preference_weights["W08"] = {'morning': 1, 'afternoon': 0, 'night': 1}
+    preferred_rest_day["W08"] = 0
+    preference_weights["W09"] = {'morning': 0, 'afternoon': 1, 'night': 1}
+    preference_weights["W10"] = {'morning': 1, 'afternoon': 1, 'night': 1}
+    preferred_rest_day["W10"] = 4
+    preference_weights["W11"] = {'morning': 1, 'afternoon': 0, 'night': 1}
+    preference_weights["W12"] = {'morning': 0, 'afternoon': 1, 'night': 3}
+    unavailable_dates["W12"] = {26, 19}
+    preference_weights["W13"] = {'morning': 1, 'afternoon': 1, 'night': 1}
+    preferred_rest_day["W13"] = 2
 
     # ── Variabili booleane ────────────────────────────────────────────────
     # shift_vars[(worker, day_idx, shift)] = 1 se worker copre quel turno

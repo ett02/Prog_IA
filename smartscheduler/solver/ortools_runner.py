@@ -77,24 +77,3 @@ def run_ortools_code(code: str, timeout: int = 60) -> dict[str, Any]:
             except OSError:
                 pass  # Non critico
 
-
-def extract_code_from_llm_response(response: str) -> str:
-    """
-    Estrae il blocco di codice Python da una risposta LLM.
-    Cerca prima ```python ... ```, poi ``` ... ```, poi prende tutto il testo.
-    """
-    import re
-
-    # Cerca ```python ... ```
-    match = re.search(r"```python\s*(.*?)```", response, re.DOTALL)
-    if match:
-        return match.group(1).strip()
-
-    # Cerca ``` ... ``` generico
-    match = re.search(r"```\s*(.*?)```", response, re.DOTALL)
-    if match:
-        return match.group(1).strip()
-
-    # Fallback: prende tutto il testo
-    logger.warning("Nessun blocco di codice trovato nella risposta LLM, uso testo grezzo")
-    return response.strip()

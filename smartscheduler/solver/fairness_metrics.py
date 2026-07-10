@@ -30,53 +30,46 @@ def compute_satisfaction_score(worker: Worker, schedule: Schedule) -> float:
     """
     Calcola il satisfaction score [0.0, 1.0] di un lavoratore.
 
-    Formula:
-        score = 1 - (penalty_incurred / max_possible_penalty)
-
-    Dove max_possible_penalty è calcolato assumendo che tutte le preferenze
-    vengano violate al massimo grado.
+    Formula: media pesata di 4 componenti normalizzati separatamente:
+        - score_night    (peso 35%): penalità per turni notturni
+        - score_holiday  (peso 25%): penalità per turni festivi
+        - score_shift    (peso 25%): penalità per deviazione dal turno preferito
+        - score_rest     (peso 15%): penalità per violazioni giorno di riposo
     """
     if worker.preference is None:
-        # Nessuna preferenza → soddisfazione neutrale
-        return 0.5
+        return 0.5  # neutrale se nessuna preferenza
 
     pref = worker.preference
     assignments = schedule.get_worker_assignments(worker.id)
 
-    penalty = 0.0
-    max_penalty = 0.0
+    # ── 1. Componente notturni ────────────────────────────────────────────
+    night_weight = max(0, 5 - pref.night_tolerance)
+    night_count = sum(1 for a in assignments if a.shift_type == ShiftType.NIGHT)
+    max_nights = 7  # allineato al vincolo 8 del template
+    night_penalty = night_weight * night_count
+    max_night_penalty = night_weight * max_nights
+    score_night = 1.0 - (night_penalty / max_night_penalty) if max_night_penalty > 0 else 1.0
 
-    # ── 1. Penalità turni notturni ────────────────────────────────────────
-    night_weight = max(0, 5 - pref.night_tolerance)  # 0 se tolleranza max
-    night_assignments = [a for a in assignments if a.shift_type == ShiftType.NIGHT]
-    night_count = len(night_assignments)
-
-    # Max teorico: tutti i turni sono notturni (usiamo 25 units / 2 = ~12 notti max)
-    max_nights = 12
-    penalty += night_weight * night_count
-    max_penalty += night_weight * max_nights
-
-    # ── 2. Penalità turni festivi ─────────────────────────────────────────
+    # ── 2. Componente festivi ─────────────────────────────────────────────
     holiday_weight = max(0, 5 - pref.holiday_tolerance)
     holiday_count = sum(1 for a in assignments if a.date in HOLIDAY_DATES)
-
     max_holidays = len(HOLIDAY_DATES)  # 5 festivi nell'orizzonte
-    penalty += holiday_weight * holiday_count
-    max_penalty += holiday_weight * max_holidays
+    holiday_penalty = holiday_weight * holiday_count
+    max_holiday_penalty = holiday_weight * max_holidays
+    score_holiday = 1.0 - (holiday_penalty / max_holiday_penalty) if max_holiday_penalty > 0 else 1.0
 
-    # ── 3. Penalità deviazione dal turno preferito ────────────────────────
-    for a in assignments:
-        shift_priority = worker.get_shift_priority(a.shift_type.value)
-        # priority: 1=obbligatorio(no penalty), 2=preferito(penalty 0),
-        #           3=tollerato(penalty 1), 4=da evitare(penalty 3)
-        shift_penalty_map = {1: 0, 2: 0, 3: 1, 4: 3}
-        p = shift_penalty_map.get(shift_priority, 1)
-        penalty += p
-        max_penalty += 3  # max penalty per turno = 4 (da evitare)
+    # ── 3. Componente turno preferito ─────────────────────────────────────
+    shift_penalty_map = {1: 0, 2: 0, 3: 1, 4: 3}
+    shift_penalty = sum(
+        shift_penalty_map.get(worker.get_shift_priority(a.shift_type.value), 1)
+        for a in assignments
+    )
+    max_shift_penalty = 3 * len(assignments)  # max 3 per turno (priority=4)
+    score_shift = 1.0 - (shift_penalty / max_shift_penalty) if max_shift_penalty > 0 else 1.0
 
-    # ── 4. Penalità giorno di riposo preferito ────────────────────────────
+    # ── 4. Componente giorno di riposo preferito ──────────────────────────
+    score_rest = 1.0
     if pref.preferred_rest_day is not None:
-        # Conta quante settimane il giorno preferito è stato lavorato invece di libero
         worked_days = {a.date for a in assignments}
         current = schedule.horizon_start
         rest_violations = 0
@@ -87,20 +80,20 @@ def compute_satisfaction_score(worker: Worker, schedule: Schedule) -> float:
                 if current in worked_days:
                     rest_violations += 1
             current += timedelta(days=1)
+        score_rest = 1.0 - (rest_violations / rest_opportunities) if rest_opportunities > 0 else 1.0
 
-        rest_weight = 2  # peso fisso per le violazioni del giorno di riposo
-        penalty += rest_weight * rest_violations
-        max_penalty += rest_weight * rest_opportunities
-
-    # ── Normalizzazione ───────────────────────────────────────────────────
-    if max_penalty == 0:
-        return 1.0  # nessuna penalità possibile → soddisfazione massima
-
-    score = 1.0 - (penalty / max_penalty)
-    score = max(0.0, min(1.0, score))  # clamp in [0,1]
+    # ── Media pesata ──────────────────────────────────────────────────────
+    score = (
+        0.35 * score_night +
+        0.25 * score_holiday +
+        0.25 * score_shift +
+        0.15 * score_rest
+    )
+    score = max(0.0, min(1.0, score))
 
     logger.debug(
-        f"Worker {worker.id}: penalty={penalty:.1f}, max={max_penalty:.1f}, score={score:.3f}"
+        f"Worker {worker.id}: night={score_night:.3f}, holiday={score_holiday:.3f}, "
+        f"shift={score_shift:.3f}, rest={score_rest:.3f} → score={score:.3f}"
     )
     return score
 

@@ -15,6 +15,10 @@ import os
 import sys
 from datetime import date, timedelta
 
+# Forza l'encoding utf-8 su Windows per stampare correttamente le emoji e i simboli
+if sys.stdout.encoding.lower() != 'utf-8':
+    sys.stdout.reconfigure(encoding='utf-8')
+
 # Setup logging prima di qualsiasi import locale
 logging.basicConfig(
     level=logging.INFO,
@@ -120,6 +124,7 @@ def generate_report(final_state: dict, use_case: str) -> str:
     lines += [
         f"✅ Schedule verificato: {schedule.is_verified}",
         f"📊 Fairness score (min): {schedule.fairness_score:.3f}" if schedule.fairness_score else "",
+        f"📊 Fairness score (avg): {schedule.average_fairness_score:.3f}" if schedule.average_fairness_score else "",
         f"🔄 Iterazioni drafting: {draft_iter}",
         f"🔄 Iterazioni raffinamento: {refinement_iter}",
         f"📋 Assegnazioni totali: {len(schedule.assignments)}",
@@ -143,7 +148,20 @@ def generate_report(final_state: dict, use_case: str) -> str:
         m = ", ".join(ds.morning) or "—"
         a = ", ".join(ds.afternoon) or "—"
         n = ", ".join(ds.night) or "—"
-        lines.append(f"  {day_name} | M: {m:30s} | P: {a:30s} | N: {n}")
+        
+        # Festivo visivo
+        is_holiday = current in {
+            date(2026, 12, 8), date(2026, 12, 25), date(2026, 12, 26),
+            date(2027, 1, 1), date(2027, 1, 6)
+        } or current.weekday() == 6
+        
+        marker = "🔴" if is_holiday else "  "
+        
+        lines.append(f"{marker} {day_name} | ☀️ M: {m:30s} | 🌆 P: {a:30s} | 🌙 N: {n}")
+        
+        if current.weekday() == 6:  # Domenica
+            lines.append("  " + "-" * 88)
+            
         current += timedelta(days=1)
 
     lines += ["", "─" * 70, "STATISTICHE PER LAVORATORE", "─" * 70]
@@ -159,10 +177,19 @@ def generate_report(final_state: dict, use_case: str) -> str:
                 date(2027, 1, 1), date(2027, 1, 6),
             }
         )
+        # Valutazione testuale
+        score = scores.get(w.id, 0)
+        if score < 0.4:
+            eval_text = "🔴 Critico"
+        elif score < 0.6:
+            eval_text = "🟡 Medio  "
+        else:
+            eval_text = "🟢 Buono  "
+
         lines.append(
             f"  {w.id:5s} ({w.name:20s}): "
             f"units={total_units:2d}, notti={nights:2d}, festivi={holidays}, "
-            f"score={scores.get(w.id, 0):.3f}"
+            f"score={score:.3f} [{eval_text}]"
         )
 
     if violations:
@@ -188,6 +215,7 @@ def save_outputs(final_state: dict, use_case: str) -> None:
         },
         "verified": schedule.is_verified if schedule else False,
         "fairness_score": schedule.fairness_score if schedule else None,
+        "average_fairness_score": schedule.average_fairness_score if schedule else None,
         "refinement_iterations": final_state.get("refinement_iteration", 0),
         "draft_iterations": final_state.get("draft_iteration", 0),
         "satisfaction_scores": scores,
@@ -268,26 +296,15 @@ def main() -> None:
 
     # Stato iniziale
     initial_state: dict = {
-        "input_model": open(
-            os.path.join(config.DATA_DIR, "input_model.txt"), encoding="utf-8"
-        ).read(),
         "workers": workers,
         "use_case": args.use_case,
-        "preferences_collected": False,
-        "ortools_preferences_code": "",
         "schedule": None,
-        "ortools_schedule_code": "",
         "draft_iteration": 0,
         "max_draft_iterations": args.max_drafts,
-        "hard_constraints_satisfied": False,
         "violations": [],
         "fairness_metrics": {},
-        "previous_fairness_score": 0.0,
-        "least_satisfied_worker": None,
         "refinement_iteration": 0,
         "max_refinements": args.max_refinements,
-        "pipeline_done": False,
-        "error_message": None,
     }
 
     logger.info("Esecuzione pipeline SmartScheduler...")

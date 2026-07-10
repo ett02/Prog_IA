@@ -33,6 +33,7 @@ def generate_ortools_template(
     horizon_end: date,
     use_case: str = "A",
     preferences_code: str = "",
+    fixed_assignments_code: str = "",
 ) -> str:
     """
     Genera il codice Python OR-Tools base con tutti i vincoli hard già inclusi.
@@ -86,8 +87,10 @@ def solve_schedule():
     preference_weights = {{}}
     unavailable_dates = {{}}  # worker_id -> set di indici giorno (0-based)
     preferred_rest_day = {{}}  # worker_id -> weekday (0=Mon..6=Sun), o None
+    night_tolerances = {{}}   # worker_id -> int 0-5 (0=intollerante, 5=molto tollerante)
+    holiday_tolerances = {{}} # worker_id -> int 0-5
 
-{_indent(preferences_code, 4)}
+{preferences_code}
 
     # ── Variabili booleane ────────────────────────────────────────────────
     # shift_vars[(worker, day_idx, shift)] = 1 se worker copre quel turno
@@ -151,25 +154,52 @@ def solve_schedule():
                 for d in range(n_days) for s in shifts) == 25
         )
 
+    # NOTA: Il bilanciamento dei turni notturni è gestito come VINCOLO SOFT
+    # tramite le penaltà in preference_weights (generate da preferences_agent.py).
+    # Le penaltà sono proporzionali alla night_tolerance di ogni worker:
+    # tolerance 0 → night penalty=5, tolerance 5 → night penalty=0.
+    # Un vincolo hard causerebbe INFEASIBLE (capacità max < notti richieste).
+
     # ========== VINCOLI SOFT (OBIETTIVO) ==================================
     # L'obiettivo minimizza la somma pesata delle penalità sulle preferenze.
-    # penalty_terms viene popolato qui sotto usando preference_weights.
 
     penalty_terms = []
 
-    # Penalità per turni non preferiti
+    # Penalità per turni non preferiti (da preference_weights)
     for w in all_workers:
         w_prefs = preference_weights.get(w, {{}})
         for d in range(n_days):
             for s in shifts:
-                pen = w_prefs.get(s, 1)  # default: penalità 1 (neutro)
+                pen = w_prefs.get(s, 1)  # 0=preferito, 1=neutro, 3=da evitare
                 if pen > 0:
                     penalty_terms.append(shift_vars[(w, d, s)] * pen)
 
-    # TODO (LLM): aggiungi qui penalità aggiuntive per:
-    # - Turni festivi per worker con bassa tolleranza
-    # - Violazioni del giorno di riposo preferito
-    # - Qualsiasi altro criterio soft rilevante
+    # Penalità giorno di riposo preferito (IMPLEMENTATA NEL TEMPLATE)
+    # Per ogni worker con preferred_rest_day, penalizza i turni nel suo giorno preferito
+    for w in all_workers:
+        prd = preferred_rest_day.get(w)
+        if prd is None:
+            continue
+        for d in range(n_days):
+            if date.fromisoformat(days[d]).weekday() == prd:
+                for s in shifts:
+                    penalty_terms.append(shift_vars[(w, d, s)] * 2)
+
+    # Penalità turni festivi (IMPLEMENTATA NEL TEMPLATE)
+    # Festività: 8 Dicembre, 25-26 Dicembre, 1 Gennaio, 6 Gennaio (per Use Case A e B)
+    # Penalità = max(0, 5 - holiday_tolerance) -> da evitare fortemente se tolleranza 0
+    holiday_dates = {{"2026-12-08", "2026-12-25", "2026-12-26", "2027-01-01", "2027-01-06"}}
+    for w in all_workers:
+        htol = holiday_tolerances.get(w, 3)
+        hpen = max(0, 5 - htol)
+        if hpen > 0:
+            for d in range(n_days):
+                if days[d] in holiday_dates:
+                    for s in shifts:
+                        penalty_terms.append(shift_vars[(w, d, s)] * hpen)
+
+    # ========== ASSEGNAZIONI FISSE (PER FIX-AND-OPTIMIZE LNS) =============
+{fixed_assignments_code}
 
     model.Minimize(sum(penalty_terms))
 
@@ -227,9 +257,3 @@ def _build_coverage_section(
             model.Add(sum(shift_vars[(w, d, s)] for w in all_workers) >= 3)
             # Almeno 1 specializzato sempre presente
             model.Add(sum(shift_vars[(w, d, s)] for w in specialized_workers) >= 1)'''
-
-
-def _indent(text: str, spaces: int) -> str:
-    """Indenta ogni riga di `text` di `spaces` spazi."""
-    prefix = " " * spaces
-    return "\n".join(prefix + line if line.strip() else line for line in text.splitlines())

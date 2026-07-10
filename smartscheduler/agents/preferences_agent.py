@@ -12,10 +12,9 @@ import logging
 from datetime import date
 
 from models.worker import Worker, Preference, ShiftPreference
-from agents.base_llm import call_llm_for_json, call_llm_for_code
+from agents.base_llm import call_llm_for_json
 from prompts.preferences_prompt import (
     build_preferences_prompt,
-    build_preferences_code_prompt,
     PREFERENCES_SYSTEM,
 )
 from models.state import SmartSchedulerState
@@ -65,37 +64,44 @@ def generate_preferences_code(
     pref: Preference,
 ) -> str:
     """
-    Usa l'LLM per generare il codice Python OR-Tools corrispondente alle preferenze.
-    """
-    pref_dict = pref.model_dump(mode="json")
-    prompt = build_preferences_code_prompt(
-        worker=worker,
-        pref_json=pref_dict,
-        horizon_start=HORIZON_START.isoformat(),
-        horizon_end=HORIZON_END.isoformat(),
-    )
+    Genera deterministicamente il codice Python OR-Tools per le preferenze del worker.
 
-    try:
-        code = call_llm_for_code(prompt)
-        # Rimuovi eventuali blocchi ```python ... ```
-        code = _clean_code_block(code)
-        logger.debug(f"Codice preferenze per {worker.id}:\n{code}")
-        return code
-    except Exception as e:
-        logger.warning(f"Generazione codice preferenze fallita per {worker.id}: {e}")
-        return _fallback_preferences_code(worker.id, pref)
+    NOTA: L'LLM NON viene usato per questa fase. I tentativi precedenti hanno
+    dimostrato che llama3.2 genera sistematicamente `set([2026-12-26, ...])` che è
+    sintassi Python invalida (leading zeros in integer literals).
+    Il codice viene generato tramite il fallback deterministico che produce
+    sempre indici interi corretti (0-based day index).
+    """
+    logger.debug(f"Generazione codice preferenze (deterministica) per {worker.id}")
+    return _fallback_preferences_code(worker.id, pref)
 
 
 def _fallback_preferences_code(worker_id: str, pref: Preference) -> str:
-    """Genera il codice di preferenze manualmente senza LLM come fallback."""
+    """Genera il codice di preferenze deterministicamente senza LLM.
+
+    Il peso della penalità notturna è derivato dalla night_tolerance:
+    tol 0 → penalty 5 (da evitare fortemente), tol 5 → penalty 0 (neutro/preferito).
+    Questo sostituisce il vincolo hard di bilanciamento notturni (che causava INFEASIBLE).
+    """
     priority_to_penalty = {1: 0, 2: 0, 3: 1, 4: 3}
 
     shift_penalties = {"morning": 1, "afternoon": 1, "night": 1}
     for sp in pref.preferred_shifts:
         shift_penalties[sp.shift_type] = priority_to_penalty.get(sp.priority, 1)
 
+    # Sovrascrive la penalità notturna con quella derivata dalla night_tolerance.
+    # Formula: penalty = max(0, 5 - night_tolerance)
+    # tol=0 → 5 (molto pesante), tol=3 → 2 (moderato), tol=5 → 0 (nessuna penalità)
+    night_penalty_from_tol = max(0, 5 - pref.night_tolerance)
+    # Usa il massimo tra la penalità dichiarata e quella dalla tolleranza
+    shift_penalties["night"] = max(shift_penalties["night"], night_penalty_from_tol)
+
     lines = [
         f'preference_weights["{worker_id}"] = {shift_penalties!r}',
+        # night_tolerance nel template (usata per la sezione log/debug)
+        f'night_tolerances["{worker_id}"] = {pref.night_tolerance}',
+        # holiday_tolerance nel template (usata per i turni festivi)
+        f'holiday_tolerances["{worker_id}"] = {pref.holiday_tolerance}',
     ]
 
     if pref.unavailable_dates:
@@ -111,18 +117,6 @@ def _fallback_preferences_code(worker_id: str, pref: Preference) -> str:
         lines.append(f'preferred_rest_day["{worker_id}"] = {pref.preferred_rest_day}')
 
     return "\n".join(lines)
-
-
-def _clean_code_block(text: str) -> str:
-    """Rimuove i marker ```python e ``` dalla risposta LLM."""
-    import re
-    match = re.search(r"```python\s*(.*?)```", text, re.DOTALL)
-    if match:
-        return match.group(1).strip()
-    match = re.search(r"```\s*(.*?)```", text, re.DOTALL)
-    if match:
-        return match.group(1).strip()
-    return text.strip()
 
 
 # ── Nodo LangGraph ─────────────────────────────────────────────────────────

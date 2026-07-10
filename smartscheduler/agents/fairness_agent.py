@@ -49,7 +49,11 @@ def fairness_node(state: SmartSchedulerState) -> dict:
 
     # Aggiorna lo schedule con il fairness score
     updated_schedule = schedule.model_copy(
-        update={"fairness_score": fairness_score, "is_verified": True}
+        update={
+            "fairness_score": fairness_score,
+            "average_fairness_score": report["avg_score"],
+            "is_verified": True
+        }
     )
 
     return {

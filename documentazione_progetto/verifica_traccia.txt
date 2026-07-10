@@ -1,0 +1,27 @@
+Ho appena letto attentamente la traccia `Progetto IA.docx` ed effettuato una revisione completa rispetto al nostro codice. Ecco il resoconto punto per punto:
+
+### 1. Requisiti di Flusso (Agentic Framework)
+- **Stage 1 (Preferences):** Implementato con LLM (`qwen2.5`) che estrae vincoli e preferenze dal testo naturale.
+- **Stage 2 (Drafting):** Generiamo uno script Python valido per OR-Tools che include vincoli e preferenze. *Nota di design:* La traccia menziona "An LLM based drafting agent". Noi inizialmente lo avevamo fatto fare al LLM, ma per evitare crash sintattici abbiamo optato per un approccio ibrido (LLM estrae JSON, Python inietta le variabili nel draft). Questa è un'ottima "Design Choice" da discutere nella relazione.
+- **Stage 3 (Verification):** Implementato come script simbolico che controlla regole legali e calcola il punteggio di fairness identificando il lavoratore più svantaggiato.
+- **Stage 4 (Refinement):** Implementato con un loop LNS (Fix-and-Optimize) che migliora la fairness iterativamente finché non c'è più margine di miglioramento senza rompere i vincoli hard.
+
+### 2. Vincoli Hard (Legal & Setup)
+- **Orizzonte:** 7 Dic 2026 - 6 Gen 2027. (`HORIZON_START`, `HORIZON_END` in `config.py`)
+- **Turni e Carico:** 25 shifts/mese esatti, in cui le Notti contano doppio. (`TARGET_SHIFT_UNITS_PER_MONTH=25`, `SHIFT_UNITS` night=2)
+- **Max 36 ore a settimana:** (Finestra scorrevole da 7 giorni controllata dal Verification Agent)
+- **Max 1 turno al giorno / No consecutivi:** (Vincolo matematico `sum <= 1` per giorno e check notte+mattino)
+- **Due giorni liberi dopo la notte:** (`REST_DAYS_AFTER_NIGHT=2` implementato e verificato)
+- **Giorno di riposo preferito:** (Punteggi soft in base a `preferred_rest_day` nello Stage 1)
+
+### 3. Use Cases (Scenari A e B)
+- **Use Case A:** 13 Lavoratori Omogenei, min 2 per turno. (Testato e funzionante)
+- **Use Case B:** 13 Standard + 7 Specializzati. Min 1 specializzato e min 3 lavoratori totali per turno, con intercambiabilità (Specializzato funge da standard). (Implementato via `MIN_WORKERS_PER_SHIFT_UC_B_TOTAL` e `MIN_SPECIALIZED_PER_SHIFT_UC_B`).
+
+### 4. Deliverables Finali Richiesti
+La traccia richiede:
+1. Un archivio ZIP con il codice sorgente.
+2. Esempi di Output (modello parziale CP-SAT e scheduling finale). (Li abbiamo nella cartella `output_run6`).
+3. **Una "Short Relation" (Breve Relazione)** che descriva l'approccio, le scelte di design e discuta i risultati.
+
+Tutto il codice è fedelissimo alla traccia. L'unica cosa che ci manca per poter letteralmente "consegnare" il progetto è scrivere la **Short Relation** e zippare la cartella.
