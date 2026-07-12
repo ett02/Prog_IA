@@ -149,6 +149,10 @@ VINCOLI SOFT (obiettivo da minimizzare):
 - Penalità turni festivi: per date festive (2026-12-08, 2026-12-25, 2026-12-26, 2027-01-01, 2027-01-06),
   penalità = max(0, 5 - holiday_tolerance) per ogni turno festivo
 
+ATTENZIONE ALLA SINTASSI OR-TOOLS CP-SAT:
+- Per impostare l'obiettivo DEVI usare `model.Minimize(costo_totale)`. NON USARE `cp_model.CpObjective()`.
+- Nel JSON di output, per il valore dell'obiettivo usa `solver.ObjectiveValue()`. NON chiamare `.Value()` su espressioni o somme.
+
 STRUTTURA OUTPUT:
 Il codice deve usare solver.parameters.max_time_in_seconds = {ORTOOLS_SOLVER_TIME_LIMIT}
 e stampare il risultato come JSON con questa struttura:

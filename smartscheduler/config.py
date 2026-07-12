@@ -5,10 +5,13 @@ di raffinamento o le costanti di scheduling.
 """
 
 from datetime import date
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # ─── LLM ────────────────────────────────────────────────────────────────────
-OLLAMA_MODEL: str = "qwen2.5-coder:7b"     # Modello 7B specializzato per codice
-OLLAMA_BASE_URL: str = "http://localhost:11434"
+LLM_MODEL: str = os.getenv("LLM_MODEL", "gemini-2.5-flash")  # Modello Gemini di default
 
 # ─── LLM nei diversi stage ───────────────────────────────────────────────────
 MAX_LLM_RETRIES: int = 2                  # tentativi prima del fallback deterministico
@@ -41,7 +44,7 @@ ORTOOLS_SOLVER_TIME_LIMIT: int = 30  # secondi per il CpSolver interno
 import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
-OUTPUT_DIR = os.path.join(BASE_DIR, "output10")
+OUTPUT_DIR = os.path.join(BASE_DIR, "output15")
 SCENARIOS_DIR = os.path.join(DATA_DIR, "scenarios")
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)

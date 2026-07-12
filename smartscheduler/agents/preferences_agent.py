@@ -23,40 +23,53 @@ from config import HORIZON_START, HORIZON_END
 logger = logging.getLogger(__name__)
 
 
-def extract_preference_from_text(worker: Worker) -> Preference:
+def extract_preferences_batch(workers: list[Worker]) -> dict[str, Preference]:
     """
-    Usa l'LLM per estrarre le preferenze strutturate dal testo NL del lavoratore.
-    Se il parsing fallisce, ritorna preferenze di default.
+    Usa l'LLM per estrarre le preferenze strutturate di tutto il batch di lavoratori
+    in una singola chiamata API per evitare i limiti di rate-limit.
     """
-    prompt = build_preferences_prompt(worker)
-    logger.info(f"Estrazione preferenze per {worker.id} ({worker.name})")
+    prompt = build_preferences_prompt(workers)
+    logger.info(f"Estrazione preferenze in batch per {len(workers)} lavoratori...")
 
+    result_map = {}
+    
     try:
         response = call_llm_for_json(prompt, system_prompt=PREFERENCES_SYSTEM)
-        data = json.loads(response)
+        batch_data = json.loads(response)
 
-        # Valida con Pydantic
-        pref = Preference(
-            preferred_shifts=[
-                ShiftPreference(**sp) for sp in data.get("preferred_shifts", [])
-            ],
-            unavailable_dates=[
-                date.fromisoformat(d) for d in data.get("unavailable_dates", [])
-            ],
-            preferred_rest_day=data.get("preferred_rest_day"),
-            night_tolerance=data.get("night_tolerance", 3),
-            holiday_tolerance=data.get("holiday_tolerance", 3),
-            consecutive_tolerance=data.get("consecutive_tolerance", 3),
-            raw_text=worker.preference.raw_text if worker.preference else None,
-        )
-        logger.info(f"Preferenze estratte per {worker.id}: {pref.model_dump()}")
-        return pref
+        for worker in workers:
+            w_data = batch_data.get(worker.id, {})
+            try:
+                pref = Preference(
+                    preferred_shifts=[
+                        ShiftPreference(**sp) for sp in w_data.get("preferred_shifts", [])
+                    ],
+                    unavailable_dates=[
+                        date.fromisoformat(d) for d in w_data.get("unavailable_dates", [])
+                    ],
+                    preferred_rest_day=w_data.get("preferred_rest_day"),
+                    night_tolerance=w_data.get("night_tolerance", 3),
+                    holiday_tolerance=w_data.get("holiday_tolerance", 3),
+                    consecutive_tolerance=w_data.get("consecutive_tolerance", 3),
+                    raw_text=worker.preference.raw_text if worker.preference else None,
+                )
+                logger.info(f"Preferenze estratte per {worker.id}: {pref.model_dump()}")
+                result_map[worker.id] = pref
+            except Exception as e:
+                logger.warning(f"Validazione preferenze fallita per {worker.id}: {e}. Uso default.")
+                result_map[worker.id] = Preference(
+                    raw_text=worker.preference.raw_text if worker.preference else None
+                )
+
+        return result_map
 
     except (json.JSONDecodeError, Exception) as e:
-        logger.warning(f"Parsing preferenze fallito per {worker.id}: {e}. Uso default.")
-        return Preference(
-            raw_text=worker.preference.raw_text if worker.preference else None
-        )
+        logger.error(f"Parsing batch preferenze fallito: {e}. Uso default per tutti.")
+        for worker in workers:
+            result_map[worker.id] = Preference(
+                raw_text=worker.preference.raw_text if worker.preference else None
+            )
+        return result_map
 
 
 def generate_preferences_code(
@@ -124,17 +137,21 @@ def _fallback_preferences_code(worker_id: str, pref: Preference) -> str:
 def preferences_node(state: SmartSchedulerState) -> dict:
     """
     Nodo LangGraph per Stage 1.
-    Processa tutti i lavoratori e genera il codice OR-Tools delle preferenze.
+    Processa tutti i lavoratori in batch e genera il codice OR-Tools delle preferenze.
     """
     workers: list[Worker] = state["workers"]
-    logger.info(f"Stage 1 — Preferences Definition ({len(workers)} workers)")
+    logger.info(f"Stage 1 — Preferences Definition ({len(workers)} workers in batch)")
+
+    # Estrai preferenze strutturate in batch
+    prefs_map = extract_preferences_batch(workers)
 
     all_prefs_code_lines = []
     updated_workers = []
 
     for worker in workers:
-        # Estrai preferenze strutturate dal testo NL
-        pref = extract_preference_from_text(worker)
+        pref = prefs_map.get(worker.id) or Preference(
+            raw_text=worker.preference.raw_text if worker.preference else None
+        )
 
         # Genera codice OR-Tools
         code = generate_preferences_code(worker, pref)

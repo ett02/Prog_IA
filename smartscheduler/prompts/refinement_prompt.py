@@ -173,6 +173,10 @@ FORMATO OUTPUT:
 Il codice deve stampare JSON con la stessa struttura del codice precedente:
 {{"status": "...", "objective": ..., "assignments": {{...}}}}
 
+ATTENZIONE ALLA SINTASSI OR-TOOLS CP-SAT:
+- Per l'obiettivo mantieni `model.Minimize(costo)`. NON USARE `cp_model.CpObjective()`.
+- Per il valore nel JSON usa `solver.ObjectiveValue()`. NON USARE `.Value()` su espressioni o somme.
+
 Genera il codice Python COMPLETO e CORRETTO. Rispondi SOLO con ```python ... ```."""
 
     return prompt

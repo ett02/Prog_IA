@@ -1,18 +1,33 @@
 """
-agents/base_llm.py — Wrapper per chiamate a Ollama.
+agents/base_llm.py — Wrapper per chiamate a Gemini API.
 """
 
 from __future__ import annotations
 import logging
 from typing import Optional
+import os
 
+from google import genai
+from google.genai import types
 
-# pyrefly: ignore [missing-import]
-import ollama
-
-from config import OLLAMA_MODEL
+from config import LLM_MODEL
 
 logger = logging.getLogger(__name__)
+
+
+def get_client() -> genai.Client:
+    """Restituisce il client Gemini."""
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        msg = (
+            "\n❌ GEMINI_API_KEY NON TROVATA\n"
+            "   Imposta la variabile d'ambiente GEMINI_API_KEY nel tuo sistema "
+            "o in un file .env per usare le API."
+        )
+        logger.error(msg)
+        raise RuntimeError(msg)
+    
+    return genai.Client(api_key=api_key)
 
 
 def call_llm(
@@ -22,63 +37,41 @@ def call_llm(
     temperature: float = 0.2,
 ) -> str:
     """
-    Chiama Ollama e ritorna il testo della risposta.
+    Chiama l'API Gemini e ritorna il testo della risposta.
 
     Args:
         prompt: Il messaggio utente da inviare al modello.
-        model: Modello Ollama da usare (default: config.OLLAMA_MODEL).
+        model: Modello da usare (default: config.LLM_MODEL).
         system_prompt: System prompt opzionale.
-        temperature: Temperatura per la generazione (bassa = più deterministico).
+        temperature: Temperatura per la generazione.
 
     Returns:
         Testo della risposta del modello.
-
-    Raises:
-        RuntimeError: Se Ollama non è raggiungibile o risponde con errore.
     """
-    model = model or OLLAMA_MODEL
-    messages = []
+    model = model or LLM_MODEL
+    client = get_client()
 
-    if system_prompt:
-        messages.append({"role": "system", "content": system_prompt})
-
-    messages.append({"role": "user", "content": prompt})
-
-    logger.info(f"Chiamata LLM [{model}] — prompt length: {len(prompt)} chars")
+    logger.info(f"Chiamata API [{model}] — prompt length: {len(prompt)} chars")
 
     try:
-        response = ollama.chat(
+        config_kwargs = {"temperature": temperature}
+        if system_prompt:
+            config_kwargs["system_instruction"] = system_prompt
+
+        response = client.models.generate_content(
             model=model,
-            messages=messages,
-            options={"temperature": temperature},
+            contents=prompt,
+            config=types.GenerateContentConfig(**config_kwargs),
         )
-        content = response["message"]["content"]
-        logger.info(f"Risposta LLM ricevuta — length: {len(content)} chars")
+        content = response.text
+        if content is None:
+            content = ""
+        logger.info(f"Risposta API ricevuta — length: {len(content)} chars")
         return content
 
-    except (ConnectionError, OSError) as e:
-        msg = (
-            "\n❌ OLLAMA NON RAGGIUNGIBILE\n"
-            "   Assicurati che Ollama sia in esecuzione:\n"
-            "   1. Installa Ollama da https://ollama.com\n"
-            "   2. Avvia il server: ollama serve\n"
-            "   3. Scarica il modello: ollama pull llama3.2\n"
-            f"   Errore tecnico: {e}"
-        )
-        logger.error(msg)
-        raise RuntimeError(msg) from e
     except Exception as e:
-        err_str = str(e)
-        if "connect" in err_str.lower() or "connection" in err_str.lower() or "refused" in err_str.lower():
-            msg = (
-                "\n❌ OLLAMA NON RAGGIUNGIBILE (connessione rifiutata)\n"
-                "   Avvia Ollama con: ollama serve\n"
-                f"   Errore: {e}"
-            )
-            logger.error(msg)
-            raise RuntimeError(msg) from e
-        logger.error(f"Errore chiamata Ollama: {e}")
-        raise RuntimeError(f"Errore API Ollama: {e}") from e
+        logger.error(f"Errore chiamata API Gemini: {e}")
+        raise RuntimeError(f"Errore API Gemini: {e}") from e
 
 
 def call_llm_for_json(
@@ -98,5 +91,8 @@ def call_llm_for_json(
     if system_prompt:
         json_system = system_prompt + "\n\n" + json_system
 
+    # Con l'API Gemini potremmo usare response_mime_type="application/json", 
+    # ma manterremo l'approccio text-based con prompt forte per coerenza col resto del codice.
     return call_llm(prompt, model=model, system_prompt=json_system, temperature=0.1)
+
 

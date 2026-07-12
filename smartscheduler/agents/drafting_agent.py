@@ -109,7 +109,13 @@ def parse_solver_result(
     days = build_days_list(horizon_start, horizon_end)
 
     for worker_id, shifts in raw_assignments.items():
+        if not isinstance(shifts, list):
+            logger.warning(f"Formato inatteso per i turni di {worker_id}: {type(shifts)}")
+            continue
         for entry in shifts:
+            if not isinstance(entry, dict):
+                logger.warning(f"Formato inatteso per l'entry: {type(entry)}")
+                continue
             day_str = entry.get("date") or (
                 days[entry["day_idx"]] if "day_idx" in entry else None
             )

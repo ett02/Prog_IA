@@ -1,0 +1,122 @@
+======================================================================
+SMARTSCHEDULER — REPORT FINALE (Use Case A)
+Orizzonte: 2026-12-07 → 2027-01-06
+======================================================================
+
+✅ Schedule verificato: False
+
+
+🔄 Iterazioni drafting: 5
+🔄 Iterazioni raffinamento: 0
+📋 Assegnazioni totali: 309
+
+──────────────────────────────────────────────────────────────────────
+SATISFACTION SCORES DEI LAVORATORI
+──────────────────────────────────────────────────────────────────────
+
+──────────────────────────────────────────────────────────────────────
+CALENDARIO TURNI
+──────────────────────────────────────────────────────────────────────
+   Mon 07/12 | ☀️ M: W01                            | 🌆 P: W03                            | 🌙 N: —
+🔴 Tue 08/12 | ☀️ M: —                              | 🌆 P: —                              | 🌙 N: —
+   Wed 09/12 | ☀️ M: W06, W09, W12                  | 🌆 P: W02, W03, W04, W05, W07, W08, W10, W11, W13 | 🌙 N: —
+   Thu 10/12 | ☀️ M: —                              | 🌆 P: —                              | 🌙 N: W03
+   Fri 11/12 | ☀️ M: W01, W06                       | 🌆 P: W02, W04, W05, W07, W10, W11, W13 | 🌙 N: —
+   Sat 12/12 | ☀️ M: W01, W06, W09, W12             | 🌆 P: W02, W04, W05, W07, W08, W10, W11, W13 | 🌙 N: —
+🔴 Sun 13/12 | ☀️ M: W01, W06, W09, W12             | 🌆 P: W02, W03, W04, W05, W07, W08, W10, W11, W13 | 🌙 N: —
+  ----------------------------------------------------------------------------------------
+   Mon 14/12 | ☀️ M: W01, W06, W09, W12             | 🌆 P: W02, W03, W04, W05, W07, W08, W10, W11, W13 | 🌙 N: —
+   Tue 15/12 | ☀️ M: W01, W06, W09, W12             | 🌆 P: W02, W03, W04, W05, W07, W08, W10, W11, W13 | 🌙 N: —
+   Wed 16/12 | ☀️ M: W01, W06                       | 🌆 P: W02, W03, W04, W05, W07, W10, W11, W13 | 🌙 N: W08, W09, W12
+   Thu 17/12 | ☀️ M: —                              | 🌆 P: —                              | 🌙 N: W03
+   Fri 18/12 | ☀️ M: W01, W06                       | 🌆 P: W02, W04, W05, W07, W10, W11, W13 | 🌙 N: —
+   Sat 19/12 | ☀️ M: W01, W06, W09, W12             | 🌆 P: W02, W04, W05, W07, W08, W10, W11, W13 | 🌙 N: —
+🔴 Sun 20/12 | ☀️ M: W01, W06, W09, W12             | 🌆 P: W02, W03, W04, W05, W07, W08, W10, W11, W13 | 🌙 N: —
+  ----------------------------------------------------------------------------------------
+   Mon 21/12 | ☀️ M: W01, W06, W09, W12             | 🌆 P: W02, W03, W04, W05, W07, W08, W10, W11, W13 | 🌙 N: —
+   Tue 22/12 | ☀️ M: W01, W06, W09, W12             | 🌆 P: W02, W03, W04, W05, W07, W08, W10, W11, W13 | 🌙 N: —
+   Wed 23/12 | ☀️ M: W01, W06                       | 🌆 P: W02, W03, W04, W05, W07, W10, W11, W13 | 🌙 N: W08, W09, W12
+   Thu 24/12 | ☀️ M: —                              | 🌆 P: —                              | 🌙 N: W03
+🔴 Fri 25/12 | ☀️ M: W01, W06                       | 🌆 P: W02, W04, W05, W07, W10, W11, W13 | 🌙 N: —
+🔴 Sat 26/12 | ☀️ M: W01, W06, W09, W12             | 🌆 P: W02, W04, W05, W07, W08, W10, W11, W13 | 🌙 N: —
+🔴 Sun 27/12 | ☀️ M: W01, W06, W09, W12             | 🌆 P: W02, W03, W04, W05, W07, W08, W10, W11, W13 | 🌙 N: —
+  ----------------------------------------------------------------------------------------
+   Mon 28/12 | ☀️ M: W01, W06, W09, W12             | 🌆 P: W02, W03, W04, W05, W07, W08, W10, W11, W13 | 🌙 N: —
+   Tue 29/12 | ☀️ M: W01, W06, W09, W12             | 🌆 P: W02, W03, W04, W05, W07, W08, W10, W11, W13 | 🌙 N: —
+   Wed 30/12 | ☀️ M: W01, W06                       | 🌆 P: W02, W04, W05, W07, W10, W11, W13 | 🌙 N: W08, W09, W12
+   Thu 31/12 | ☀️ M: —                              | 🌆 P: W03                            | 🌙 N: —
+🔴 Fri 01/01 | ☀️ M: W01, W06                       | 🌆 P: W02, W04, W05, W07, W10, W11, W13 | 🌙 N: —
+   Sat 02/01 | ☀️ M: W01, W06, W09, W12             | 🌆 P: W02, W03, W04, W05, W07, W08, W10, W11, W13 | 🌙 N: —
+🔴 Sun 03/01 | ☀️ M: W01, W06, W09, W12             | 🌆 P: W02, W03, W04, W05, W07, W08, W10, W11, W13 | 🌙 N: —
+  ----------------------------------------------------------------------------------------
+   Mon 04/01 | ☀️ M: W01, W06, W09, W12             | 🌆 P: W02, W03, W04, W05, W07, W08, W10, W11, W13 | 🌙 N: —
+   Tue 05/01 | ☀️ M: W01, W06, W09, W12             | 🌆 P: W02, W04, W05, W07, W08, W10, W11, W13 | 🌙 N: W03
+🔴 Wed 06/01 | ☀️ M: W01, W06                       | 🌆 P: W02, W04, W05, W07, W10, W11, W13 | 🌙 N: W08, W09, W12
+
+──────────────────────────────────────────────────────────────────────
+STATISTICHE PER LAVORATORE
+──────────────────────────────────────────────────────────────────────
+  W01   (Alice Rossi         ): units=25, notti= 0, festivi=4, score=0.000 [🔴 Critico]
+  W02   (Marco Bianchi       ): units=25, notti= 0, festivi=4, score=0.000 [🔴 Critico]
+  W03   (Giulia Verdi        ): units=25, notti= 4, festivi=0, score=0.000 [🔴 Critico]
+  W04   (Luca Ferrari        ): units=25, notti= 0, festivi=4, score=0.000 [🔴 Critico]
+  W05   (Sara Esposito       ): units=25, notti= 0, festivi=4, score=0.000 [🔴 Critico]
+  W06   (Andrea Colombo      ): units=25, notti= 0, festivi=4, score=0.000 [🔴 Critico]
+  W07   (Francesca Romano    ): units=25, notti= 0, festivi=4, score=0.000 [🔴 Critico]
+  W08   (Davide Ricci        ): units=25, notti= 4, festivi=2, score=0.000 [🔴 Critico]
+  W09   (Elena Marino        ): units=25, notti= 4, festivi=2, score=0.000 [🔴 Critico]
+  W10   (Roberto Greco       ): units=25, notti= 0, festivi=4, score=0.000 [🔴 Critico]
+  W11   (Chiara Bruno        ): units=25, notti= 0, festivi=4, score=0.000 [🔴 Critico]
+  W12   (Matteo Conti        ): units=25, notti= 4, festivi=2, score=0.000 [🔴 Critico]
+  W13   (Valentina Serra     ): units=25, notti= 0, festivi=4, score=0.000 [🔴 Critico]
+
+──────────────────────────────────────────────────────────────────────
+USO LLM NEI DIVERSI STAGE
+──────────────────────────────────────────────────────────────────────
+  Stage 1 (Preferences):  🤖 LLM — estrazione preferenze NL
+  Stage 2 (Drafting):     🤖 LLM — 1 tentativo LLM
+  Stage 3 (Verification): ⚙️ Simbolico — verifica deterministica
+  Stage 4 (Refinement):   ⚙️ Fallback LNS — 0 tentativi LLM
+
+──────────────────────────────────────────────────────────────────────
+⚠️ VIOLAZIONI RESIDUE
+──────────────────────────────────────────────────────────────────────
+  • [COPERTURA] 2026-12-07 morning: 1 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-07 afternoon: 1 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-07 night: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-08 morning: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-08 afternoon: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-08 night: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-09 night: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-10 morning: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-10 afternoon: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-10 night: 1 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-11 night: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-12 night: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-13 night: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-14 night: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-15 night: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-17 morning: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-17 afternoon: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-17 night: 1 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-18 night: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-19 night: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-20 night: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-21 night: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-22 night: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-24 morning: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-24 afternoon: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-24 night: 1 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-25 night: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-26 night: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-27 night: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-28 night: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-29 night: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-31 morning: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-31 afternoon: 1 worker assegnati, minimo 2
+  • [COPERTURA] 2026-12-31 night: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2027-01-01 night: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2027-01-02 night: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2027-01-03 night: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2027-01-04 night: 0 worker assegnati, minimo 2
+  • [COPERTURA] 2027-01-05 night: 1 worker assegnati, minimo 2

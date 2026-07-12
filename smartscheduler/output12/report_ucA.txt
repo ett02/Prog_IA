@@ -1,0 +1,92 @@
+======================================================================
+SMARTSCHEDULER — REPORT FINALE (Use Case A)
+Orizzonte: 2026-12-07 → 2027-01-06
+======================================================================
+
+✅ Schedule verificato: True
+📊 Fairness score (min): 0.367
+📊 Fairness score (avg): 0.528
+🔄 Iterazioni drafting: 1
+🔄 Iterazioni raffinamento: 1
+📋 Assegnazioni totali: 254
+
+──────────────────────────────────────────────────────────────────────
+SATISFACTION SCORES DEI LAVORATORI
+──────────────────────────────────────────────────────────────────────
+  W02   [███████░░░░░░░░░░░░░] 0.367
+  W10   [█████████░░░░░░░░░░░] 0.467
+  W13   [█████████░░░░░░░░░░░] 0.467
+  W01   [██████████░░░░░░░░░░] 0.517
+  W06   [██████████░░░░░░░░░░] 0.517
+  W07   [██████████░░░░░░░░░░] 0.517
+  W08   [██████████░░░░░░░░░░] 0.517
+  W09   [██████████░░░░░░░░░░] 0.517
+  W03   [███████████░░░░░░░░░] 0.567
+  W12   [███████████░░░░░░░░░] 0.567
+  W04   [████████████░░░░░░░░] 0.617
+  W05   [████████████░░░░░░░░] 0.617
+  W11   [████████████░░░░░░░░] 0.617
+
+──────────────────────────────────────────────────────────────────────
+CALENDARIO TURNI
+──────────────────────────────────────────────────────────────────────
+   Mon 07/12 | ☀️ M: W08, W12                       | 🌆 P: W01, W02, W04, W05, W06, W10, W11 | 🌙 N: W03, W07, W09, W13
+🔴 Tue 08/12 | ☀️ M: W08, W11                       | 🌆 P: W01, W02                       | 🌙 N: W06, W10
+   Wed 09/12 | ☀️ M: W11, W12                       | 🌆 P: W04, W05, W08                  | 🌙 N: W01, W02
+   Thu 10/12 | ☀️ M: W07, W08                       | 🌆 P: W03, W04, W09, W11             | 🌙 N: W05, W13
+   Fri 11/12 | ☀️ M: W07, W12                       | 🌆 P: W03, W06, W09, W10             | 🌙 N: W04, W08, W11
+   Sat 12/12 | ☀️ M: W03, W07, W10                  | 🌆 P: W01, W12                       | 🌙 N: W02, W06, W09
+🔴 Sun 13/12 | ☀️ M: W01, W12                       | 🌆 P: W03, W07, W10                  | 🌙 N: W05, W13
+  ----------------------------------------------------------------------------------------
+   Mon 14/12 | ☀️ M: W01, W04                       | 🌆 P: W08, W10, W11                  | 🌙 N: W03, W07
+   Tue 15/12 | ☀️ M: W08, W11                       | 🌆 P: W02, W04, W06, W09             | 🌙 N: W10, W12
+   Wed 16/12 | ☀️ M: W04, W05, W06, W11             | 🌆 P: W08, W09, W13                  | 🌙 N: W01, W02
+   Thu 17/12 | ☀️ M: W03, W04, W06, W07, W11        | 🌆 P: W08, W09                       | 🌙 N: W05, W13
+   Fri 18/12 | ☀️ M: W03, W06, W10, W12             | 🌆 P: W07, W09                       | 🌙 N: W04, W08, W11
+   Sat 19/12 | ☀️ M: W01, W07                       | 🌆 P: W02, W03, W10, W12             | 🌙 N: W06, W09
+🔴 Sun 20/12 | ☀️ M: W07, W13                       | 🌆 P: W03, W05, W10, W12             | 🌙 N: W01, W02
+  ----------------------------------------------------------------------------------------
+   Mon 21/12 | ☀️ M: W08, W12, W13                  | 🌆 P: W04, W05, W10, W11             | 🌙 N: W03, W07
+   Tue 22/12 | ☀️ M: W08, W13                       | 🌆 P: W04, W05, W06, W09, W11        | 🌙 N: W10, W12
+   Wed 23/12 | ☀️ M: W04, W05, W08, W11             | 🌆 P: W09, W13                       | 🌙 N: W01, W02
+   Thu 24/12 | ☀️ M: W07, W09                       | 🌆 P: W03, W04, W08, W11             | 🌙 N: W05, W06, W13
+🔴 Fri 25/12 | ☀️ M: W07, W12                       | 🌆 P: W09, W10                       | 🌙 N: W04, W11
+🔴 Sat 26/12 | ☀️ M: W01, W03                       | 🌆 P: W02, W12                       | 🌙 N: W08, W09
+🔴 Sun 27/12 | ☀️ M: W03, W05, W06, W10, W12        | 🌆 P: W01, W13                       | 🌙 N: W02, W07
+  ----------------------------------------------------------------------------------------
+   Mon 28/12 | ☀️ M: W04, W05, W06, W11             | 🌆 P: W01, W12, W13                  | 🌙 N: W03, W10
+   Tue 29/12 | ☀️ M: W04, W05, W08, W11             | 🌆 P: W01, W09, W13                  | 🌙 N: W06, W12
+   Wed 30/12 | ☀️ M: W04, W05, W11, W13             | 🌆 P: W07, W08, W09                  | 🌙 N: W01, W02
+   Thu 31/12 | ☀️ M: W03, W04, W09                  | 🌆 P: W07, W10, W11                  | 🌙 N: W05, W08
+🔴 Fri 01/01 | ☀️ M: W06, W12                       | 🌆 P: W03, W07                       | 🌙 N: W10, W13
+   Sat 02/01 | ☀️ M: W03, W06, W07                  | 🌆 P: W01, W02, W12                  | 🌙 N: W04, W09
+🔴 Sun 03/01 | ☀️ M: W01, W12                       | 🌆 P: W02, W03, W05, W06, W11        | 🌙 N: W07, W08
+  ----------------------------------------------------------------------------------------
+   Mon 04/01 | ☀️ M: W01, W05, W06, W10             | 🌆 P: W02, W12, W13                  | 🌙 N: W03, W11
+   Tue 05/01 | ☀️ M: W05, W13                       | 🌆 P: W01, W02                       | 🌙 N: W04, W06, W09, W10, W12
+🔴 Wed 06/01 | ☀️ M: W05, W08                       | 🌆 P: W01, W07                       | 🌙 N: W02, W13
+
+──────────────────────────────────────────────────────────────────────
+STATISTICHE PER LAVORATORE
+──────────────────────────────────────────────────────────────────────
+  W01   (Alice Rossi         ): units=25, notti= 5, festivi=3, score=0.517 [🟡 Medio  ]
+  W02   (Marco Bianchi       ): units=25, notti= 8, festivi=3, score=0.367 [🔴 Critico]
+  W03   (Giulia Verdi        ): units=25, notti= 5, festivi=2, score=0.567 [🟡 Medio  ]
+  W04   (Luca Ferrari        ): units=25, notti= 5, festivi=1, score=0.617 [🟢 Buono  ]
+  W05   (Sara Esposito       ): units=25, notti= 5, festivi=1, score=0.617 [🟢 Buono  ]
+  W06   (Andrea Colombo      ): units=25, notti= 6, festivi=2, score=0.517 [🟡 Medio  ]
+  W07   (Francesca Romano    ): units=25, notti= 5, festivi=3, score=0.517 [🟡 Medio  ]
+  W08   (Davide Ricci        ): units=25, notti= 5, festivi=3, score=0.517 [🟡 Medio  ]
+  W09   (Elena Marino        ): units=25, notti= 6, festivi=2, score=0.517 [🟡 Medio  ]
+  W10   (Roberto Greco       ): units=25, notti= 6, festivi=3, score=0.467 [🟡 Medio  ]
+  W11   (Chiara Bruno        ): units=25, notti= 4, festivi=2, score=0.617 [🟢 Buono  ]
+  W12   (Matteo Conti        ): units=25, notti= 4, festivi=3, score=0.567 [🟡 Medio  ]
+  W13   (Valentina Serra     ): units=25, notti= 7, festivi=2, score=0.467 [🟡 Medio  ]
+
+──────────────────────────────────────────────────────────────────────
+USO LLM NEI DIVERSI STAGE
+──────────────────────────────────────────────────────────────────────
+  Stage 1 (Preferences):  🤖 LLM — estrazione preferenze NL
+  Stage 2 (Drafting):     ⚙️ Fallback deterministico — 1 tentativo LLM
+  Stage 3 (Verification): ⚙️ Simbolico — verifica deterministica
+  Stage 4 (Refinement):   ⚙️ Fallback LNS — 1 tentativo LLM
