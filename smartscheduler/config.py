@@ -10,6 +10,11 @@ from datetime import date
 OLLAMA_MODEL: str = "qwen2.5-coder:7b"     # Modello 7B specializzato per codice
 OLLAMA_BASE_URL: str = "http://localhost:11434"
 
+# ─── LLM nei diversi stage ───────────────────────────────────────────────────
+MAX_LLM_RETRIES: int = 2                  # tentativi prima del fallback deterministico
+LLM_TEMPERATURE_DRAFTING: float = 0.2     # bassa per generare codice più preciso
+LLM_TEMPERATURE_REFINEMENT: float = 0.3   # leggermente più alta per creatività
+
 # ─── Orizzonte di scheduling ─────────────────────────────────────────────────
 HORIZON_START: date = date(2026, 12, 7)
 HORIZON_END: date = date(2027, 1, 6)

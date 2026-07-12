@@ -38,6 +38,8 @@ L'intera esecuzione si basa su un dizionario chiamato `SmartSchedulerState`. Nes
 - `violations`: Lista di stringhe (es. errori di legge, "Il medico W01 lavora troppo").
 - `fairness_metrics`: Dizionario con il punteggio di soddisfazione (0-1) di ogni lavoratore.
 - `least_satisfied_worker`: Stringa con l'ID del dipendente più "infelice".
+- `llm_drafting_success`: Booleano che indica se lo Stage 2 ha usato l'LLM con successo.
+- `llm_refinement_success`: Booleano che indica se lo Stage 4 ha usato l'LLM con successo.
 
 ---
 
@@ -54,39 +56,39 @@ stateDiagram-v2
     HardVerification --> FairnessEvaluation : [Nessuna Violazione] Valuta Equità
     
     FairnessEvaluation --> [*] : [Ottimo Raggiunto] Fine
-    FairnessEvaluation --> Refinement : [Migliorabile] Applica LNS
+    FairnessEvaluation --> Refinement : [Migliorabile] Applica Refinement
     
     Refinement --> HardVerification : Nuovo Draft Migliorato
 ```
 
-### Step 1: Estrazione Preferenze (`agents/preferences_agent.py -> preferences_node`)
+### Step 1: Estrazione Preferenze (`agents/preferences_agent.py → preferences_node`) 🤖 LLM
 - **Input:** Lista di oggetti `Worker` con preferenze in testo naturale ("Non vorrei lavorare il giovedì...").
-- **Azione:** Interroga l'LLM (tramite `agents/base_llm.py`) passando le biografie testuali. L'LLM restituisce un JSON.
-- **Output:** La stringa `ortools_preferences_code`, un codice Python generato dinamicamente che associa pesi numerici ai turni scomodi di ogni dottore. Aggiorna lo stato `preferences_collected = True`.
+- **Azione:** Interroga l'LLM (tramite `agents/base_llm.py`) passando le biografie testuali. L'LLM restituisce un JSON strutturato con le preferenze formalizzate.
+- **Output:** La stringa `ortools_preferences_code`, un codice Python generato deterministicamente dalle preferenze estratte che associa pesi numerici ai turni scomodi di ogni dottore. Aggiorna lo stato `preferences_collected = True`.
 
-### Step 2: Creazione del Tabellone (`agents/drafting_agent.py -> drafting_node`)
+### Step 2: Creazione del Tabellone (`agents/drafting_agent.py → drafting_node`) 🤖 LLM
 - **Input:** I dati dei `workers`, l'Use Case, e l'`ortools_preferences_code`.
-- **Classi Chiamate:** `ortools_builder.py` e `ortools_runner.py` (dentro `solver/`).
-- **Azione:** Viene costruita matematicamente l'equazione del mese ospedaliero (CP-SAT). Si lancia la CPU a calcolare la prima combinazione di turni che funziona geometricamente.
-- **Output:** Nello stato viene salvato l'oggetto `schedule` (di classe `models.schedule.Schedule`), un enorme raccoglitore di oggetti `ShiftAssignment` che descrive esattamente chi lavora, dove e quando.
+- **Azione:** L'LLM-based drafting agent riceve un prompt dettagliato contenente tutti i vincoli hard (copertura, max 1 turno/giorno, riposo post-notte, 25 shift-units, ecc.), le preferenze formalizzate, e la struttura output attesa. L'LLM genera un file Python completo con il modello OR-Tools CP-SAT. Il codice viene validato sintatticamente (`compile()`); in caso di errore, si effettuano fino a 2 retry con prompt di correzione. Se tutti i tentativi falliscono, scatta un fallback al template deterministico (`ortools_builder.py`).
+- **Classi Chiamate:** `prompts/drafting_prompt.py`, `agents/base_llm.py`, `solver/ortools_runner.py`.
+- **Output:** Nello stato viene salvato l'oggetto `schedule` (di classe `models.schedule.Schedule`) e il flag `llm_drafting_success` che indica se l'LLM ha generato il codice con successo.
 
-### Step 3: Verifica della Legge (`agents/verification_agent.py -> verification_node`)
+### Step 3: Verifica della Legge (`agents/verification_agent.py → verification_node`) ⚙️ Simbolico
 - **Input:** L'oggetto `schedule`.
-- **Azione:** Uno script Python "spietato" che scorre l'oggetto `schedule` e verifica se la macchina ha commesso reati (es. meno di 2 giorni di riposo dopo una notte, più di 36h a settimana).
+- **Azione:** Uno script Python deterministico che scorre l'oggetto `schedule` e verifica se tutti i vincoli hard sono rispettati (riposo post-notte, max ore settimanali, copertura, ecc.).
 - **Routing (Condizione):**
   - Se trova errori: salva le descrizioni nella lista `violations` dello stato e **rimanda il flusso allo Step 2** (`drafting`) per fargli ricalcolare tutto.
   - Se NON trova errori: approva lo schedule e passa allo Step 4.
 
-### Step 4: Valutazione Equità (`agents/fairness_agent.py -> fairness_node`)
+### Step 4: Valutazione Equità (`agents/fairness_agent.py → fairness_node`) ⚙️ Simbolico
 - **Input:** Lo `schedule` (legale) e i `workers`.
-- **Azione:** Assegna le multe. Se W01 odia le notti ma ne ha fatte 5, il suo "Fairness Score" (da 0 a 1) scende. Si identifica chi ha il punteggio più basso (`least_satisfied_worker`).
+- **Azione:** Calcola il satisfaction score [0,1] per ogni worker basandosi su 4 componenti: penalità notturni, penalità festivi, deviazione dal turno preferito, e violazioni giorno di riposo. Identifica il worker con il punteggio più basso (`least_satisfied_worker`).
 - **Routing (Condizione):**
   - L'agente confronta il punteggio minimo attuale con quello del giro precedente. Se è migliorato, **va allo Step 5** (Refinement).
-  - Se è uguale o peggiore (o se il limite LNS è raggiunto), il solutore sa di aver raggiunto l'Ottimo Matematico e **termina il flusso (END)**.
+  - Se è uguale o peggiore (o se il limite iterazioni è raggiunto), il solutore sa di aver raggiunto l'Ottimo e **termina il flusso (END)**.
 
-### Step 5: Raffinamento e LNS (`agents/drafting_agent.py -> refinement_node`)
-- **Input:** Lo `schedule` attuale e le `fairness_metrics`.
-- **Azione:** L'algoritmo **LNS (Fix-and-Optimize)**. Trova il 50% dei medici più "felici" e "congela" i loro turni inserendoli come vincoli rigidi (Fix). Prende il medico "infelice" e il resto dei medici e lascia a OR-Tools libertà di scambiare i loro turni per alzare il punteggio del peggiore (Optimize).
+### Step 5: Raffinamento (`agents/drafting_agent.py → refinement_node`) 🤖 LLM
+- **Input:** Lo `schedule` attuale, le `fairness_metrics`, e il codice OR-Tools precedente.
+- **Azione:** L'LLM-based refinement agent riceve lo schedule corrente in formato leggibile, i fairness scores di tutti i worker, e i dettagli del worker meno soddisfatto. L'LLM genera un nuovo codice OR-Tools con penalità soft modificate per migliorare la fairness del worker svantaggiato. Se l'LLM fallisce, scatta il fallback all'algoritmo **LNS (Fix-and-Optimize)** deterministico: congela il 50% dei worker più felici e lascia a OR-Tools libertà di scambiare i turni per alzare il punteggio del peggiore.
 - **Output:** Sovrascrive lo `schedule` attuale e **rimanda obbligatoriamente allo Step 3** per certificare che i nuovi scambi non abbiano violato la legge.
 
 ---
@@ -129,9 +131,9 @@ classDiagram
 
 ---
 
-## 📊 5. Output Finale: Salvataggio (`main.py -> save_outputs()`)
+## 📊 5. Output Finale: Salvataggio (`main.py → save_outputs()`)
 Quando il Grafo giunge all'`END` (cioè ha generato uno `schedule` legale e con l'equità massima matematicamente raggiungibile), il controllo torna a `main.py`.
 
 La funzione `save_outputs(final_state)` genera due dati finali nella directory `output/`:
-1. **Report Testuale (`report_ucA.txt`):** Un file visivo ad altissima leggibilità. Contiene gli istogrammi (es. `██████░░░░`), il calendario giorno per giorno incasellato con icone, ed eventuali violazioni finali residue (se insormontabili).
+1. **Report Testuale (`report_ucA.txt`):** Un file visivo ad altissima leggibilità. Contiene gli istogrammi (es. `██████░░░░`), il calendario giorno per giorno incasellato con icone, la sezione "USO LLM NEI DIVERSI STAGE" che mostra quali stage hanno usato l'LLM con successo, ed eventuali violazioni finali residue (se insormontabili).
 2. **File JSON (`schedule_final_ucA.json`):** Contiene i metadati, i punteggi di fairness e una lista gigantesca e cruda di tutte le assegnazioni. Serve per l'integrazione di SmartScheduler con database, frontend web esterni, o app mobile per l'ospedale.

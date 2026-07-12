@@ -192,6 +192,26 @@ def generate_report(final_state: dict, use_case: str) -> str:
             f"score={score:.3f} [{eval_text}]"
         )
 
+    # ── Sezione uso LLM ───────────────────────────────────────────────────
+    llm_draft_ok = final_state.get("llm_drafting_success", False)
+    llm_ref_ok = final_state.get("llm_refinement_success", False)
+    llm_draft_att = final_state.get("llm_drafting_attempts", 0)
+    llm_ref_att = final_state.get("llm_refinement_attempts", 0)
+
+    lines += ["", "─" * 70, "USO LLM NEI DIVERSI STAGE", "─" * 70]
+    lines.append("  Stage 1 (Preferences):  🤖 LLM — estrazione preferenze NL")
+    lines.append(
+        f"  Stage 2 (Drafting):     "
+        f"{'🤖 LLM' if llm_draft_ok else '⚙️ Fallback deterministico'}"
+        f" — {llm_draft_att} tentativ{'o' if llm_draft_att == 1 else 'i'} LLM"
+    )
+    lines.append("  Stage 3 (Verification): ⚙️ Simbolico — verifica deterministica")
+    lines.append(
+        f"  Stage 4 (Refinement):   "
+        f"{'🤖 LLM' if llm_ref_ok else '⚙️ Fallback LNS'}"
+        f" — {llm_ref_att} tentativ{'o' if llm_ref_att == 1 else 'i'} LLM"
+    )
+
     if violations:
         lines += ["", "─" * 70, "⚠️ VIOLAZIONI RESIDUE", "─" * 70]
         for v in violations:
