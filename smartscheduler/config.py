@@ -41,7 +41,7 @@ ORTOOLS_SOLVER_TIME_LIMIT: int = 30  # secondi per il CpSolver interno
 import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
-OUTPUT_DIR = os.path.join(BASE_DIR, "output_run9")
+OUTPUT_DIR = os.path.join(BASE_DIR, "output10")
 SCENARIOS_DIR = os.path.join(DATA_DIR, "scenarios")
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
