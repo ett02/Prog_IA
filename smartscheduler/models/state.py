@@ -42,3 +42,9 @@ class SmartSchedulerState(TypedDict, total=False):
     # ── Stage 4: Refinement LNS (Deterministico) ───────────────────────────
     refinement_iteration: int           # iteratore del refinement loop
     max_refinements: int                # limite iterazioni LNS (default 10)
+
+    # ── Tracking LLM usage ────────────────────────────────────────────────
+    llm_drafting_success: bool          # True se Stage 2 ha usato LLM con successo
+    llm_refinement_success: bool        # True se Stage 4 ha usato LLM con successo
+    llm_drafting_attempts: int          # Numero di tentativi LLM nello Stage 2
+    llm_refinement_attempts: int        # Numero di tentativi LLM nello Stage 4
